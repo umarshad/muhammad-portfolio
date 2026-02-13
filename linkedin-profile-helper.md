@@ -1,7 +1,7 @@
 # How to Get Your LinkedIn Profile Picture URL
 
 ## Method 1: Direct LinkedIn URL (Recommended)
-1. Go to your LinkedIn profile: https://www.linkedin.com/in/muhammad-umar-802235286/
+1. Go to your LinkedIn profile: https://www.linkedin.com/in/muaaz-umar-802235286/
 2. Right-click on your profile picture
 3. Select "Copy image address" or "Copy image URL"
 4. The URL will look something like: `https://media.licdn.com/dms/image/D4D03AQF8QZ8QZ8QZ8Q/profile-displayphoto-shrink_400_400/0/1703123456789?e=1721865600&v=beta&t=your-actual-image-url`
@@ -32,7 +32,7 @@ I've added a ProfilePicture component that:
 ```tsx
 <ProfilePicture 
   src="YOUR_ACTUAL_LINKEDIN_IMAGE_URL_HERE"
-  alt="Muhammad Umar - Flutter Developer"
+  alt="Muaaz Umar - Flutter Developer"
   className="mb-6"
 />
 ```

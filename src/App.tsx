@@ -361,7 +361,7 @@ function App() {
                     ease: "easeInOut"
                   }}
                 >
-                  Muhammad
+                  Muaaz
                 </motion.h1>
 
                 {/* Animated Divider */}
@@ -459,7 +459,7 @@ function App() {
                   className="text-xs sm:text-sm lg:text-sm text-gray-500 font-light tracking-widest"
                   style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
                 >
-                  © 2024 Muhammad • Flutter Developer
+                  © 2024 Muaaz • Flutter Developer
                 </p>
               </motion.div>
             </div>
@@ -475,7 +475,7 @@ function App() {
             {/* Logo/Name */}
             <div className="flex items-center gap-3">
               <div>
-                <h1 className="text-white font-bold text-lg">Muhammad</h1>
+                <h1 className="text-white font-bold text-lg">Muaaz</h1>
                 <div className="flex items-center gap-1">
                   <img
                     src="https://storage.googleapis.com/cms-storage-bucket/icon_flutter.4fd5520fe28ebf839174.svg"
@@ -518,7 +518,7 @@ function App() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-3xl font-bold mb-3 text-white"
                   >
-                    Muhammad
+                    Muaaz
                   </motion.h1>
 
                   {/* Title */}
@@ -645,7 +645,7 @@ function App() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4"
             >
-              <span className="block text-white">Muhammad</span>
+              <span className="block text-white">Muaaz</span>
             </motion.h1>
 
             {/* Title with Flutter Logo */}
