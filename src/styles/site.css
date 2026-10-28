@@ -769,6 +769,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 .pdlg__media .pphone--1 { left: 32%; top: 22%; }
 .pdlg__media .pphone--2 { right: 5%; }
 .pdlg__media .pcover .pphone { height: auto; object-fit: cover; }
+.pdlg__gallery { display: flex; gap: 10px; margin-top: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+.pdlg__gallery img { flex: none; width: 260px; height: auto; border-radius: 12px; border: 1px solid var(--line-light); scroll-snap-align: start; }
 .pdlg__shots { display: flex; gap: 10px; margin-top: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
 .pdlg__shots img { flex: none; width: 120px; height: auto; border-radius: 14px; border: 2px solid var(--line-light); scroll-snap-align: start; }
 .pcover__tags { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }

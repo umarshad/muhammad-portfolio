@@ -10,6 +10,7 @@ export type Project = {
   cover?: string; // screenshot of the live product
   logo?: string;
   shots?: { src: string; label: string }[]; // app screens for the phone gallery
+  gallery?: { src: string; label: string }[]; // wide screenshots of a web product, shown in the details window
 };
 
 export const projectFilters = [
@@ -56,13 +57,17 @@ export const projects: Project[] = [
   {
     title: "Hudson Tasks",
     kinds: ["Web", "SaaS"],
-    cover: "/projects/hudsontasks.webp",
+    cover: "/projects/hudsontasks-dashboard.webp",
     description: "A workforce management platform where employers manage field employees, work hours, tasks and finances.",
     technologies: ["React", "Supabase", "SMTP"],
     features: [
       "Role-based access and work-hour tracking for employers and field employees",
       "Task assignment for on-field employees, plus finance management and client follow-up tracking",
       "Automated email notifications sent through SMTP for tasks, updates and follow-ups",
+    ],
+    gallery: [
+      { src: "/projects/hudsontasks-dashboard.webp", label: "Owner dashboard with overdue tasks, live shifts and work calendar" },
+      { src: "/projects/hudsontasks.webp", label: "Sign-in page" },
     ],
     url: "https://hudsontasks.com",
     status: "Live",

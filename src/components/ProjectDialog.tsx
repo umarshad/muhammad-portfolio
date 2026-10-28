@@ -31,6 +31,14 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
           <ul>{project.features.map((f) => <li key={f}>{f}</li>)}</ul>
           <h4>Technologies</h4>
           <div className="tags">{project.technologies.map((t) => <span key={t}>{t}</span>)}</div>
+          {project.gallery && (
+            <>
+              <h4>Screens</h4>
+              <div className="pdlg__gallery">
+                {project.gallery.map((g) => <img key={g.src} src={g.src} alt={g.label} width={320} height={200} loading="lazy" decoding="async" />)}
+              </div>
+            </>
+          )}
           {project.shots && (
             <>
               <h4>App screens</h4>
