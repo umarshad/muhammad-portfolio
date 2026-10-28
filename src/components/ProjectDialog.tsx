@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ExternalLink, X } from "lucide-react";
 import type { Project } from "@/data/projects";
+import { caseStudyForProject } from "@/data/caseStudies";
 import { projectImages } from "@/lib/projectImages";
 import { Lightbox } from "./Lightbox";
 import { ProjectCover } from "./ProjectCover";
@@ -16,6 +17,7 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
   const images = projectImages(project);
   const [active, setActive] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const study = caseStudyForProject(project.title);
   const hasLink = project.url && project.url !== "#";
 
   return (
@@ -47,6 +49,9 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
             <a className="pcard__badge" href={project.playUrl} target="_blank" rel="noopener noreferrer">
               <img src="/badges/google-play-badge.svg" alt={`Get ${project.title} on Google Play`} loading="lazy" />
             </a>
+          )}
+          {study && (
+            <a className="btn btn--sm" href={`/${study.slug}`}>Read the case study</a>
           )}
           {hasLink && (
             <a className="btn btn--dark btn--sm" href={project.url} target="_blank" rel="noopener noreferrer">

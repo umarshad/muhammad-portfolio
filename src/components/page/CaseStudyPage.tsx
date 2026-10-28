@@ -1,87 +1,115 @@
 import { useState } from "react";
-import { ArrowRight, ExternalLink, Maximize2 } from "lucide-react";
-import { caseStudy, landingPages } from "@/data/landing";
+import { ArrowRight, ExternalLink, Github, Maximize2 } from "lucide-react";
+import type { CaseStudy } from "@/data/caseStudies";
+import { landingBySlug } from "@/data/landing";
+import type { LandingPage } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { techs } from "@/data/tech";
 import { Lightbox } from "../Lightbox";
+import { PhoneFrame } from "../PhoneFrame";
 import { ProjectCover } from "../ProjectCover";
 import { RegionStrip } from "../RegionStrip";
 import { TechIcon, techColor } from "../TechIcon";
 import { CtaBand } from "./CtaBand";
+import { FaqAccordion } from "./FaqAccordion";
 import { IncludeCards } from "./IncludeCards";
 import { PageHero } from "./PageHero";
 import { PageShell } from "./PageShell";
 
-const platforms = [
-  { title: "Flutter mobile app", text: "The main product for iOS and Android: create estimates and invoices, get client approval, track projects, payments and reminders, and talk to the AI assistant." },
-  { title: "React web portal", text: "The browser side of the same product, running on the same Firebase backend so data stays consistent with the mobile app." },
-  { title: "Admin dashboard", text: "A separate dashboard for operators: control over users, transactions, invoices and analytics, with integrated support chat." },
-];
-
-export function CaseStudyPage() {
-  const p = projects.find((x) => x.title === "My Invoice")!;
+export function CaseStudyPage({ study }: { study: CaseStudy }) {
+  const p = projects.find((x) => x.title === study.project)!;
   const [view, setView] = useState<number | null>(null);
   const shots = p.shots ?? [];
-  const used = p.technologies.map((n) => techs.find((t) => t.name === n)).filter((t): t is NonNullable<typeof t> => !!t);
+  const used = study.stack.map((n) => techs.find((t) => t.name === n)).filter((t): t is NonNullable<typeof t> => !!t);
+  const related = study.related.map((s) => landingBySlug(s)).filter((x): x is LandingPage => !!x);
+  const isRepo = p.url.includes("github.com");
 
   return (
     <PageShell>
       <PageHero
-        trail={[{ name: "Home", href: "/" }, { name: "Projects", href: "/#projects" }, { name: "My Invoice" }]}
-        eyebrow={`Case study · ${p.status}`}
-        title={caseStudy.h1}
-        lead={caseStudy.lead}
-        topic="a product like My Invoice"
+        trail={[{ name: "Home", href: "/" }, { name: "Projects", href: "/#projects" }, { name: p.title }]}
+        eyebrow={`${study.eyebrow} · ${p.status}`}
+        title={study.h1}
+        lead={study.lead}
+        topic={`a product like ${p.title}`}
         visual={<div className="lp-fan"><ProjectCover project={p} eager /></div>}
         actions={
           <>
             {p.playUrl && (
               <a className="pcard__badge" href={p.playUrl} target="_blank" rel="noopener noreferrer">
-                <img src="/badges/google-play-badge.svg" alt="Get My Invoice on Google Play" height={52} />
+                <img src="/badges/google-play-badge.svg" alt={`Get ${p.title} on Google Play`} height={52} />
               </a>
             )}
-            <a className="btn" href={p.url} target="_blank" rel="noopener noreferrer">Visit myinvoice.us <ExternalLink size={16} /></a>
+            {p.url.startsWith("http") && (
+              <a className="btn" href={p.url} target="_blank" rel="noopener noreferrer">
+                {isRepo ? <>View the code <Github size={16} /></> : <>Visit {p.url.replace("https://", "")} <ExternalLink size={16} /></>}
+              </a>
+            )}
+            <a className="btn btn--ghost" href="/#contact">Start a project <ArrowRight size={16} /></a>
           </>
         }
-        byline={<>Designed and built by <a href="/">{profile.name}</a> at DM Worx LLC</>}
+        byline={<>{study.role.replace("Muhammad Umar", "")}<a href="/">{profile.name}</a></>}
       />
 
-      <section className="lp-sec" aria-labelledby="plat">
+      <section className="lp-sec" aria-labelledby="glance">
         <div className="container">
-          <p className="eyebrow reveal">Architecture</p>
-          <h2 id="plat" className="work__title reveal">Three platforms, <span className="serif">one backend</span></h2>
-          <IncludeCards items={platforms} />
+          <p className="eyebrow reveal">At a glance</p>
+          <h2 id="glance" className="work__title reveal">The project in <span className="serif">numbers</span></h2>
+          <dl className="cs-facts">
+            <div className="reveal"><dt>Role</dt><dd>Design, development and release</dd></div>
+            <div className="reveal" style={{ ["--d" as string]: "0.06s" }}><dt>Platforms</dt><dd>{study.os.replace("Android, iOS, Web", "iOS, Android and web").replace("Android, iOS", "iOS and Android")}</dd></div>
+            <div className="reveal" style={{ ["--d" as string]: "0.12s" }}><dt>Core stack</dt><dd>{p.technologies.slice(0, 4).join(", ")}</dd></div>
+            <div className="reveal" style={{ ["--d" as string]: "0.18s" }}><dt>Status</dt><dd>{p.status}</dd></div>
+          </dl>
         </div>
       </section>
 
-      <section className="lp-sec lp-sec--alt" aria-labelledby="feat">
+      <section className="lp-sec lp-sec--alt" aria-labelledby="plat">
+        <div className="container">
+          <p className="eyebrow reveal">{study.archEyebrow}</p>
+          <h2 id="plat" className="work__title reveal">{study.archTitle[0]} <span className="serif">{study.archTitle[1]}</span></h2>
+          <IncludeCards items={study.platforms} />
+        </div>
+      </section>
+
+      <section className="lp-sec" aria-labelledby="feat">
         <div className="container lp-faq">
           <div>
             <p className="eyebrow reveal">Features</p>
             <h2 id="feat" className="work__title reveal">What it <span className="serif">does</span></h2>
           </div>
           <ul className="lp-list">
-            {p.features.map((f) => <li key={f} className="reveal">{f}</li>)}
+            {study.features.map((f) => <li key={f} className="reveal">{f}</li>)}
           </ul>
         </div>
       </section>
 
-      <section className="lp-sec" aria-labelledby="shots">
-        <div className="container">
-          <p className="eyebrow reveal">Screens</p>
-          <h2 id="shots" className="work__title reveal">The app <span className="serif">in use</span></h2>
-          <div className="lp-shots">
-            {(p.shots ?? []).map((s, i) => (
-              <figure key={s.src} className="lp-shot reveal" style={{ ["--d" as string]: `${(i % 4) * 0.06}s` }}>
-                <button type="button" className="lp-shot__btn" onClick={() => setView(i)} aria-label={`Enlarge: ${s.label}`}>
-                  <img src={s.src} alt={`My Invoice: ${s.label}`} width={480} height={1067} loading="lazy" decoding="async" />
-                  <span className="lp-shot__zoom"><Maximize2 size={16} aria-hidden="true" /></span>
-                </button>
-                <figcaption>{s.label}</figcaption>
-              </figure>
-            ))}
+      {shots.length > 0 && (
+        <section className="lp-sec lp-sec--alt" aria-labelledby="shots">
+          <div className="container">
+            <p className="eyebrow reveal">Screens</p>
+            <h2 id="shots" className="work__title reveal">The app <span className="serif">in use</span></h2>
+            <div className="lp-shots">
+              {shots.map((s, i) => (
+                <figure key={s.src} className="lp-shot reveal" style={{ ["--d" as string]: `${(i % 4) * 0.06}s` }}>
+                  <button type="button" className="lp-shot__btn" onClick={() => setView(i)} aria-label={`Enlarge: ${s.label}`}>
+                    <PhoneFrame src={s.src} alt={`${p.title}: ${s.label}`} />
+                    <span className="lp-shot__zoom"><Maximize2 size={16} aria-hidden="true" /></span>
+                  </button>
+                  <figcaption>{s.label}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
+        </section>
+      )}
+
+      <section className="lp-sec" aria-labelledby="dec">
+        <div className="container">
+          <p className="eyebrow reveal">Under the hood</p>
+          <h2 id="dec" className="work__title reveal">{study.decisionsTitle[0]} <span className="serif">{study.decisionsTitle[1]}</span></h2>
+          <IncludeCards items={study.decisions} />
         </div>
       </section>
 
@@ -100,13 +128,23 @@ export function CaseStudyPage() {
         </div>
       </section>
 
-      <section className="lp-sec" aria-labelledby="svc">
+      <section className="lp-sec" aria-labelledby="qa">
+        <div className="container lp-faq">
+          <div>
+            <p className="eyebrow reveal">Questions</p>
+            <h2 id="qa" className="work__title reveal">About this <span className="serif">project</span></h2>
+          </div>
+          <FaqAccordion items={study.faq} />
+        </div>
+      </section>
+
+      <section className="lp-sec lp-sec--alt" aria-labelledby="svc">
         <div className="container">
           <p className="eyebrow reveal">Services behind this build</p>
           <h2 id="svc" className="work__title reveal">Need something <span className="serif">similar?</span></h2>
           <div className="lp-related">
-            {landingPages.slice(0, 3).map((r) => (
-              <a key={r.slug} className="svccard-lite reveal" href={`/${r.slug}`}>
+            {related.map((r, i) => (
+              <a key={r.slug} className="svccard-lite reveal" href={`/${r.slug}`} style={{ ["--d" as string]: `${i * 0.08}s` }}>
                 <b>{r.serviceName}</b>
                 <span>{r.description}</span>
                 <em>Learn more <ArrowRight size={16} /></em>
@@ -117,8 +155,8 @@ export function CaseStudyPage() {
       </section>
 
       <RegionStrip light />
-      <CtaBand topic="next product" />
-      {view !== null && <Lightbox images={shots} index={view} onIndex={setView} onClose={() => setView(null)} />}
+      <CtaBand topic={study.ctaTopic} />
+      {view !== null && <Lightbox images={shots} index={view} onIndex={setView} onClose={() => setView(null)} device />}
     </PageShell>
   );
 }

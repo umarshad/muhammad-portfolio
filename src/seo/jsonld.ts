@@ -1,4 +1,4 @@
-import { caseStudy, landingBySlug, landingPages, regionPages } from "@/data/landing";
+import { caseStudies, caseStudy, landingBySlug, landingPages, regionPages } from "@/data/landing";
 import { education, skillGroups } from "@/data/skills";
 import { faq } from "@/data/faq";
 import { profile } from "@/data/profile";
@@ -127,7 +127,7 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
             description: p.description,
             keywords: p.technologies.join(", "),
             author: ref("person"),
-            ...(p.title === "My Invoice" ? { url: abs(`/${caseStudy.slug}`) } : p.url.startsWith("http") ? { url: p.url } : {}),
+            ...(caseStudies.find((c) => c.project === p.title) ? { url: abs(`/${caseStudies.find((c) => c.project === p.title)!.slug}`) } : p.url.startsWith("http") ? { url: p.url } : {}),
           },
         })),
       },
@@ -140,37 +140,42 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
   const pageId = `${pageUrl}#webpage`;
   const homeCrumb = { name: "Home", url: home };
 
-  if (path === `/${caseStudy.slug}`) {
-    const mi = projects.find((p) => p.title === "My Invoice")!;
+  const study = caseStudies.find((c) => `/${c.slug}` === path);
+  if (study) {
+    const pr = projects.find((p) => p.title === study.project)!;
     graph.push(
-      { ...person(), "@type": "Person" },
+      person(),
       website(),
       {
         "@type": "WebPage",
         "@id": pageId,
         url: pageUrl,
-        name: caseStudy.title,
-        description: caseStudy.description,
+        name: study.title,
+        description: study.description,
+        inLanguage: "en",
         dateModified: modified,
         isPartOf: ref("website"),
         about: { "@id": `${pageUrl}#app` },
         breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
       },
-      breadcrumb(`${pageUrl}#breadcrumb`, [homeCrumb, { name: "Projects", url: `${home}#projects` }, { name: "My Invoice", url: pageUrl }]),
+      breadcrumb(`${pageUrl}#breadcrumb`, [homeCrumb, { name: "Projects", url: `${home}#projects` }, { name: pr.title, url: pageUrl }]),
       {
         "@type": "SoftwareApplication",
         "@id": `${pageUrl}#app`,
-        name: "My Invoice",
-        description: mi.description,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Android, iOS, Web",
-        url: mi.url,
-        ...(mi.playUrl ? { downloadUrl: mi.playUrl } : {}),
+        name: pr.title,
+        description: pr.description,
+        applicationCategory: study.category,
+        operatingSystem: study.os,
+        ...(pr.url.startsWith("http") && !pr.url.includes("github.com") ? { url: pr.url } : {}),
+        ...(pr.url.includes("github.com") ? { codeRepository: pr.url } : {}),
+        ...(pr.playUrl ? { downloadUrl: pr.playUrl } : {}),
         author: ref("person"),
         creator: ref("person"),
-        featureList: mi.features,
-        screenshot: (mi.shots ?? []).map((s) => ({ "@type": "ImageObject", contentUrl: abs(s.src), caption: s.label })),
+        featureList: study.features,
+        keywords: pr.technologies.join(", "),
+        screenshot: (pr.shots ?? []).map((s) => ({ "@type": "ImageObject", contentUrl: abs(s.src), caption: s.label })),
       },
+      faqNode(`${pageUrl}#faq`, study.faq),
     );
     return { "@context": "https://schema.org", "@graph": graph };
   }

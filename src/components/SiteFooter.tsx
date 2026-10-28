@@ -1,5 +1,5 @@
 import { ArrowUp, Github, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import { caseStudy, landingPages, regionPages } from "@/data/landing";
+import { caseStudies, landingPages, regionPages } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -91,7 +91,9 @@ export function SiteFooter() {
             <ul>
               <li><a href="/#about">About</a></li>
               <li><a href="/#projects">Projects</a></li>
-              <li><a href={`/${caseStudy.slug}`}>My Invoice case study</a></li>
+              {caseStudies.map((c) => (
+                <li key={c.slug}><a href={`/${c.slug}`}>{c.project} case study</a></li>
+              ))}
               <li><a href="/#experience">Experience</a></li>
               <li><a href="/#skills">Skills</a></li>
               <li><a href="/#faq">FAQ</a></li>

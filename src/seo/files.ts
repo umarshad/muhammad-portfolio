@@ -1,6 +1,6 @@
 import { experience } from "@/data/experience";
 import { faq } from "@/data/faq";
-import { allServicePages, caseStudy, landingPages, regionPages } from "@/data/landing";
+import { allServicePages, caseStudies, landingPages, regionPages } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
@@ -9,7 +9,6 @@ import { HOME_DESCRIPTION, HOME_TITLE, pageMetas } from "./meta";
 
 const home = `${profile.site}/`;
 const abs = (p: string) => `${profile.site}${p}`;
-const mi = projects.find((p) => p.title === "My Invoice")!;
 
 const priority = (kind: string) => (kind === "home" ? "1.0" : kind === "service" ? "0.8" : "0.6");
 
@@ -20,7 +19,11 @@ export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
         m.kind === "home"
           ? `\n    <image:image><image:loc>${abs("/og-image.jpg")}</image:loc><image:title>${profile.name}, ${profile.title}</image:title></image:image>`
           : m.kind === "case"
-            ? (mi.shots ?? []).map((s) => `\n    <image:image><image:loc>${abs(s.src)}</image:loc><image:caption>My Invoice: ${s.label}</image:caption></image:image>`).join("")
+            ? (() => {
+                const cs = caseStudies.find((c) => `/${c.slug}` === m.path);
+                const pr = projects.find((p) => p.title === cs?.project);
+                return (pr?.shots ?? []).map((x) => `\n    <image:image><image:loc>${abs(x.src)}</image:loc><image:caption>${pr?.title}: ${x.label}</image:caption></image:image>`).join("");
+              })()
             : "";
       return `  <url>
     <loc>${m.canonical}</loc>
@@ -66,7 +69,7 @@ ${regionPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.descri
 - Working pattern: remote from Lahore (UTC+5), English-language projects, calls booked in the overlap of the client's morning and the developer's afternoon or evening.
 
 ## Work
-- [My Invoice case study](${abs(`/${caseStudy.slug}`)}): ${caseStudy.description}
+${caseStudies.map((c) => `- [${c.project} case study](${abs(`/${c.slug}`)}): ${c.description}`).join("\n")}
 - [All projects](${home}#projects): ${projects.map((p) => p.title).join(", ")}
 
 ## Profile
@@ -128,7 +131,10 @@ ${projects
   )
   .join("\n\n")}
 
-Case study: ${abs(`/${caseStudy.slug}`)}
+## Case studies
+${caseStudies
+  .map((c) => `### ${c.project} (${abs(`/${c.slug}`)})\n${c.lead}\n${c.platforms.map((x) => `- ${x.title}: ${x.text}`).join("\n")}\n${c.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n")}`)
+  .join("\n\n")}
 
 ## Skills
 ${skillGroups.map((g) => `- ${g.title}: ${g.items.join(", ")}`).join("\n")}

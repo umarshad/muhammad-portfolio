@@ -187,15 +187,11 @@ export const landingPages: LandingPage[] = [
   },
 ];
 
-export const caseStudy = {
-  slug: "projects/my-invoice",
-  title: "My Invoice: Flutter SaaS Case Study | Muhammad Umar",
-  description:
-    "How My Invoice was built: a Flutter app, React web portal and admin dashboard on Firebase, with subscriptions, Stripe, an AI assistant and bot protection.",
-  h1: "My Invoice: a multi-platform invoicing SaaS built end to end",
-  lead:
-    "My Invoice is a business product I am building at DM Worx LLC. It combines a Flutter mobile app, a React web portal and a separate admin dashboard on one shared Firebase backend, so people can create estimates, get client approval and turn them into tracked projects with progress and payments.",
-};
+import { caseStudies } from "./caseStudies";
+
+export { caseStudies };
+// Kept for older imports: the My Invoice case study.
+export const caseStudy = caseStudies[0];
 
 import { regionPages } from "./regions";
 

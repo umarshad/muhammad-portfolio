@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import { caseStudy, landingBySlug } from "@/data/landing";
+import { caseStudyForProject } from "@/data/caseStudies";
+import { landingBySlug } from "@/data/landing";
 import type { LandingPage } from "@/data/landing";
 import { regionPages } from "@/data/regions";
 import { projects } from "@/data/projects";
@@ -70,7 +71,8 @@ export function ServicePage({ page }: { page: LandingPage }) {
           <h2 id="proof" className="work__title reveal">Related <span className="serif">work</span></h2>
           <div className="lp-proj">
             {proof.map((p, i) => {
-              const href = p.title === "My Invoice" ? `/${caseStudy.slug}` : p.url.startsWith("http") ? p.url : undefined;
+              const study = caseStudyForProject(p.title);
+              const href = study ? `/${study.slug}` : p.url.startsWith("http") ? p.url : undefined;
               return (
                 <article key={p.title} className="pcard reveal" style={{ ["--d" as string]: `${i * 0.1}s` }}>
                   <div className="pcard__media"><ProjectCover project={p} /></div>
@@ -80,7 +82,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
                     <p>{p.description}</p>
                     {href && (
                       <a className="lp-link" href={href} {...(href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-                        {p.title === "My Invoice" ? "Read the case study" : "Visit the project"} <ArrowRight size={16} />
+                        {study ? "Read the case study" : "Visit the project"} <ArrowRight size={16} />
                       </a>
                     )}
                   </div>

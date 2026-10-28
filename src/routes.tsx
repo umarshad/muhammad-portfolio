@@ -2,11 +2,11 @@ import type { ComponentType } from "react";
 import App from "./App";
 import { CaseStudyPage } from "@/components/page/CaseStudyPage";
 import { ServicePage } from "@/components/page/ServicePage";
-import { allServicePages, caseStudy } from "@/data/landing";
+import { allServicePages, caseStudies } from "@/data/landing";
 
 const table: Record<string, ComponentType> = {
   "/": App,
-  [`/${caseStudy.slug}`]: CaseStudyPage,
+  ...Object.fromEntries(caseStudies.map((c) => [`/${c.slug}`, () => <CaseStudyPage study={c} />])),
   ...Object.fromEntries(allServicePages.map((p) => [`/${p.slug}`, () => <ServicePage page={p} />])),
 };
 

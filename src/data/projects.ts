@@ -41,8 +41,8 @@ export const projects: Project[] = [
       { src: "/projects/my-invoice-project-overview.webp", label: "Project progress overview" },
       { src: "/projects/my-invoice-ai-assistant.webp", label: "AI project assistant" },
     ],
-    description: "A multi-platform business product with a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend.",
-    technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Google Maps", "Cloudflare Turnstile", "reCAPTCHA", "React", "TypeScript"],
+    description: "An AI invoice and estimate app for contractors, with a Flutter mobile app, a React web app and a separate admin dashboard on a shared Firebase backend, plus Stripe payments and subscriptions.",
+    technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Gemini", "Google Maps", "Cloudflare Turnstile", "reCAPTCHA", "React", "TypeScript"],
     features: [
       "End-to-end business workflow: create estimates, get client approval, and auto-convert them into tracked projects with progress management",
       "Separate admin dashboard giving operators control over users, transactions, invoices and analytics, with integrated support chat",
