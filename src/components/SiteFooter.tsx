@@ -1,5 +1,31 @@
+import { ArrowUp } from "lucide-react";
 import { caseStudy, landingPages } from "@/data/landing";
 import { profile } from "@/data/profile";
+
+const chips = [
+  { text: "From idea to store release", tone: "orange" },
+  { text: "SaaS and subscriptions", tone: "light" },
+  { text: "Flutter, iOS and Android", tone: "light" },
+  { text: "Open to remote work", tone: "orange" },
+];
+
+// Giant wordmark: every letter reacts to the pointer, and the pills drift around it.
+function Wordmark() {
+  return (
+    <div className="fword" aria-hidden="true">
+      {chips.map((c, i) => (
+        <span key={c.text} className={`fchip fchip--${i + 1} fchip--${c.tone}`}><i />{c.text}</span>
+      ))}
+      <p className="fword__text">
+        {["MUHAMMAD", "UMAR"].map((w) => (
+          <span key={w} className="fword__w">
+            {[...w].map((ch, i) => <span key={i} className="fl">{ch}</span>)}
+          </span>
+        ))}
+      </p>
+    </div>
+  );
+}
 
 // Sitewide footer: internal links to every service page and the case study, plus contact details.
 export function SiteFooter() {
@@ -38,7 +64,11 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <p className="sfoot__legal">© {new Date().getFullYear()} {profile.name} · {profile.location}</p>
+      <Wordmark />
+      <div className="sfoot__legal">
+        <span>© {new Date().getFullYear()} <b>{profile.name}</b> · {profile.location}</span>
+        <a href="#top">Back to top <ArrowUp size={14} aria-hidden="true" /></a>
+      </div>
     </footer>
   );
 }
