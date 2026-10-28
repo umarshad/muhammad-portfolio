@@ -136,8 +136,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 .hero__lead { max-width: 540px; margin-top: 26px; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.7; color: color-mix(in srgb, var(--text-on-dark) 74%, transparent); }
 .hero__lead strong { color: var(--text-on-dark); font-weight: 600; }
 .hero__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 34px; }
-.hero__wa { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid #25d36666; border-radius: 50%; background: #25d36614; color: #4ade80; transition: background-color 0.3s, transform 0.35s var(--ease-out), border-color 0.3s; }
-.hero__wa:hover { background: #25d36633; border-color: #25d366; transform: translateY(-2px); }
 .hero__note { max-width: 46ch; margin-top: 16px; font-size: 13.5px; line-height: 1.55; color: var(--muted-on-dark); }
 .hero__chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero__badge--live { border-color: #22c55e55; background: #22c55e12; color: #bbf7d0; }
