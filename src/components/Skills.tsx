@@ -87,20 +87,22 @@ export function Skills() {
                 <SkillCard key={t} text={t} index={i} />
               ))}
             </div>
-            {seen.length === 0 && "proof" in group && (
-              <div className="skseen" key={`p${active}`}>
-                <small>In practice</small>
-                <span className="skseen__text">{group.proof}</span>
+            <div className="skillstage__foot">
+              {seen.length === 0 && "proof" in group && (
+                <div className="skseen" key={`p${active}`}>
+                  <small>In practice</small>
+                  <span className="skseen__text">{group.proof}</span>
+                </div>
+              )}
+              {seen.length > 0 && (
+                <div className="skseen" key={`s${active}`}>
+                  <small>Seen in</small>
+                  {seen.map((n) => <a key={n} href="#projects" tabIndex={-1}>{n}</a>)}
+                </div>
+              )}
+              <div className="skillstage__rail">
+                {skillGroups.map((g, i) => <i key={g.title} className={i <= active ? "is-on" : ""} />)}
               </div>
-            )}
-            {seen.length > 0 && (
-              <div className="skseen" key={`s${active}`}>
-                <small>Seen in</small>
-                {seen.map((n) => <a key={n} href="#projects" tabIndex={-1}>{n}</a>)}
-              </div>
-            )}
-            <div className="skillstage__rail">
-              {skillGroups.map((g, i) => <i key={g.title} className={i <= active ? "is-on" : ""} />)}
             </div>
           </aside>
         </div>

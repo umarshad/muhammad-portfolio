@@ -55,7 +55,11 @@ export function skillMeta(text: string): SkillMeta {
   const name = paren ? paren[1] : text;
   const detail = paren ? paren[2] : undefined;
   const tech = findTech(text);
-  if (tech) return { name, detail, tech, brand: tech.brand, Icon: tech.Icon, color: tech.brand ? `#${tech.brand.hex}` : tech.color ?? "#0b5a55", usedIn: usedIn(tech) };
+  // "LLM API integration (OpenAI, Gemini, Groq)" covers several providers: projects that list any of them.
+  const llm = /^llm/i.test(text)
+    ? projects.filter((p) => p.technologies.some((x) => /openai|gemini|groq/i.test(x))).map((p) => p.title)
+    : undefined;
+  if (tech) return { name, detail, tech, brand: tech.brand, Icon: tech.Icon, color: tech.brand ? `#${tech.brand.hex}` : tech.color ?? "#0b5a55", usedIn: llm ?? usedIn(tech) };
   const ex = extras.find((e) => e.match.test(text));
-  return { name, detail, brand: ex?.brand, Icon: ex?.Icon ?? Sparkles, color: ex?.color ?? "#0b5a55", usedIn: [] };
+  return { name, detail, brand: ex?.brand, Icon: ex?.Icon ?? Sparkles, color: ex?.color ?? "#0b5a55", usedIn: llm ?? [] };
 }
