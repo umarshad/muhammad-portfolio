@@ -14,7 +14,7 @@ export type CaseStudy = {
   archTitle: [string, string]; // plain part, serif part
   platforms: { title: string; text: string }[];
   features: string[];
-  galleries?: { id: string; eyebrow: string; title: [string, string]; intro: string; url: string; images: { src: string; label: string }[] }[]; // wide browser screenshots
+  galleries?: { id: string; eyebrow: string; title: [string, string]; intro: string; url: string; images: { src: string; label: string; title: string }[] }[]; // wide browser screenshots
   decisionsTitle: [string, string];
   decisions: { title: string; text: string }[];
   stack: string[]; // names from data/tech.ts
@@ -64,24 +64,24 @@ export const caseStudies: CaseStudy[] = [
         id: "web",
         eyebrow: "Web app",
         title: ["The web app", "in use"],
-        intro: "The browser version of the same account: a dashboard for quick actions, overdue work, recent invoices and upcoming installments, a step-by-step invoice builder with a live summary, and business settings. Personal details are blurred.",
+        intro: "The browser version of the same account: a dashboard for quick actions, overdue work, recent invoices and upcoming installments, a step-by-step invoice builder with a live summary, and business settings.",
         url: "myinvoice.us",
         images: [
-          { src: "/projects/my-invoice-web-1.webp", label: "Web dashboard with quick actions, recent activity, payment watch and work calendar" },
-          { src: "/projects/my-invoice-web-2.webp", label: "Create invoice with a live summary, optional project, notes and deposit schedule" },
-          { src: "/projects/my-invoice-web-3.webp", label: "Business information, payment details, items, scanned receipts, templates and settings" },
+          { src: "/projects/my-invoice-web-1.webp", title: "Dashboard", label: "Web dashboard with quick actions, recent activity, payment watch and work calendar" },
+          { src: "/projects/my-invoice-web-2.webp", title: "Create invoice", label: "Create invoice with a live summary, optional project, notes and deposit schedule" },
+          { src: "/projects/my-invoice-web-3.webp", title: "Business settings", label: "Business information, payment details, items, scanned receipts, templates and settings" },
         ],
       },
       {
         id: "admin",
         eyebrow: "Admin dashboard",
         title: ["The admin dashboard", "in use"],
-        intro: "A separate dashboard for operators with revenue and account metrics, payment analytics by gateway and period, and an infrastructure view of Cloud Functions, scheduled jobs, error logs, storage and billing guardrails. Account details are blurred.",
+        intro: "A separate dashboard for operators with revenue and account metrics, payment analytics by gateway and period, and an infrastructure view of Cloud Functions, scheduled jobs, error logs, storage and billing guardrails. Other users' names and emails are hidden for privacy.",
         url: "myinvoice.us/admin",
         images: [
-          { src: "/projects/my-invoice-admin-1.webp", label: "Admin overview with volume, recurring revenue, accounts, fees and recent accounts" },
-          { src: "/projects/my-invoice-admin-2.webp", label: "Payment analytics with volume over time, payment methods and settlement health" },
-          { src: "/projects/my-invoice-admin-3.webp", label: "Infrastructure view of Cloud Functions, scheduler jobs, error logs and indexes" },
+          { src: "/projects/my-invoice-admin-1.webp", title: "Overview", label: "Admin overview with volume, recurring revenue, accounts, fees and recent accounts" },
+          { src: "/projects/my-invoice-admin-2.webp", title: "Payment analytics", label: "Payment analytics with volume over time, payment methods and settlement health" },
+          { src: "/projects/my-invoice-admin-3.webp", title: "Infrastructure", label: "Infrastructure view of Cloud Functions, scheduler jobs, error logs and indexes" },
         ],
       },
     ],

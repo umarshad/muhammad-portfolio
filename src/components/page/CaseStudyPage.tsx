@@ -17,6 +17,7 @@ import { FaqAccordion } from "./FaqAccordion";
 import { IncludeCards } from "./IncludeCards";
 import { PageHero } from "./PageHero";
 import { PageShell } from "./PageShell";
+import { ScreenShowcase } from "./ScreenShowcase";
 
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
   const p = projects.find((x) => x.title === study.project)!;
@@ -93,17 +94,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
             <p className="eyebrow reveal">{g.eyebrow}</p>
             <h2 id={`gal-${g.id}`} className="work__title reveal">{g.title[0]} <span className="serif">{g.title[1]}</span></h2>
             <p className="cs-intro reveal">{g.intro}</p>
-            <div className="cs-gal">
-              {g.images.map((im, i) => (
-                <figure key={im.src} className={`cs-gal__item reveal${i === 0 ? " cs-gal__item--lead" : ""}`} style={{ ["--d" as string]: `${i * 0.08}s` }}>
-                  <button type="button" className="cs-gal__btn" onClick={() => setGview({ g: gi, i })} aria-label={`Enlarge: ${im.label}`}>
-                    <BrowserFrame src={im.src} alt={`${p.title} ${g.eyebrow.toLowerCase()}: ${im.label}`} url={g.url} />
-                    <span className="lp-shot__zoom"><Maximize2 size={16} aria-hidden="true" /></span>
-                  </button>
-                  <figcaption>{im.label}</figcaption>
-                </figure>
-              ))}
-            </div>
+            <ScreenShowcase project={p.title} kind={g.eyebrow} url={g.url} images={g.images} onExpand={(i) => setGview({ g: gi, i })} />
           </div>
         </section>
       ))}

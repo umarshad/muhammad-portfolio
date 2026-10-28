@@ -10,7 +10,7 @@ export function BrowserFrame({ src, alt, url, onClick }: Props) {
         <i /><i /><i />
         <span>{url}</span>
       </span>
-      <img src={src} alt={alt} width={1600} height={824} loading="lazy" decoding="async" />
+      <img src={src} alt={alt} width={1800} height={927} loading="lazy" decoding="async" />
     </span>
   );
 }
