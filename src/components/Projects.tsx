@@ -18,7 +18,7 @@ export function Projects() {
     <section id="projects" className="work" aria-labelledby="work-title">
       <div className="container">
         <div className="work__head">
-          <p className="eyebrow reveal">Selected work</p>
+          <p className="eyebrow reveal">Flutter and web app portfolio</p>
           <h2 id="work-title" className="work__title reveal" style={{ ["--d" as string]: "0.1s" }}>
             Products I&apos;ve <span className="serif">shipped</span>
           </h2>

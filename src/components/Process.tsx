@@ -4,7 +4,7 @@ export function Process() {
   return (
     <section id="process" className="proc" aria-labelledby="process-title">
       <div className="container">
-        <p className="eyebrow reveal">How I work</p>
+        <p className="eyebrow reveal">App development process</p>
         <h2 id="process-title" className="work__title reveal" style={{ ["--d" as string]: "0.1s" }}>
           From idea to <span className="serif">launch</span>
         </h2>

@@ -16,7 +16,7 @@ export function Services() {
   return (
     <section id="services" className="svc" aria-labelledby="services-title">
       <div className="svc__frame">
-        <p className="eyebrow eyebrow--dark reveal">What I build</p>
+        <p className="eyebrow eyebrow--dark reveal">Flutter app and full-stack development services</p>
         <h2 id="services-title" className="exp__title reveal" style={{ ["--d" as string]: "0.1s" }}>
           Design. Develop. <span className="serif">Deploy.</span>
         </h2>
@@ -35,10 +35,10 @@ export function Services() {
               >
                 <span className="svccard__num">{String(i + 1).padStart(2, "0")}</span>
                 <span className="svccard__ico"><Icon size={22} /></span>
-                <h3>{s.title}</h3>
+                <h3><a href={s.href} className="svccard__link">{s.title}</a></h3>
                 <p>{s.text}</p>
                 <div className="svccard__tags">{s.tags.map((t) => <span key={t}>{t}</span>)}</div>
-                <ArrowUpRight className="svccard__arrow" size={20} />
+                <ArrowUpRight className="svccard__arrow" size={20} aria-hidden="true" />
               </article>
             );
           })}

@@ -48,7 +48,7 @@ export function Skills() {
   return (
     <section id="skills" className="skills" aria-labelledby="skills-title">
       <div className="container">
-        <p className="eyebrow reveal">Skills</p>
+        <p className="eyebrow reveal">Flutter, React and Firebase skills</p>
         <h2 id="skills-title" className="work__title reveal" style={{ ["--d" as string]: "0.1s" }}>
           Technical <span className="serif">skills</span>
         </h2>

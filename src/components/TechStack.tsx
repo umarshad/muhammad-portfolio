@@ -35,7 +35,7 @@ export function TechStack() {
       <div className="container">
         <div className="tech__head">
           <div>
-            <p className="eyebrow">Tech stack</p>
+            <p className="eyebrow">Flutter, React and Firebase tech stack</p>
             <h2 id="tech-title" className="tech__title">Tools I <span className="serif">build</span> with</h2>
           </div>
           <div className="tech__filters" role="group" aria-label="Filter technologies">

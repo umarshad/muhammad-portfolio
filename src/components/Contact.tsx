@@ -1,5 +1,6 @@
 import { profile } from "@/data/profile";
 import { ProjectBrief } from "./ProjectBrief";
+import { SiteFooter } from "./SiteFooter";
 
 export function Contact() {
   const cards = [
@@ -13,7 +14,7 @@ export function Contact() {
       <div className="contact__frame">
         <div className="contact__grid">
           <div>
-            <p className="eyebrow eyebrow--dark reveal">Let&apos;s work together</p>
+            <p className="eyebrow eyebrow--dark reveal">Hire a Flutter developer</p>
             <h2 id="contact-title" className="contact__title reveal" style={{ ["--d" as string]: "0.1s" }}>
               Have an app in <span className="serif">mind?</span>
             </h2>
@@ -38,10 +39,7 @@ export function Contact() {
           <ProjectBrief />
         </div>
       </div>
-      <footer className="footer">
-        <span>© {new Date().getFullYear()} {profile.name} · {profile.title}</span>
-        <span>{profile.location}</span>
-      </footer>
+      <SiteFooter />
     </section>
   );
 }

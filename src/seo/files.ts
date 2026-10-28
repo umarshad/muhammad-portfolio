@@ -1,21 +1,38 @@
 import { experience } from "@/data/experience";
 import { faq } from "@/data/faq";
+import { caseStudy, landingPages } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
 import { skillGroups } from "@/data/skills";
+import { HOME_DESCRIPTION, HOME_TITLE, pageMetas } from "./meta";
 
 const home = `${profile.site}/`;
+const abs = (p: string) => `${profile.site}${p}`;
+const mi = projects.find((p) => p.title === "My Invoice")!;
+
+const priority = (kind: string) => (kind === "home" ? "1.0" : kind === "service" ? "0.8" : "0.6");
 
 export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${home}</loc>
+  const entries = pageMetas
+    .map((m) => {
+      const images =
+        m.kind === "home"
+          ? `\n    <image:image><image:loc>${abs("/og-image.jpg")}</image:loc><image:title>${profile.name}, ${profile.title}</image:title></image:image>`
+          : m.kind === "case"
+            ? (mi.shots ?? []).map((s) => `\n    <image:image><image:loc>${abs(s.src)}</image:loc><image:caption>My Invoice: ${s.label}</image:caption></image:image>`).join("")
+            : "";
+      return `  <url>
+    <loc>${m.canonical}</loc>
     <lastmod>${date}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+    <changefreq>${m.kind === "home" ? "monthly" : "yearly"}</changefreq>
+    <priority>${priority(m.kind)}</priority>${images}
+  </url>`;
+    })
+    .join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${entries}
 </urlset>
 `;
 }
@@ -26,29 +43,46 @@ export function buildLlmsTxt() {
 > ${profile.name} is a ${profile.title} and ${profile.headline.toLowerCase()} based in Lahore, Pakistan, open to remote work. ${profile.tagline}
 
 Canonical site: ${home}
+Last updated: ${new Date().toISOString().slice(0, 10)}
 
-## Pages
+## Key facts
+- Name: ${profile.name}
+- Role: ${profile.title}, ${profile.headline}
+- Experience: ${profile.years}+ years building cross-platform mobile apps and web platforms
+- Location: ${profile.location}
+- Currently: Flutter Developer at DM Worx LLC, plus freelance full-stack projects
+- Main product: My Invoice (Flutter app, React web portal and admin dashboard on a shared Firebase backend)
+- Core stack: Flutter, Dart, React, Next.js, TypeScript, Firebase, Supabase, PostgreSQL, Stripe, PayPal, OpenAI API, Cloudflare Turnstile
+- Contact: ${profile.email}, ${profile.phone} (WhatsApp)
+
+## Services
+${landingPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.description}`).join("\n")}
+
+## Work
+- [My Invoice case study](${abs(`/${caseStudy.slug}`)}): ${caseStudy.description}
+- [All projects](${home}#projects): ${projects.map((p) => p.title).join(", ")}
+
+## Profile
 - [About](${home}#about): summary and years of experience
-- [Services](${home}#services): ${services.map((x) => x.title).join(", ")}
 - [Experience](${home}#experience): roles at DM Worx LLC, Cygnus Ventures, Solution Soul and Orbilon Technology
-- [Projects](${home}#projects): ${projects.map((p) => p.title).join(", ")}
-- [Skills](${home}#skills): mobile, web, backend, payments, AI, automation and cloud
+- [Skills](${home}#skills): mobile, web, backend, payments, AI, automation, security and cloud
 - [FAQ](${home}#faq): common questions answered
 - [Contact](${home}#contact): email, phone and WhatsApp
 
-## Contact
-- Email: ${profile.email}
-- Phone / WhatsApp: ${profile.phone}
+## Links
 - LinkedIn: ${profile.linkedin}
 - GitHub: ${profile.github}
 
 ## Optional
-- [Full profile for language models](${profile.site}/llms-full.txt)
+- [Full profile for language models](${abs("/llms-full.txt")})
 `;
 }
 
 export function buildLlmsFullTxt() {
   return `# ${profile.name} - ${profile.title}
+
+${HOME_TITLE}
+${HOME_DESCRIPTION}
 
 ${profile.summary}
 
@@ -61,6 +95,14 @@ Website: ${home}
 
 ## Services
 ${services.map((x) => `- ${x.title}: ${x.text}`).join("\n")}
+
+## Service pages
+${landingPages
+  .map(
+    (p) =>
+      `### ${p.serviceName} (${abs(`/${p.slug}`)})\n${p.lead}\n${p.includes.map((i) => `- ${i.title}: ${i.text}`).join("\n")}\n${p.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n")}`,
+  )
+  .join("\n\n")}
 
 ## Experience
 ${experience
@@ -77,6 +119,8 @@ ${projects
       `### ${p.title}${p.url.startsWith("http") ? ` (${p.url})` : ""}\nStatus: ${p.status}\n${p.description}\nTech: ${p.technologies.join(", ")}\n${p.features.map((f) => `- ${f}`).join("\n")}`,
   )
   .join("\n\n")}
+
+Case study: ${abs(`/${caseStudy.slug}`)}
 
 ## Skills
 ${skillGroups.map((g) => `- ${g.title}: ${g.items.join(", ")}`).join("\n")}

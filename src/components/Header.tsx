@@ -10,7 +10,7 @@ export function Header() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="site-header__bar">
-        <a href="#top" className="brand">
+        <a href="/" className="brand">
           <span className="brand__mark">MU</span>
           <span>
             <span className="brand__name">{profile.name}</span>
@@ -25,7 +25,7 @@ export function Header() {
         </nav>
 
         <div className="site-header__actions">
-          <a href="#contact" className="btn btn--sm">
+          <a href="/#contact" className="btn btn--sm">
             Let&apos;s Talk <ArrowRight size={16} />
           </a>
           <button
@@ -43,7 +43,7 @@ export function Header() {
         {navLinks.map((l) => (
           <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
         ))}
-        <a href="#contact" className="btn" onClick={() => setOpen(false)}>
+        <a href="/#contact" className="btn" onClick={() => setOpen(false)}>
           Let&apos;s Talk <ArrowRight size={16} />
         </a>
       </div>

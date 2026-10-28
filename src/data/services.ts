@@ -1,38 +1,45 @@
-export type Service = { title: string; text: string; tags: string[]; wide?: boolean };
+export type Service = { title: string; text: string; tags: string[]; wide?: boolean; href: string };
 
 export const services: Service[] = [
   {
     title: "Custom mobile apps",
+    href: "/flutter-app-development",
     text: "Flutter apps for iOS and Android with clean UI, Firebase or Supabase backends, push notifications and real-time data.",
     tags: ["Flutter", "Firebase", "FCM"],
   },
   {
     title: "Websites & web apps",
+    href: "/web-app-and-admin-panel-development",
     text: "Fast, responsive React and Next.js websites and web platforms, built to be found by search engines.",
     tags: ["React", "Next.js", "TypeScript"],
   },
   {
     title: "Admin panels & dashboards",
+    href: "/web-app-and-admin-panel-development",
     text: "Role-based admin panels to manage users, orders, payments, content and analytics without touching code.",
     tags: ["Role-based access", "Analytics", "Reports"],
   },
   {
     title: "SaaS products",
+    href: "/saas-app-development",
     text: "Multi-platform products: a mobile app, web portal and admin dashboard on one shared backend, ready for subscriptions.",
     tags: ["Mobile + web", "Shared backend", "Subscriptions"],
   },
   {
     title: "In-app purchases & payments",
+    href: "/in-app-purchases-and-payments",
     text: "App Store and Google Play subscriptions, plus Stripe and PayPal for client payments and billing.",
     tags: ["In-App Purchases", "Stripe", "PayPal"],
   },
   {
     title: "Store deployment",
+    href: "/app-store-and-google-play-deployment",
     text: "App Store and Google Play build, release and updates, plus web hosting on Vercel, AWS and DigitalOcean.",
     tags: ["App Store", "Google Play", "CI/CD"],
   },
   {
     title: "End-to-end product creation",
+    href: "/saas-app-development",
     text: "From idea to a live product: UI/UX and 3D design, database design, development, deployment and ongoing iteration, all with one developer who owns the result.",
     tags: ["Design", "Develop", "Deploy"],
     wide: true,

@@ -1,55 +1,98 @@
+import { caseStudy, landingBySlug, landingPages } from "@/data/landing";
 import { education, skillGroups } from "@/data/skills";
 import { faq } from "@/data/faq";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
-import { services } from "@/data/services";
+import { metaFor } from "./meta";
 
-const url = `${profile.site}/`;
-const id = (frag: string) => ({ "@id": `${url}#${frag}` });
+const site = profile.site;
+const home = `${site}/`;
+const ref = (frag: string) => ({ "@id": `${home}#${frag}` });
+const abs = (path: string) => `${site}${path}`;
 
-export function buildJsonLd(modified = new Date().toISOString().slice(0, 10)) {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": `${url}#person`,
-        name: profile.name,
-        jobTitle: profile.title,
-        description: profile.tagline,
-        url,
-        email: `mailto:${profile.email}`,
-        telephone: profile.phone,
-        address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
-        sameAs: [profile.linkedin, profile.github],
-        knowsAbout: skillGroups.flatMap((g) => g.items.filter((i) => !i.includes("("))),
-        alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
-        worksFor: { "@type": "Organization", name: "DM Worx LLC" },
-        makesOffer: services.map((sv) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: sv.title, description: sv.text, provider: id("person") },
-        })),
-      },
-      {
-        "@type": "WebSite",
-        "@id": `${url}#website`,
-        url,
-        name: `${profile.name} | ${profile.title} Portfolio`,
-        inLanguage: "en",
-        publisher: id("person"),
-      },
+const person = () => ({
+  "@type": "Person",
+  "@id": `${home}#person`,
+  name: profile.name,
+  jobTitle: profile.title,
+  description: profile.tagline,
+  url: home,
+  email: `mailto:${profile.email}`,
+  telephone: profile.phone,
+  image: abs("/og-image.jpg"),
+  address: { "@type": "PostalAddress", addressLocality: "Lahore", addressRegion: "Punjab", addressCountry: "PK" },
+  sameAs: [profile.linkedin, profile.github],
+  knowsAbout: skillGroups.flatMap((g) => g.items.filter((i) => !i.includes("("))),
+  knowsLanguage: ["English", "Urdu"],
+  alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
+  worksFor: { "@type": "Organization", name: "DM Worx LLC" },
+});
+
+const website = () => ({
+  "@type": "WebSite",
+  "@id": `${home}#website`,
+  url: home,
+  name: `${profile.name} | ${profile.title} Portfolio`,
+  inLanguage: "en",
+  publisher: ref("person"),
+});
+
+const professionalService = () => ({
+  "@type": "ProfessionalService",
+  "@id": `${home}#service`,
+  name: `${profile.name}: Flutter and full-stack development`,
+  url: home,
+  description: profile.tagline,
+  image: abs("/og-image.jpg"),
+  provider: ref("person"),
+  founder: ref("person"),
+  areaServed: [{ "@type": "Place", name: "Remote, worldwide" }, { "@type": "Country", name: "Pakistan" }],
+  address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+  email: `mailto:${profile.email}`,
+  telephone: profile.phone,
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Development services",
+    itemListElement: landingPages.map((p) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: p.serviceName, description: p.description, url: abs(`/${p.slug}`), provider: ref("person") },
+    })),
+  },
+});
+
+const faqNode = (id: string, items: { q: string; a: string }[]) => ({
+  "@type": "FAQPage",
+  "@id": id,
+  mainEntity: items.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+});
+
+const breadcrumb = (id: string, trail: { name: string; url: string }[]) => ({
+  "@type": "BreadcrumbList",
+  "@id": id,
+  itemListElement: trail.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, item: t.url })),
+});
+
+export function buildJsonLd(path = "/", modified = new Date().toISOString().slice(0, 10)) {
+  const m = metaFor(path);
+  const graph: object[] = [];
+
+  if (path === "/") {
+    graph.push(
+      person(),
+      website(),
+      professionalService(),
       {
         "@type": "ProfilePage",
-        "@id": `${url}#profilepage`,
-        url,
+        "@id": `${home}#profilepage`,
+        url: home,
         name: `${profile.name} - ${profile.title}, ${profile.headline}`,
         dateModified: modified,
-        isPartOf: id("website"),
-        mainEntity: id("person"),
+        isPartOf: ref("website"),
+        mainEntity: ref("person"),
       },
       {
         "@type": "ItemList",
-        "@id": `${url}#projects`,
+        "@id": `${home}#projects`,
         name: `Projects by ${profile.name}`,
         itemListElement: projects.map((p, i) => ({
           "@type": "ListItem",
@@ -59,20 +102,83 @@ export function buildJsonLd(modified = new Date().toISOString().slice(0, 10)) {
             name: p.title,
             description: p.description,
             keywords: p.technologies.join(", "),
-            author: id("person"),
-            ...(p.url.startsWith("http") ? { url: p.url } : {}),
+            author: ref("person"),
+            ...(p.title === "My Invoice" ? { url: abs(`/${caseStudy.slug}`) } : p.url.startsWith("http") ? { url: p.url } : {}),
           },
         })),
       },
+      faqNode(`${home}#faq`, faq),
+    );
+    return { "@context": "https://schema.org", "@graph": graph };
+  }
+
+  const pageUrl = m?.canonical ?? abs(path);
+  const pageId = `${pageUrl}#webpage`;
+  const homeCrumb = { name: "Home", url: home };
+
+  if (path === `/${caseStudy.slug}`) {
+    const mi = projects.find((p) => p.title === "My Invoice")!;
+    graph.push(
+      { ...person(), "@type": "Person" },
+      website(),
       {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        mainEntity: faq.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
+        "@type": "WebPage",
+        "@id": pageId,
+        url: pageUrl,
+        name: caseStudy.title,
+        description: caseStudy.description,
+        dateModified: modified,
+        isPartOf: ref("website"),
+        about: { "@id": `${pageUrl}#app` },
+        breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
       },
-    ],
-  };
+      breadcrumb(`${pageUrl}#breadcrumb`, [homeCrumb, { name: "Projects", url: `${home}#projects` }, { name: "My Invoice", url: pageUrl }]),
+      {
+        "@type": "SoftwareApplication",
+        "@id": `${pageUrl}#app`,
+        name: "My Invoice",
+        description: mi.description,
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Android, iOS, Web",
+        url: mi.url,
+        ...(mi.playUrl ? { downloadUrl: mi.playUrl } : {}),
+        author: ref("person"),
+        creator: ref("person"),
+        featureList: mi.features,
+        screenshot: (mi.shots ?? []).map((s) => ({ "@type": "ImageObject", contentUrl: abs(s.src), caption: s.label })),
+      },
+    );
+    return { "@context": "https://schema.org", "@graph": graph };
+  }
+
+  const page = landingBySlug(path.slice(1));
+  if (!page) return { "@context": "https://schema.org", "@graph": [person(), website()] };
+  graph.push(
+    person(),
+    website(),
+    {
+      "@type": "WebPage",
+      "@id": pageId,
+      url: pageUrl,
+      name: page.title,
+      description: page.description,
+      dateModified: modified,
+      isPartOf: ref("website"),
+      about: { "@id": `${pageUrl}#service` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    breadcrumb(`${pageUrl}#breadcrumb`, [homeCrumb, { name: "Services", url: `${home}#services` }, { name: page.serviceName, url: pageUrl }]),
+    {
+      "@type": "Service",
+      "@id": `${pageUrl}#service`,
+      name: page.serviceName,
+      description: page.lead,
+      url: pageUrl,
+      serviceType: page.serviceName,
+      provider: ref("person"),
+      areaServed: { "@type": "Place", name: "Remote, worldwide" },
+    },
+    faqNode(`${pageUrl}#faq`, page.faq),
+  );
+  return { "@context": "https://schema.org", "@graph": graph };
 }

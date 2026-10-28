@@ -39,12 +39,13 @@ export function ProjectFeature({ project }: { project: Project }) {
         <div className="feat__cta">
           {project.playUrl && (
             <a className="pcard__badge" href={project.playUrl} target="_blank" rel="noopener noreferrer">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt={`Get ${project.title} on Google Play`} loading="lazy" />
+              <img src="/badges/google-play-badge.svg" alt={`Get ${project.title} on Google Play`} loading="lazy" />
             </a>
           )}
           <a className="btn btn--dark btn--sm" href={project.url} target="_blank" rel="noopener noreferrer">
             Visit myinvoice.us <ExternalLink size={15} />
           </a>
+          <a className="btn btn--ghost btn--sm" href="/projects/my-invoice">Read the case study</a>
         </div>
       </div>
 

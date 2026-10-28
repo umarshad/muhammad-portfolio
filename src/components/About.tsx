@@ -23,7 +23,7 @@ export function About() {
         <div className="intro__top">
           <div className="about__head">
             <div>
-              <p className="eyebrow reveal">Who I am</p>
+              <p className="eyebrow reveal">Flutter and full-stack developer, Lahore</p>
               <h2 id="about-title" className="intro__statement reveal" style={{ ["--d" as string]: "0.1s" }}>
                 Apps built to <span className="serif">ship</span> and scale.
               </h2>

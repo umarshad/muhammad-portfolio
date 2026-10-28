@@ -30,7 +30,7 @@ export function Experience() {
       <div className="exp__frame">
         <div className="exp__head">
           <div>
-            <p className="eyebrow eyebrow--dark reveal">Experience</p>
+            <p className="eyebrow eyebrow--dark reveal">Flutter developer experience</p>
             <h2 id="exp-title" className="exp__title reveal" style={{ ["--d" as string]: "0.1s" }}>
               Where I&apos;ve <span className="serif">built</span>
             </h2>
