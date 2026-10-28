@@ -184,7 +184,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
   translate: calc(-50% + var(--px, 0) * 1.4cqw) calc(-50% + var(--py, 0) * 1.4cqw);
   border: 1px solid var(--line-dark-strong); background: linear-gradient(145deg, #2b3b39, #101c1a);
   box-shadow: 0 3em 6em -2em #000d, 0 0 0 0.6em #fafaf70a, 0 0 8em -2em #f67f0033;
-  transition: width 0.9s var(--ease-out), height 0.9s var(--ease-out), border-radius 0.9s var(--ease-out), translate 0.6s var(--ease-out);
+  transition: width 0.85s var(--ease-io), height 0.85s var(--ease-io), border-radius 0.85s var(--ease-io), translate 0.6s var(--ease-out);
   animation: devFloat 7s ease-in-out infinite;
 }
 .morph[data-shape="app"] { --w: 29em; --h: 62em; --r: 4.4em; }
@@ -192,8 +192,10 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 .morph[data-shape="hub"] { --w: 62em; --h: 56em; --r: 2.6em; }
 .morph[data-shape="store"] { --w: 46em; --h: 60em; --r: 3.4em; }
 @keyframes devFloat { 50% { transform: translateY(-1.2cqw); } }
-.sc { position: absolute; left: 50%; top: 50%; translate: -50% -50%; opacity: 0; pointer-events: none; transition: opacity 0.35s; }
-.sc.is-on { opacity: 1; transition-delay: 0.3s; pointer-events: auto; }
+.sc { position: absolute; left: 50%; top: 50%; translate: -50% -50%; opacity: 0; scale: 0.97; pointer-events: none; transition: opacity 0.28s ease-in, scale 0.4s ease-in; }
+.sc.is-on { opacity: 1; scale: 1; pointer-events: auto; animation: scIn 0.7s var(--ease-out) 0.3s both; }
+@keyframes scIn { from { opacity: 0; scale: 0.96; } }
+@media (prefers-reduced-motion: reduce) { .morph, .sc, .sc.is-on { transition-duration: 0.01s; transition-delay: 0s; animation: none; } }
 .sc--app { width: 27.2em; height: 60.2em; }
 .sc--web { width: 78em; height: 52em; }
 .sc--hub { width: 62em; height: 56em; }

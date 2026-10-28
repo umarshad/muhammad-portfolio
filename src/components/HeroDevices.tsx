@@ -44,7 +44,7 @@ export function HeroDevices() {
       setPrev(active);
       setActive(i);
       clearTimeout(clearPrev.current);
-      clearPrev.current = setTimeout(() => setPrev(null), 800);
+      clearPrev.current = setTimeout(() => setPrev(null), 950);
     },
     [active],
   );
