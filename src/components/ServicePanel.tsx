@@ -7,7 +7,7 @@ type Props = { service: Service; index: number; Icon: LucideIcon; id: string; ta
 // Detail view for one service. Every panel stays in the page (hidden when inactive) so the text remains crawlable.
 export function ServicePanel({ service: s, index, Icon, id, tabId, active }: Props) {
   return (
-    <div id={id} role="tabpanel" aria-labelledby={tabId} hidden={!active} className="svcpanel">
+    <div id={id} role="tabpanel" aria-labelledby={tabId} aria-hidden={!active} data-active={active ? "" : undefined} className="svcpanel">
       <span className="svcpanel__ghost" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
       <span className="svcpanel__ico"><Icon size={26} /></span>
       <h3>{s.title}</h3>
