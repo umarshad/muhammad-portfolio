@@ -28,15 +28,18 @@ export function Experience() {
   return (
     <section id="experience" className="exp" aria-labelledby="exp-title">
       <div className="exp__frame">
-        <p className="eyebrow eyebrow--dark reveal">Experience</p>
-        <h2 id="exp-title" className="exp__title reveal" style={{ ["--d" as string]: "0.1s" }}>
-          Where I&apos;ve <span className="serif">built</span>
-        </h2>
-        <p className="exp__sub reveal" style={{ ["--d" as string]: "0.2s" }}>
-          From a Flutter internship to shipping complete products.
-        </p>
-
-        <ExperiencePath roles={experience} focus={focus} onPick={jump} />
+        <div className="exp__head">
+          <div>
+            <p className="eyebrow eyebrow--dark reveal">Experience</p>
+            <h2 id="exp-title" className="exp__title reveal" style={{ ["--d" as string]: "0.1s" }}>
+              Where I&apos;ve <span className="serif">built</span>
+            </h2>
+            <p className="exp__sub reveal" style={{ ["--d" as string]: "0.2s" }}>
+              From a Flutter internship to shipping complete products. Pick a step to jump to that role.
+            </p>
+          </div>
+          <ExperiencePath roles={experience} focus={focus} onPick={jump} />
+        </div>
 
         <ol className="timeline" ref={timeline}>
           {experience.map((r, i) => (
