@@ -3,9 +3,22 @@ export type Role = {
   company: string;
   place: string;
   period: string;
+  from: string; // YYYY-MM
+  to: string | null; // null while current
   note?: string;
+  wins: string[];
+  tech: string[];
   points: string[];
 };
+
+// Inclusive length of a finished role, e.g. "9 mo". Current roles have none.
+export function durationLabel(r: Pick<Role, "from" | "to">) {
+  if (!r.to) return null;
+  const [y1, m1] = r.from.split("-").map(Number);
+  const [y2, m2] = r.to.split("-").map(Number);
+  const n = (y2 - y1) * 12 + (m2 - m1) + 1;
+  return n >= 12 ? `${Math.floor(n / 12)} yr${n % 12 ? ` ${n % 12} mo` : ""}` : `${n} mo`;
+}
 
 export const experience: Role[] = [
   {
@@ -13,6 +26,10 @@ export const experience: Role[] = [
     company: "DM Worx LLC",
     place: "Remote",
     period: "Apr 2025 - Present",
+    from: "2025-04",
+    to: null,
+    wins: ["Multi-platform product", "Store subscriptions and Stripe", "Bot and abuse protection"],
+    tech: ["Flutter", "Firebase", "Stripe", "In-App Purchases", "OpenAI API", "React", "Supabase", "Cloudflare Turnstile"],
     points: [
       "Building My Invoice, a multi-platform business product made of a Flutter mobile app, a React web portal and a separate admin dashboard, all on a shared Firebase backend.",
       "Implemented subscriptions through App Store and Google Play in-app purchases, and client payments through Stripe, with FCM push notifications for payment reminders.",
@@ -27,6 +44,10 @@ export const experience: Role[] = [
     company: "Cygnus Ventures",
     place: "Remote",
     period: "Oct 2025 - Dec 2025",
+    from: "2025-10",
+    to: "2025-12",
+    wins: ["All deliverables on schedule", "Admin panels and reporting"],
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Supabase", "Neon"],
     note: "Concurrent with DM Worx LLC",
     points: [
       "Delivered full-stack features with React, TypeScript, Node.js and PostgreSQL in a production codebase, completing all deliverables on schedule.",
@@ -39,6 +60,10 @@ export const experience: Role[] = [
     company: "Solution Soul",
     place: "Lahore, Pakistan",
     period: "Jun 2024 - Feb 2025",
+    from: "2024-06",
+    to: "2025-02",
+    wins: ["Apps live on both stores", "Delivered within deadlines"],
+    tech: ["Flutter", "Firebase Auth", "Firestore", "App Store", "Google Play"],
     points: [
       "Developed and released multiple cross-platform Flutter apps to the App Store and Google Play, each delivered within agreed client deadlines.",
       "Implemented Firebase Authentication and Firestore across client projects for secure multi-user access and real-time data sync.",
@@ -51,6 +76,10 @@ export const experience: Role[] = [
     company: "Orbilon Technology",
     place: "Lahore, Pakistan",
     period: "Mar 2024 - Jun 2024",
+    from: "2024-03",
+    to: "2024-06",
+    wins: ["Reusable UI components", "Reviewed by senior developers"],
+    tech: ["Flutter", "Firebase", "Provider", "Riverpod"],
     points: [
       "Built Flutter screens and reusable UI components for client-facing products, reviewed and approved by senior developers.",
       "Implemented Firebase Authentication and Firestore features and managed state with Provider and Riverpod, resolving performance bottlenecks before client delivery.",
