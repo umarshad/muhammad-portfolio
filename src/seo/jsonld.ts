@@ -14,7 +14,7 @@ const country = (name: string) => ({ "@type": "Country", name });
 // Markets the work is aimed at; the developer is based in Pakistan and works remotely.
 const markets = [
   country("United Kingdom"), country("United States"), country("Ireland"), country("Germany"), country("France"),
-  country("Netherlands"), country("Spain"), country("Italy"), country("Sweden"),
+  country("Netherlands"), country("Spain"), country("Italy"), country("Sweden"), country("United Arab Emirates"),
   { "@type": "AdministrativeArea", name: "Europe" },
 ];
 const regionAreas: Record<string, object[]> = {
@@ -28,7 +28,7 @@ const contactPoint = () => ({
   email: profile.email,
   telephone: profile.phone,
   availableLanguage: ["English", "Urdu"],
-  areaServed: ["GB", "US", "DE", "FR", "NL", "IE", "ES", "IT", "SE"],
+  areaServed: ["GB", "US", "DE", "FR", "NL", "IE", "ES", "IT", "SE", "AE"],
 });
 
 const person = () => ({

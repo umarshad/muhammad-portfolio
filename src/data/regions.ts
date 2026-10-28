@@ -34,6 +34,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     projects: ["My Invoice", "Clika App", "Hudson Tasks"],
     faq: [
       { q: "Can you work UK hours?", a: "Lahore is four to five hours ahead of London, so the UK morning overlaps my afternoon and the UK afternoon my evening. I schedule calls in that window and send written updates so nothing waits on a time zone." },
+      { q: "Have you worked with international clients?", a: "Yes. I built Flutter e-commerce apps for clients in Spain (Olizon and MiPueblo), a bilingual English and Arabic website for a car recovery company in Dubai (Al Tayyab Recovery), and My Invoice, a product for the US market." },
       { q: "Do you build GDPR-aware apps?", a: "I build the technical parts: consent flows, data export and deletion, minimal data collection and role-based access. A solicitor or data protection adviser should still review your policies and contracts." },
       { q: "Do you work with UK startups and agencies?", a: "Yes. I take on remote projects from founders, startups and agencies, in English: new apps, SaaS builds, admin panels, or new features for an existing Flutter app." },
       { q: "How do we stay in touch during the project?", a: "Email and WhatsApp for quick questions, scheduled video calls for planning and demos, and a written update every week so you always know what is done and what is next." },
@@ -70,6 +71,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     projects: ["My Invoice", "Realtors Lead", "Hudson Tasks"],
     faq: [
       { q: "How do you handle the time difference with the US?", a: "Lahore is nine to ten hours ahead of New York. I work asynchronously first: written updates, recorded demos and a shared task list, with a call booked in the overlap of your morning and my evening when a decision needs talking through." },
+      { q: "Have you worked with international clients?", a: "Yes. I built Flutter e-commerce apps for clients in Spain (Olizon and MiPueblo), a bilingual English and Arabic website for a car recovery company in Dubai (Al Tayyab Recovery), and My Invoice, a product for the US market." },
       { q: "Have you built products for US users?", a: "Yes. My Invoice, my main product, is built for the US market, and Realtors Lead is a lead generation platform for US real estate agents with PayPal subscriptions." },
       { q: "Can you add Stripe payments or in-app subscriptions?", a: "Yes. I have built Stripe client payments and App Store and Google Play subscriptions into My Invoice, tested in sandbox mode before going live." },
       { q: "Can you take a project from idea to the App Store?", a: "Yes. I cover design, development, backend, payments and store release, so one person owns the result from first screen to public launch." },
@@ -87,7 +89,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     h1: "Flutter developer for European startups and agencies",
     serviceName: "Flutter development for European clients",
     lead:
-      "I am a remote Flutter and full-stack developer who builds iOS and Android apps, SaaS products and admin panels for teams across Europe. Lahore is three to four hours ahead of Central Europe, so most of your working day overlaps mine. I work in English, plan with you in a short call, and ship in small steps you can review every week.",
+      "I am a remote Flutter and full-stack developer who builds iOS and Android apps, SaaS products and admin panels for teams across Europe. Lahore is three to four hours ahead of Central Europe, so most of your working day overlaps mine. I have built two Flutter e-commerce apps for clients in Spain, Olizon and MiPueblo. I work in English, plan with you in a short call, and ship in small steps you can review every week.",
     includes: [
       { title: "A large shared working day", text: "Central Europe is three hours behind Lahore in summer and four in winter, so stand-ups, reviews and demos fit comfortably into the same day." },
       { title: "One codebase, two stores", text: "Flutter apps for iOS and Android from a single codebase, with adaptive layouts, Firebase or Supabase backends and push notifications." },
@@ -103,11 +105,12 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
       { title: "Release", text: "Testing across devices, store submission and a plan for updates." },
     ],
     tech: ["Flutter", "Dart", "Firebase", "Supabase", "Stripe", "PayPal", "React", "Next.js", "TypeScript", "App Store", "Google Play"],
-    projects: ["My Invoice", "Clika App", "Junoon Herbals"],
+    projects: ["Olizon", "My Invoice", "Clika App"],
     faq: [
       { q: "How much of the working day do we share?", a: "Lahore is three hours ahead of Central European Summer Time and four hours ahead in winter, so the European morning and afternoon both overlap my working day." },
       { q: "Do you build GDPR-aware apps?", a: "I build the technical parts: consent flows, data export and deletion, minimal data collection and role-based access. Your legal adviser should still review policies and data-processing agreements." },
       { q: "Do you work with agencies and startups in Europe?", a: "Yes. I take on remote projects from founders, startups and agencies across Europe, in English: new apps, SaaS builds, admin panels, or features for an existing Flutter app." },
+      { q: "Have you worked with clients in Spain?", a: "Yes. I built two Flutter e-commerce apps for clients in Spain, Olizon and MiPueblo. Olizon, an olive oil shop, has onboarding, sign-in, product browsing, cart, checkout and order tracking, and is described on this site with screenshots." },
       { q: "Can you build web and mobile together?", a: "Yes. Flutter for iOS and Android, React or Next.js for the website and portal, and an admin panel, all on one shared backend." },
       { q: "Can the apps be published under our company's accounts?", a: "Yes. Apps are published from your own App Store and Google Play developer accounts so you own the listings." },
     ],
