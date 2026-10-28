@@ -1,36 +1,49 @@
-import { Database, Globe, LayoutDashboard, Smartphone } from "lucide-react";
+import { Database, Globe, LayoutDashboard, Plus, Smartphone } from "lucide-react";
+import { usePhases } from "@/hooks/usePhases";
 
-const nodes = [
-  { Icon: Smartphone, label: "Mobile app", x: 13, y: 15, from: "M13 15 L31 30", begin: "0s" },
-  { Icon: Globe, label: "Web portal", x: 49, y: 15, from: "M49 15 L31 30", begin: "0.8s" },
-  { Icon: LayoutDashboard, label: "Admin panel", x: 31, y: 49, from: "M31 49 L31 30", begin: "1.6s" },
-];
+// idle, tap on phone, packet to backend, backend fans out to web and admin
+const STEPS = [900, 1000, 1000, 1700] as const;
 
-// One shared backend feeding every platform.
+// One backend keeping every platform in sync: an item added on the phone shows up everywhere.
 export function SceneHub() {
+  const step = usePhases(STEPS);
   return (
-    <div className="hub">
+    <div className={`hub s${step}`}>
       <p className="hub__tag">ONE BACKEND · EVERY PLATFORM</p>
-      <svg className="hub__lines" viewBox="0 0 62 56">
-        {nodes.map((n) => (
-          <g key={n.label}>
-            <path d={n.from} />
-            <circle r="0.9" fill="#ff9a2e">
-              <animateMotion dur="2.4s" begin={n.begin} repeatCount="indefinite" path={n.from} />
-            </circle>
-          </g>
-        ))}
+      <svg className="hub__lines" viewBox="0 0 62 56" aria-hidden="true">
+        <path d="M11 20 L31 30" /><path d="M51 17 L31 30" /><path d="M31 47 L31 30" />
       </svg>
-      {nodes.map(({ Icon, label, x, y }) => (
-        <div key={label} className="hub__node" style={{ left: `${x}em`, top: `${y}em` }}>
-          <span><Icon size="2.4em" /></span>
-          <small>{label}</small>
+
+      <div className="hub__dev hub__phone">
+        <small><Smartphone size="1.6em" /> Mobile</small>
+        <div className="hub__list">
+          <i /><i />
+          <i className="hub__new" />
         </div>
-      ))}
-      <div className="hub__node hub__node--core" style={{ left: "31em", top: "30em" }}>
+        <span className="hub__add"><Plus size="1.6em" strokeWidth={3} /></span>
+      </div>
+
+      <div className="hub__dev hub__web">
+        <small><Globe size="1.6em" /> Web portal</small>
+        <div className="hub__list">
+          <i /><i />
+          <i className="hub__new" />
+        </div>
+      </div>
+
+      <div className="hub__dev hub__admin">
+        <small><LayoutDashboard size="1.6em" /> Admin</small>
+        <b>Items <em key={step >= 3 ? "b" : "a"}>{step >= 3 ? 129 : 128}</em></b>
+      </div>
+
+      <div className="hub__core">
         <span><Database size="3em" /></span>
         <small>Shared backend</small>
       </div>
+
+      <i className="pk pk--a" />
+      <i className="pk pk--b" />
+      <i className="pk pk--c" />
     </div>
   );
 }
