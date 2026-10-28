@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Muhammad Umar - Flutter and full-stack developer</title>
+<style>
+  @font-face { font-family: "Instrument Serif"; src: url("../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Instrument Serif"; font-style: italic; src: url("../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 100 900; src: url("../node_modules/@fontsource-variable/inter/files/inter-latin-standard-normal.woff2") format("woff2"); }
+  @font-face { font-family: "JB Mono"; font-weight: 100 800; src: url("../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2") format("woff2"); }
+
+  @page { size: A4; margin: 14mm 16mm 13mm; }
+  :root { --ink: #1b2523; --muted: #5d6967; --teal: #0b5a55; --rule: #d9dfdc; --orange: #d9660a; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font: 400 8.9pt/1.45 "Inter", sans-serif; color: var(--ink); font-feature-settings: "tnum" 1, "cv11" 1; }
+  a { color: inherit; text-decoration: none; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 12mm; padding-bottom: 5mm; border-bottom: 1.2px solid var(--ink); }
+  h1 { font: 400 33pt/0.95 "Instrument Serif", serif; letter-spacing: -0.01em; }
+  h1 span { color: var(--orange); }
+  .role { margin-top: 2.6mm; font: 500 7.6pt/1 "JB Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+  .contact { list-style: none; text-align: right; font-size: 8pt; line-height: 1.55; color: var(--muted); }
+  .contact li:first-child { color: var(--ink); }
+
+  section { margin-top: 5.2mm; }
+  h2 { display: flex; align-items: center; gap: 3mm; margin-bottom: 2.6mm; font: 600 7.4pt/1 "JB Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  .about { max-width: 168mm; font-size: 9.2pt; line-height: 1.55; }
+
+  .job { break-inside: avoid; }
+  .job + .job { margin-top: 3.6mm; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 6mm; }
+  .row b { font-weight: 650; font-size: 9.6pt; }
+  .row .org { color: var(--muted); }
+  time { flex: none; font: 500 7.6pt/1 "JB Mono", monospace; letter-spacing: 0.02em; color: var(--muted); }
+  ul.points { list-style: none; margin-top: 1.4mm; }
+  ul.points li { display: flex; gap: 2.6mm; margin-top: 0.9mm; }
+  ul.points li::before { content: ""; flex: none; width: 1.5mm; height: 1.5mm; margin: 1.9mm 0 0 0.3mm; background: var(--orange); }
+
+  .proj { break-inside: avoid; display: grid; grid-template-columns: 31mm 1fr; column-gap: 5mm; padding: 1.7mm 0; border-top: 1px solid var(--rule); }
+  .proj:first-of-type { border-top: 0; padding-top: 0; }
+  .proj b { display: block; font-weight: 650; font-size: 9.2pt; }
+  .proj small { display: block; margin-top: 0.8mm; font: 500 6.6pt/1.4 "JB Mono", monospace; color: var(--muted); }
+  .proj p { font-size: 8.8pt; }
+
+  dl.skills { display: grid; grid-template-columns: 31mm 1fr; row-gap: 1.3mm; column-gap: 5mm; }
+  dl.skills dt { font-weight: 650; }
+  dl.skills dd { color: var(--ink); }
+
+  .edu { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 10mm; }
+  .edu p { margin-top: 0.6mm; color: var(--muted); }
+  .edu b { font-weight: 650; }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Muhammad Umar<span>.</span></h1>
+      <p class="role">Flutter and full-stack developer</p>
+    </div>
+    <ul class="contact">
+      <li>Lahore, Pakistan · open to remote work</li>
+      <li><a href="mailto:umarshad.dev@gmail.com">umarshad.dev@gmail.com</a></li>
+      <li>+92 312 4345138</li>
+      <li><a href="https://m-umar.vercel.app">m-umar.vercel.app</a></li>
+      <li><a href="https://www.linkedin.com/in/muhammad-umar-802235286">linkedin.com/in/muhammad-umar-802235286</a></li>
+      <li><a href="https://github.com/umarshad">github.com/umarshad</a></li>
+    </ul>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p class="about">I build mobile apps in Flutter and websites in React and Next.js. I look after the whole job: the screens, the database, payments, and getting the app into the App Store and Google Play. For about three years I have worked in a product team, on contract, at an app agency and as a freelancer. My latest work is My Invoice, an invoice and estimate app for US contractors, and Hudson Tasks, a tool for managing field staff. I have also built shopping apps for clients in Spain, a website for a car recovery company in Dubai and a community app for a business tower.</p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="row"><span><b>Flutter Developer</b><span class="org">, DM Worx LLC, remote</span></span><time>Apr 2025 to present</time></div>
+      <ul class="points">
+        <li>Building My Invoice (myinvoice.us), an invoice and estimate app for US contractors. It has a Flutter app for iOS and Android, a React web app and a separate admin dashboard, all on one Firebase backend.</li>
+        <li>Added paid plans through App Store and Google Play purchases, and client payments through Stripe. Payments can be split into installments, and reminders go out by push and email.</li>
+        <li>Built the AI assistant. A user describes a job in plain words and it drafts the estimate, using the OpenAI and Gemini APIs. The user can change the draft before saving.</li>
+        <li>Built the admin dashboard that the team uses to run the product: users, subscriptions, payments, analytics, audit logs and support chat.</li>
+        <li>Added Cloudflare Turnstile and Firebase App Check to sign-up and login to keep bots out.</li>
+        <li>Built Hudson Tasks (hudsontasks.com) with React and Supabase. Employers assign tasks, follow hours with live shift timers and GPS, and manage finances and client follow-ups. It sends email alerts through SMTP.</li>
+        <li>Set up a feature-based folder structure and code review in Git, so releases break less often.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span><b>Full-Stack Developer, contract</b><span class="org">, Cygnus Ventures, remote</span></span><time>Oct 2025 to Dec 2025</time></div>
+      <ul class="points">
+        <li>Built features in a live codebase using React, TypeScript, Node.js and PostgreSQL. Every task was delivered on time.</li>
+        <li>Designed and looked after the database tables on Supabase.</li>
+        <li>Built admin pages and reports that cut down the manual checking operators had to do.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span><b>Flutter Developer</b><span class="org">, Solution Soul, Lahore</span></span><time>Jun 2024 to Feb 2025</time></div>
+      <ul class="points">
+        <li>Built and released several Flutter apps to the App Store and Google Play for clients. Each one shipped by the date we agreed.</li>
+        <li>Used Firebase Authentication and Firestore for sign-in and live data.</li>
+        <li>Made screens that fit different phone sizes on Android and iOS.</li>
+        <li>Took work from the designer's files to store submission, including admin panels and client apps.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span><b>Flutter Developer Intern</b><span class="org">, Orbilon Technology, Lahore</span></span><time>Mar 2024 to Jun 2024</time></div>
+      <ul class="points">
+        <li>Built Flutter screens and reusable widgets for client apps. Senior developers reviewed and approved the work.</li>
+        <li>Added Firebase sign-in and Firestore features, used Provider and Riverpod for state, and fixed slow screens before delivery.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="proj"><div><b>Clika</b><small>Flutter, AWS Cognito, Stream Chat, Riverpod</small></div><p>A community app for a business tower, live on Google Play. Members, companies and admins each have their own role. It has a marketplace, tower discounts, events, a directory of people and companies, and chat.</p></div>
+    <div class="proj"><div><b>Olizon and MiPueblo</b><small>Flutter, Riverpod, Firebase Auth</small></div><p>Two shopping apps for clients in Spain. Olizon covers sign-in, product pages, a cart, a step-by-step checkout and order tracking.</p></div>
+    <div class="proj"><div><b>Emotion Controller</b><small>Flutter, Google ML Kit, Python, Gemini</small></div><p>Started as my final year project. It reads mood from the camera, with face detection on the phone and a Python API, and from text through a Gemini chat. It then suggests quotes, videos and a list of trusted contacts to call.</p></div>
+    <div class="proj"><div><b>Al Tayyab Recovery</b><small>HTML, CSS, JavaScript, Node.js</small></div><p>English and Arabic website for a car recovery company in Dubai. It has call and WhatsApp buttons and a contact form that checks UAE phone numbers.</p></div>
+    <div class="proj"><div><b>Junoon Herbals</b><small>Next.js, Supabase</small></div><p>Online shop for a Pakistani brand, with an admin panel for products and orders. The owner can set up Meta Pixel without code and see live visitors by city and traffic source.</p></div>
+    <div class="proj"><div><b>Realtors Lead</b><small>React, TypeScript, PayPal API</small></div><p>Lead platform for US real estate agents. Agents pay by PayPal subscription and emails go out automatically.</p></div>
+    <div class="proj"><div><b>Everpure Organics</b><small>React, TypeScript, Supabase</small></div><p>Online shop with product filters, a cart with several price tiers, user accounts and a full admin dashboard.</p></div>
+    <div class="proj"><div><b>My Madina</b><small>React, TypeScript, Supabase, PWA</small></div><p>Map guide for pilgrims in English and Arabic that also works offline as a web app.</p></div>
+    <div class="proj"><div><b>LinkedIn posting workflow</b><small>n8n, Groq, LinkedIn API</small></div><p>A workflow that finds trending topics, writes posts with AI and publishes them to LinkedIn.</p></div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Mobile</dt><dd>Flutter, Dart, Riverpod, Provider, GetX, in-app purchases, App Store and Google Play release</dd>
+      <dt>Web</dt><dd>React, Next.js, TypeScript, JavaScript, Node.js, Tailwind CSS, progressive web apps</dd>
+      <dt>Data and backend</dt><dd>Firebase (Auth, Firestore, Cloud Functions, push), Supabase, PostgreSQL, AWS Cognito, REST APIs, SMTP</dd>
+      <dt>Payments and APIs</dt><dd>Stripe, PayPal, Google Maps, Stream Chat, OpenAI, Gemini, Google ML Kit</dd>
+      <dt>Security</dt><dd>Cloudflare Turnstile, Firebase App Check, reCAPTCHA, role-based access</dd>
+      <dt>Tools</dt><dd>Git and GitHub, CI/CD, Vercel, AWS, DigitalOcean, n8n</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Education and more</h2>
+    <div class="edu">
+      <div><b>BS Computer Science</b><p>Lahore Garrison University, 2020 to 2024</p></div>
+      <div><b>Languages</b><p>English (professional), Urdu (native)</p></div>
+      <div><b>Flutter Development Certification</b><p>NexSkills</p></div>
+      <div><b>Campus Ambassador, Youth Speak Forum 2023</b><p>AIESEC</p></div>
+    </div>
+  </section>
+</body>
+</html>
