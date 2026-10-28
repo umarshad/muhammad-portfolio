@@ -1468,3 +1468,4 @@ body:has(dialog[open]) { overflow: hidden; }
 .pcard__logo { flex: none; width: 32px; height: 32px; border-radius: 9px; box-shadow: 0 0 0 1px #0b2b2720; object-fit: cover; }
 .pdlg__body h3 { display: flex; align-items: center; gap: 12px; }
 .pdlg__logo { flex: none; width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 0 0 1px #0b2b2724; object-fit: cover; }
+.tb__list > .tb__city:last-child:nth-child(odd) { grid-column: 1 / -1; }

@@ -1,5 +1,6 @@
 import { ArrowUp, Github, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { caseStudies, landingPages, regionPages } from "@/data/landing";
+import { regionLabels } from "@/data/regions";
 import { profile } from "@/data/profile";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
@@ -82,7 +83,7 @@ export function SiteFooter() {
             <h2 className="sfoot__h2--gap">Hire by region</h2>
             <ul>
               {regionPages.map((r) => (
-                <li key={r.slug}><a href={`/${r.slug}`}>{r.serviceName.replace("Flutter development for ", "Flutter developer, ")}</a></li>
+                <li key={r.slug}><a href={`/${r.slug}`}>{regionLabels[r.region].footer}</a></li>
               ))}
             </ul>
           </nav>

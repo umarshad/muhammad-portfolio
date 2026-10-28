@@ -20,6 +20,7 @@ const markets = [
 const regionAreas: Record<string, object[]> = {
   uk: [country("United Kingdom")],
   usa: [country("United States")],
+  uae: [country("United Arab Emirates")],
   eu: [country("Germany"), country("France"), country("Netherlands"), country("Spain"), country("Italy"), country("Sweden"), country("Ireland"), { "@type": "AdministrativeArea", name: "Europe" }],
 };
 const contactPoint = () => ({

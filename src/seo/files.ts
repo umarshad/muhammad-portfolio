@@ -64,7 +64,7 @@ Last updated: ${new Date().toISOString().slice(0, 10)}
 ## Services
 ${landingPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.description}`).join("\n")}
 
-## Clients in the UK, Europe and the USA
+## Clients in the UK, Europe, the USA and the UAE
 ${regionPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.description}`).join("\n")}
 - Working pattern: remote from Lahore (UTC+5), English-language projects, calls booked in the overlap of the client's morning and the developer's afternoon or evening.
 

@@ -48,7 +48,7 @@ export function PageHero({ trail, eyebrow, title, lead, topic, visual, actions, 
               <div><b>{projects.length}</b><span>Projects</span></div>
               <div><b>3</b><span>iOS · Android · Web</span></div>
             </div>
-            <p className="lp-byline lp-in" style={{ ["--d" as string]: "0.7s" }}>{byline ?? <>By <a href="/">{profile.name}</a>, {profile.title}, Lahore · remote for the UK, Europe and the USA</>}</p>
+            <p className="lp-byline lp-in" style={{ ["--d" as string]: "0.7s" }}>{byline ?? <>By <a href="/">{profile.name}</a>, {profile.title}, Lahore · remote for the UK, Europe, the USA and the UAE</>}</p>
           </div>
           <div className="lp-hero__visual lp-in" style={{ ["--d" as string]: "0.35s" }}>{visual}</div>
         </div>

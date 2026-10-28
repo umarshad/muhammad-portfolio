@@ -2,7 +2,15 @@ import type { LandingPage } from "./landing";
 
 // Pages for clients in the UK, the USA and Europe. Facts only: where I work from, how the time zones line up,
 // what I have shipped. Nothing here claims an office, a client or a certification I do not have.
-export type RegionKey = "uk" | "usa" | "eu";
+export type RegionKey = "uk" | "usa" | "eu" | "uae";
+
+// Short labels for lists and footers.
+export const regionLabels: Record<RegionKey, { name: string; footer: string; blurb: string }> = {
+  uk: { name: "United Kingdom", footer: "Flutter developer, UK clients", blurb: "Flutter developer for hire" },
+  usa: { name: "United States", footer: "Flutter developer, US clients", blurb: "Flutter developer for hire" },
+  eu: { name: "Europe", footer: "Flutter developer, European clients", blurb: "Flutter developer for hire" },
+  uae: { name: "Dubai and the UAE", footer: "Websites and e-commerce, Dubai", blurb: "Websites and e-commerce" },
+};
 
 export const regionPages: (LandingPage & { region: RegionKey })[] = [
   {
@@ -118,5 +126,42 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
       { q: "Can the apps be published under our company's accounts?", a: "Yes. Apps are published from your own App Store and Google Play developer accounts so you own the listings." },
     ],
     related: ["flutter-app-development", "web-app-and-admin-panel-development", "saas-app-development"],
+  },
+  {
+    region: "uae",
+    slug: "web-developer-for-hire-dubai",
+    title: "Website and E-commerce Developer for Dubai | Muhammad Umar",
+    description:
+      "Remote web developer for Dubai and UAE businesses: custom websites for service companies, e-commerce stores, and English and Arabic sites.",
+    eyebrow: "Web developer for Dubai and UAE clients",
+    h1: "Website and e-commerce developer for Dubai businesses",
+    serviceName: "Website and e-commerce development for Dubai clients",
+    lead:
+      "I am a remote web developer who builds custom websites for service companies and online shops for businesses in Dubai and the rest of the UAE. I built a bilingual English and Arabic website for a car recovery company in Dubai, with call and WhatsApp buttons and a contact form that checks UAE phone numbers. I work from Lahore, where the time is one hour ahead of Dubai, so we share the whole working day.",
+    includes: [
+      { title: "A website that brings in calls", text: "Fast pages that work well on phones, with call and WhatsApp buttons that open with a message already written, so a customer who needs you now can reach you in one tap." },
+      { title: "English and Arabic", text: "Bilingual sites with a language switch and layouts that flip correctly for right-to-left reading. You or a translator provide the Arabic text, and I build the pages around it." },
+      { title: "Online shops that sell", text: "Product pages with filters, a cart that handles several prices for one product, orders you can follow, and WhatsApp for customer questions. I have built shops like this on React and Next.js with Supabase." },
+      { title: "Found on Google in Dubai", text: "Page titles, descriptions and local business markup written for Dubai searches, with fast loading, so people looking for your service in your area can find you." },
+      { title: "Forms that check UAE numbers", text: "Contact and quote forms that check names, emails and UAE phone numbers as people type, so fewer enquiries are lost to typing mistakes." },
+      { title: "An admin panel you can use", text: "A simple panel to change products, orders and page content without calling a developer. Hosting on Vercel, AWS or DigitalOcean is set up for you." },
+    ],
+    steps: [
+      { title: "Brief", text: "A short call or message about your business, your customers and what the site must do." },
+      { title: "Design", text: "Page layouts for phone and desktop, in English and Arabic, approved before the build starts." },
+      { title: "Build", text: "The site is built in small steps, and you can look at a working version along the way." },
+      { title: "Launch", text: "Hosting, your domain, search setup and a simple way for you to update the content." },
+    ],
+    tech: ["React", "Next.js", "TypeScript", "Node.js", "Supabase", "Tailwind CSS", "Vercel", "SMTP", "Stripe", "PayPal", "DigitalOcean"],
+    projects: ["Al Tayyab Recovery", "Everpure Organics", "Junoon Herbals"],
+    faq: [
+      { q: "Can you build a website for a service business in Dubai?", a: "Yes. I built Al Tayyab Recovery, a bilingual English and Arabic website for a car recovery company in Dubai. It has call and WhatsApp buttons, a contact form that checks UAE phone numbers, and search information for local searches." },
+      { q: "Do you build English and Arabic websites?", a: "Yes. I build the language switch and the right-to-left layout. The Arabic text itself should come from you or a translator so that it reads naturally to your customers." },
+      { q: "Can you build an e-commerce store for a UAE business?", a: "Yes. I have built online shops with product filters, carts with several price options, user accounts and admin dashboards, and I have connected Stripe and PayPal. Other payment providers can be looked at once we know what your business needs." },
+      { q: "Do you work on Dubai time?", a: "I work from Lahore, which is one hour ahead of Dubai all year, so our working days line up almost completely. Calls are easy to book, and I reply to messages by email or WhatsApp." },
+      { q: "Can I hire you as a freelance web developer for my business?", a: "Yes. I work as a remote freelance web developer and mobile app developer, on fixed projects or as part of your team, in English." },
+      { q: "Can you also build a mobile app for my business?", a: "Yes. I build iOS and Android apps in Flutter, and I can connect them to the same backend as your website and admin panel." },
+    ],
+    related: ["web-app-and-admin-panel-development", "flutter-app-development", "app-store-and-google-play-deployment"],
   },
 ];

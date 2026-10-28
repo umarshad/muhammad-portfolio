@@ -9,6 +9,7 @@ const cities: City[] = [
   { key: "eu", name: "Berlin", tz: "Europe/Berlin" },
   { key: "usa", name: "New York", tz: "America/New_York" },
   { key: "usa", name: "Los Angeles", tz: "America/Los_Angeles" },
+  { key: "uae", name: "Dubai", tz: "Asia/Dubai" },
 ];
 
 // Offset of a zone from UTC in hours at the given moment, daylight saving included.
