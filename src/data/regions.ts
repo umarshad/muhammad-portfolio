@@ -33,6 +33,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     tech: ["Flutter", "Dart", "Firebase", "Supabase", "Stripe", "In-App Purchases", "React", "TypeScript", "App Store", "Google Play"],
     projects: ["My Invoice", "Clika App", "Hudson Tasks"],
     faq: [
+      { q: "Can I hire you as a remote freelance Flutter developer?", a: "Yes. I work as a remote freelance Flutter developer and mobile app developer for UK clients, on fixed projects or as an extension of your team, in English." },
       { q: "Can you work UK hours?", a: "Lahore is four to five hours ahead of London, so the UK morning overlaps my afternoon and the UK afternoon my evening. I schedule calls in that window and send written updates so nothing waits on a time zone." },
       { q: "Have you worked with international clients?", a: "Yes. I built Flutter e-commerce apps for clients in Spain (Olizon and MiPueblo), a bilingual English and Arabic website for a car recovery company in Dubai (Al Tayyab Recovery), and My Invoice, a product for the US market." },
       { q: "Do you build GDPR-aware apps?", a: "I build the technical parts: consent flows, data export and deletion, minimal data collection and role-based access. A solicitor or data protection adviser should still review your policies and contracts." },
@@ -70,6 +71,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     tech: ["Flutter", "Dart", "Firebase", "Stripe", "PayPal", "In-App Purchases", "React", "TypeScript", "Cloudflare Turnstile", "App Store", "Google Play"],
     projects: ["My Invoice", "Realtors Lead", "Hudson Tasks"],
     faq: [
+      { q: "Can I hire you as a remote freelance Flutter developer?", a: "Yes. I work as a remote freelance Flutter developer and mobile app developer for US clients, on fixed projects or as an extension of your team, in English." },
       { q: "How do you handle the time difference with the US?", a: "Lahore is nine to ten hours ahead of New York. I work asynchronously first: written updates, recorded demos and a shared task list, with a call booked in the overlap of your morning and my evening when a decision needs talking through." },
       { q: "Have you worked with international clients?", a: "Yes. I built Flutter e-commerce apps for clients in Spain (Olizon and MiPueblo), a bilingual English and Arabic website for a car recovery company in Dubai (Al Tayyab Recovery), and My Invoice, a product for the US market." },
       { q: "Have you built products for US users?", a: "Yes. My Invoice, my main product, is built for the US market, and Realtors Lead is a lead generation platform for US real estate agents with PayPal subscriptions." },
@@ -107,6 +109,7 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
     tech: ["Flutter", "Dart", "Firebase", "Supabase", "Stripe", "PayPal", "React", "Next.js", "TypeScript", "App Store", "Google Play"],
     projects: ["Olizon", "My Invoice", "Clika App"],
     faq: [
+      { q: "Can I hire you as a remote freelance Flutter developer?", a: "Yes. I work as a remote freelance Flutter developer and mobile app developer for European clients, on fixed projects or as an extension of your team, in English." },
       { q: "How much of the working day do we share?", a: "Lahore is three hours ahead of Central European Summer Time and four hours ahead in winter, so the European morning and afternoon both overlap my working day." },
       { q: "Do you build GDPR-aware apps?", a: "I build the technical parts: consent flows, data export and deletion, minimal data collection and role-based access. Your legal adviser should still review policies and data-processing agreements." },
       { q: "Do you work with agencies and startups in Europe?", a: "Yes. I take on remote projects from founders, startups and agencies across Europe, in English: new apps, SaaS builds, admin panels, or features for an existing Flutter app." },

@@ -6,9 +6,8 @@ type Props = { src: string; alt: string; url: string; onClick?: (e: MouseEvent<H
 export function BrowserFrame({ src, alt, url, onClick }: Props) {
   return (
     <span className="bwin" onClick={onClick}>
-      <span className="bwin__bar" aria-hidden="true">
+      <span className="bwin__bar" aria-hidden="true" data-url={url}>
         <i /><i /><i />
-        <span>{url}</span>
       </span>
       <img src={src} alt={alt} width={1800} height={927} loading="lazy" decoding="async" />
     </span>

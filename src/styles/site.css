@@ -1428,7 +1428,7 @@ body:has(dialog[open]) { overflow: hidden; }
 .bwin__bar { display: flex; align-items: center; gap: 6px; padding: 0 14px; height: 36px; background: #eceae2; border-bottom: 1px solid #0b2b2714; }
 .bwin__bar i { width: 10px; height: 10px; border-radius: 50%; background: #d4d0c4; }
 .bwin__bar i:nth-child(1) { background: #f26b5b; } .bwin__bar i:nth-child(2) { background: #f5bf4f; } .bwin__bar i:nth-child(3) { background: #62c554; }
-.bwin__bar span { flex: 1; max-width: 340px; margin-left: 14px; padding: 4px 14px; border-radius: 999px; background: #fff; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--gray-600); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bwin__bar::after { content: attr(data-url); flex: 1; max-width: 340px; margin-left: 14px; padding: 4px 14px; border-radius: 999px; background: #fff; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--gray-600); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bwin img { display: block; width: 100%; height: auto; }
 .cs-intro { max-width: 70ch; margin-top: 14px; font-size: 16px; line-height: 1.7; color: var(--gray-600); }
 
@@ -1443,7 +1443,7 @@ body:has(dialog[open]) { overflow: hidden; }
 .cs-show__btn:hover .cs-show__hint, .cs-show__btn:focus-visible .cs-show__hint { background: var(--orange-500); color: #1a0f02; }
 .cs-show__tabs { display: grid; gap: 10px; }
 .cs-show__tab { display: flex; align-items: flex-start; gap: 16px; width: 100%; padding: 16px 18px; border: 1px solid var(--line-light); border-radius: 18px; background: #fff; text-align: left; cursor: pointer; transition: transform 0.4s var(--ease-out), border-color 0.3s, box-shadow 0.4s, background-color 0.3s; }
-.cs-show__n { flex: none; margin-top: 2px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; color: var(--gray-500); transition: color 0.3s; }
+.cs-show__n { flex: none; margin-top: 2px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.16em; color: var(--gray-600); transition: color 0.3s; }
 .cs-show__tab b { display: block; font-family: var(--font-display); font-size: 1.1rem; font-weight: 650; letter-spacing: -0.02em; color: var(--teal-800); }
 .cs-show__tab small { display: block; margin-top: 4px; font-size: 13.5px; line-height: 1.5; color: var(--gray-600); }
 .cs-show__tab:hover { border-color: color-mix(in srgb, var(--orange-500) 45%, transparent); }

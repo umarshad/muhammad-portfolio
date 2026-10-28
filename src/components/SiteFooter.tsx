@@ -50,7 +50,7 @@ export function SiteFooter() {
       <div className="sfoot__card">
         <div className="sfoot__grid">
           <div className="sfoot__about">
-            <a href="/" className="sfoot__logo" aria-label={`${profile.name}, home`}>
+            <a href="/" className="sfoot__logo">
               <span className="brand__mark">MU</span>
               <span>
                 <b>{profile.name}</b>

@@ -48,6 +48,21 @@ export const faq = [
     a: "Flutter, Dart, React, Next.js, TypeScript, Node.js, Firebase (Auth, Firestore, Cloud Functions, FCM), Supabase, PostgreSQL, Stripe, PayPal, OpenAI and Gemini APIs, n8n automation, and AWS and Vercel for hosting.",
   },
   {
+    q: "Is Muhammad Umar available as a freelance Flutter developer?",
+    cat: "work",
+    a: "Yes. Muhammad Umar works as a remote freelance Flutter developer alongside his role at DM Worx LLC, taking on mobile app, SaaS and e-commerce projects for founders, startups and agencies in the UK, Europe, the USA and beyond.",
+  },
+  {
+    q: "Does he work as a mobile app developer for both iOS and Android?",
+    cat: "services",
+    a: "Yes. As a mobile app developer he builds iOS and Android apps from one Flutter codebase, with Firebase or Supabase backends, push notifications, in-app purchases and App Store and Google Play release.",
+  },
+  {
+    q: "Can he build an MVP for a startup, and also work as a React or Firebase developer?",
+    cat: "services",
+    a: "Yes. He can start with a focused first version (an MVP) and grow it. He works as a React and Next.js developer for websites, portals and admin panels, and as a Firebase developer for authentication, Firestore, Cloud Functions and push notifications.",
+  },
+  {
     q: "Is Muhammad Umar available for remote work?",
     cat: "work",
     a: "Yes. He is based in Lahore, Pakistan (PKT, UTC+5) and is open to remote work. He currently works at DM Worx LLC and takes on freelance full-stack projects for clients.",

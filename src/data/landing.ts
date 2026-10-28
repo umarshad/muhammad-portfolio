@@ -42,6 +42,7 @@ export const landingPages: LandingPage[] = [
     tech: ["Flutter", "Dart", "Firebase", "Riverpod", "Provider", "Cloud Functions", "Stripe", "OpenAI API", "Google ML Kit", "App Store", "Google Play"],
     projects: ["My Invoice", "Clika App", "Emotions Controller App"],
     faq: [
+      { q: "Do you work as a freelance mobile app developer?", a: "Yes. I take on remote freelance projects as a Flutter and mobile app developer for iOS and Android, from a first prototype to the App Store and Google Play release, alongside my role at DM Worx LLC." },
       { q: "Why choose Flutter instead of two native apps?", a: "Flutter lets one codebase serve iOS and Android, which shortens delivery and keeps both apps in step. It suits most business products, and native modules can be added where a platform feature needs them." },
       { q: "Which backends do you use with Flutter?", a: "Firebase (Auth, Firestore, Cloud Functions, FCM, Crashlytics), Supabase, PostgreSQL and REST APIs, chosen to fit the product and the team that will run it." },
       { q: "Can you also publish the app to the stores?", a: "Yes. I have released multiple Flutter apps to the App Store and Google Play for clients. See the App Store and Google Play deployment page for what that covers." },
@@ -76,6 +77,7 @@ export const landingPages: LandingPage[] = [
     tech: ["Flutter", "React", "TypeScript", "Firebase", "Supabase", "Stripe", "In-App Purchases", "Cloudflare Turnstile", "reCAPTCHA", "Firebase App Check", "Vercel"],
     projects: ["My Invoice", "Hudson Tasks"],
     faq: [
+      { q: "Are you a Firebase developer as well as a Flutter developer?", a: "Yes. SaaS products need a backend, so I design and build on Firebase (Authentication, Firestore, Cloud Functions, FCM) or Supabase and PostgreSQL, together with the Flutter and React front ends. I can also start with a focused MVP and grow it." },
       { q: "What does a SaaS first release include?", a: "Account sign-up, the one core workflow your users pay for, a subscription or payment path, and an admin view to manage users and revenue. More is added after real usage shows what matters." },
       { q: "Can one developer cover mobile, web and admin?", a: "Yes. I design and build all three on one backend, which avoids hand-offs between teams and keeps features consistent across platforms." },
       { q: "How do you protect a SaaS from bots and abuse?", a: "With Cloudflare Turnstile checked on the server, reCAPTCHA-backed Firebase App Check and role-based access control, as used in My Invoice." },
@@ -144,6 +146,7 @@ export const landingPages: LandingPage[] = [
     tech: ["React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "Supabase", "PostgreSQL", "Vercel", "SMTP", "PayPal"],
     projects: ["Hudson Tasks", "Junoon Herbals", "Everpure Organics", "Realtors Lead", "My Madina"],
     faq: [
+      { q: "Do you work as a React developer for hire?", a: "Yes. I build websites, web apps and admin panels in React, Next.js and TypeScript, with Supabase or Firebase behind them, as a remote React developer for founders, startups and agencies." },
       { q: "Do you build the website and the admin panel together?", a: "Yes. The public site and the admin share one database, so what your team changes in the admin appears on the site straight away." },
       { q: "Can I update content myself?", a: "Yes. The admin panel is built around the content, products and settings you need to change, so day-to-day updates do not need a developer." },
       { q: "Which stack do you use for the web?", a: "React, Next.js and TypeScript on the front end, with Supabase, Firebase, PostgreSQL or Node.js behind it, depending on the project." },

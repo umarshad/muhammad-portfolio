@@ -41,7 +41,7 @@ export function Header() {
   return (
     <header ref={ref} className={`site-header${scrolled ? " is-scrolled" : ""}${hidden ? " is-hidden" : ""}`}>
       <div className="site-header__bar">
-        <a href="/" className="brand" onClick={toTop} aria-label={`${profile.name}, back to top`}>
+        <a href="/" className="brand" onClick={toTop}>
           <span className="brand__mark">MU</span>
           <span>
             <span className="brand__name">{profile.name}</span>
