@@ -8,7 +8,7 @@ import { Process } from "@/components/Process";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
 import { Skills } from "@/components/Skills";
-import { TechMarquee } from "@/components/TechMarquee";
+import { TechStack } from "@/components/TechStack";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -19,7 +19,7 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <TechMarquee />
+        <TechStack />
         <About />
         <Services />
         <Process />

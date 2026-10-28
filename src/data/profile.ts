@@ -24,9 +24,3 @@ export const navLinks = [
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
-
-export const techStack = [
-  "Flutter", "Dart", "Firebase", "Cloud Functions", "React", "Next.js", "TypeScript",
-  "Supabase", "PostgreSQL", "Node.js", "Stripe", "PayPal", "OpenAI API", "Gemini",
-  "AWS", "Vercel", "n8n", "GetStream Chat", "Google ML Kit", "Riverpod", "Provider", "REST APIs",
-];
