@@ -78,11 +78,11 @@ export const experience: Role[] = [
     period: "Mar 2024 - Jun 2024",
     from: "2024-03",
     to: "2024-06",
-    wins: ["Reusable UI components", "Reviewed by senior developers"],
-    tech: ["Flutter", "Firebase", "Provider", "Riverpod"],
+    wins: ["Learned Firebase and APIs", "Mentored by senior developers"],
+    tech: ["Flutter", "Firebase", "API integration", "Provider", "Riverpod"],
     points: [
-      "Built Flutter screens and reusable UI components for client-facing products, reviewed and approved by senior developers.",
-      "Implemented Firebase Authentication and Firestore features and managed state with Provider and Riverpod, resolving performance bottlenecks before client delivery.",
+      "Internship where I learned Flutter in a real team: building screens and reusable widgets, with senior developers reviewing my work.",
+      "Learned Firebase and how to connect an app to an API, and practised state management with Provider and Riverpod.",
     ],
   },
 ];
