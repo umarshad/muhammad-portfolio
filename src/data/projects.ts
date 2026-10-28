@@ -169,6 +169,23 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Emotions Controller App",
+    kinds: ["Mobile", "AI"],
+    description: "Real-time on-device emotion detection with deep cloud analysis routed to a Python backend.",
+    technologies: ["Flutter", "Google ML Kit", "Python", "AWS Elastic Beanstalk"],
+    features: [
+      "Real-time on-device emotion detection using Google ML Kit",
+      "Deep cloud analysis routed to a Python backend on AWS Elastic Beanstalk",
+    ],
+    url: "#",
+    status: "AI Project",
+    shots: [
+      { src: "/projects/emotions-1.webp", label: "Splash screen" },
+      { src: "/projects/emotions-2.webp", label: "Home with mood check-in and quick actions" },
+      { src: "/projects/emotions-3.webp", label: "Emotion quotes for each mood, with loved ones for support" },
+    ],
+  },
+  {
     title: "Al Tayyab Recovery",
     kinds: ["Web"],
     description: "A bilingual English and Arabic website for a 24/7 car recovery company in Dubai, built to turn local searches into calls and WhatsApp messages.",
@@ -181,18 +198,6 @@ export const projects: Project[] = [
     ],
     url: "#",
     status: "Completed",
-  },
-  {
-    title: "Emotions Controller App",
-    kinds: ["Mobile", "AI"],
-    description: "Real-time on-device emotion detection with deep cloud analysis routed to a Python backend.",
-    technologies: ["Flutter", "Google ML Kit", "Python", "AWS Elastic Beanstalk"],
-    features: [
-      "Real-time on-device emotion detection using Google ML Kit",
-      "Deep cloud analysis routed to a Python backend on AWS Elastic Beanstalk",
-    ],
-    url: "#",
-    status: "AI Project",
   },
   {
     title: "LinkedIn Content Automation",
