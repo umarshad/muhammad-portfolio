@@ -173,7 +173,7 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
         creator: ref("person"),
         featureList: study.features,
         keywords: pr.technologies.join(", "),
-        screenshot: (pr.shots ?? []).map((s) => ({ "@type": "ImageObject", contentUrl: abs(s.src), caption: s.label })),
+        screenshot: [...(pr.shots ?? []), ...(study.galleries ?? []).flatMap((g) => g.images)].map((s) => ({ "@type": "ImageObject", contentUrl: abs(s.src), caption: s.label })),
       },
       faqNode(`${pageUrl}#faq`, study.faq),
     );

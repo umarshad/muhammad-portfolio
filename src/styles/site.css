@@ -1422,3 +1422,21 @@ body:has(dialog[open]) { overflow: hidden; }
 @media (max-width: 520px) { .cs-facts { grid-template-columns: minmax(0, 1fr); } .lp-shots { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; } }
 .lp-shot .pdev__screen img { width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; background: none; }
 .lp-shot__btn:hover .pdev__screen img { transform: scale(1.05); box-shadow: none; }
+
+/* ---------- browser frames for web and admin screenshots ---------- */
+.bwin { display: block; overflow: hidden; border: 1px solid #0b2b2724; border-radius: 16px; background: #fff; box-shadow: 0 30px 60px -36px #00302caa; transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+.bwin__bar { display: flex; align-items: center; gap: 6px; padding: 0 14px; height: 36px; background: #eceae2; border-bottom: 1px solid #0b2b2714; }
+.bwin__bar i { width: 10px; height: 10px; border-radius: 50%; background: #d4d0c4; }
+.bwin__bar i:nth-child(1) { background: #f26b5b; } .bwin__bar i:nth-child(2) { background: #f5bf4f; } .bwin__bar i:nth-child(3) { background: #62c554; }
+.bwin__bar span { flex: 1; max-width: 340px; margin-left: 14px; padding: 4px 14px; border-radius: 999px; background: #fff; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--gray-600); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bwin img { display: block; width: 100%; height: auto; }
+.cs-intro { max-width: 70ch; margin-top: 14px; font-size: 16px; line-height: 1.7; color: var(--gray-600); }
+.cs-gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px) clamp(16px, 2.4vw, 28px); margin-top: clamp(24px, 3vw, 40px); }
+.cs-gal__item { margin: 0; }
+.cs-gal__item--lead { grid-column: 1 / -1; }
+.cs-gal__btn { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
+.cs-gal__btn:hover .bwin { transform: translateY(-6px); box-shadow: 0 40px 70px -34px #00302ccc; }
+.cs-gal__btn:hover .lp-shot__zoom, .cs-gal__btn:focus-visible .lp-shot__zoom { opacity: 1; background: var(--orange-500); color: #1a0f02; }
+.cs-gal__btn .lp-shot__zoom { right: 14px; bottom: 14px; }
+.cs-gal figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--gray-600); }
+@media (max-width: 760px) { .cs-gal { grid-template-columns: minmax(0, 1fr); } .bwin__bar span { max-width: none; } }

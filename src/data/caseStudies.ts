@@ -14,6 +14,7 @@ export type CaseStudy = {
   archTitle: [string, string]; // plain part, serif part
   platforms: { title: string; text: string }[];
   features: string[];
+  galleries?: { id: string; eyebrow: string; title: [string, string]; intro: string; url: string; images: { src: string; label: string }[] }[]; // wide browser screenshots
   decisionsTitle: [string, string];
   decisions: { title: string; text: string }[];
   stack: string[]; // names from data/tech.ts
@@ -57,6 +58,32 @@ export const caseStudies: CaseStudy[] = [
       "Subscriptions through App Store and Google Play in-app purchases and web billing, with in-app support chat",
       "Admin dashboard with user management, activity logging, transactions, invoices, analytics and support",
       "Bot and abuse protection with Cloudflare Turnstile verified on the server, and reCAPTCHA-backed Firebase App Check",
+    ],
+    galleries: [
+      {
+        id: "web",
+        eyebrow: "Web app",
+        title: ["The web app", "in use"],
+        intro: "The browser version of the same account: a dashboard for quick actions, overdue work, recent invoices and upcoming installments, a step-by-step invoice builder with a live summary, and business settings. Personal details are blurred.",
+        url: "myinvoice.us",
+        images: [
+          { src: "/projects/my-invoice-web-1.webp", label: "Web dashboard with quick actions, recent activity, payment watch and work calendar" },
+          { src: "/projects/my-invoice-web-2.webp", label: "Create invoice with a live summary, optional project, notes and deposit schedule" },
+          { src: "/projects/my-invoice-web-3.webp", label: "Business information, payment details, items, scanned receipts, templates and settings" },
+        ],
+      },
+      {
+        id: "admin",
+        eyebrow: "Admin dashboard",
+        title: ["The admin dashboard", "in use"],
+        intro: "A separate dashboard for operators with revenue and account metrics, payment analytics by gateway and period, and an infrastructure view of Cloud Functions, scheduled jobs, error logs, storage and billing guardrails. Account details are blurred.",
+        url: "myinvoice.us/admin",
+        images: [
+          { src: "/projects/my-invoice-admin-1.webp", label: "Admin overview with volume, recurring revenue, accounts, fees and recent accounts" },
+          { src: "/projects/my-invoice-admin-2.webp", label: "Payment analytics with volume over time, payment methods and settlement health" },
+          { src: "/projects/my-invoice-admin-3.webp", label: "Infrastructure view of Cloud Functions, scheduler jobs, error logs and indexes" },
+        ],
+      },
     ],
     decisionsTitle: ["Engineering", "decisions"],
     decisions: [

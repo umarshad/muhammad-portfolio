@@ -6,6 +6,7 @@ import type { LandingPage } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { techs } from "@/data/tech";
+import { BrowserFrame } from "../BrowserFrame";
 import { Lightbox } from "../Lightbox";
 import { PhoneFrame } from "../PhoneFrame";
 import { ProjectCover } from "../ProjectCover";
@@ -20,6 +21,7 @@ import { PageShell } from "./PageShell";
 export function CaseStudyPage({ study }: { study: CaseStudy }) {
   const p = projects.find((x) => x.title === study.project)!;
   const [view, setView] = useState<number | null>(null);
+  const [gview, setGview] = useState<{ g: number; i: number } | null>(null);
   const shots = p.shots ?? [];
   const used = study.stack.map((n) => techs.find((t) => t.name === n)).filter((t): t is NonNullable<typeof t> => !!t);
   const related = study.related.map((s) => landingBySlug(s)).filter((x): x is LandingPage => !!x);
@@ -84,6 +86,27 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
           </ul>
         </div>
       </section>
+
+      {(study.galleries ?? []).map((g, gi) => (
+        <section key={g.id} className={`lp-sec${gi % 2 === 0 ? " lp-sec--alt" : ""}`} aria-labelledby={`gal-${g.id}`}>
+          <div className="container">
+            <p className="eyebrow reveal">{g.eyebrow}</p>
+            <h2 id={`gal-${g.id}`} className="work__title reveal">{g.title[0]} <span className="serif">{g.title[1]}</span></h2>
+            <p className="cs-intro reveal">{g.intro}</p>
+            <div className="cs-gal">
+              {g.images.map((im, i) => (
+                <figure key={im.src} className={`cs-gal__item reveal${i === 0 ? " cs-gal__item--lead" : ""}`} style={{ ["--d" as string]: `${i * 0.08}s` }}>
+                  <button type="button" className="cs-gal__btn" onClick={() => setGview({ g: gi, i })} aria-label={`Enlarge: ${im.label}`}>
+                    <BrowserFrame src={im.src} alt={`${p.title} ${g.eyebrow.toLowerCase()}: ${im.label}`} url={g.url} />
+                    <span className="lp-shot__zoom"><Maximize2 size={16} aria-hidden="true" /></span>
+                  </button>
+                  <figcaption>{im.label}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
 
       {shots.length > 0 && (
         <section className="lp-sec lp-sec--alt" aria-labelledby="shots">
@@ -156,6 +179,9 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
 
       <RegionStrip light />
       <CtaBand topic={study.ctaTopic} />
+      {gview !== null && study.galleries && (
+        <Lightbox images={study.galleries[gview.g].images} index={gview.i} onIndex={(i) => setGview({ g: gview.g, i })} onClose={() => setGview(null)} />
+      )}
       {view !== null && <Lightbox images={shots} index={view} onIndex={setView} onClose={() => setView(null)} device />}
     </PageShell>
   );

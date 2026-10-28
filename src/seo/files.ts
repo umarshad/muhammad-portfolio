@@ -22,7 +22,7 @@ export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
             ? (() => {
                 const cs = caseStudies.find((c) => `/${c.slug}` === m.path);
                 const pr = projects.find((p) => p.title === cs?.project);
-                return (pr?.shots ?? []).map((x) => `\n    <image:image><image:loc>${abs(x.src)}</image:loc><image:caption>${pr?.title}: ${x.label}</image:caption></image:image>`).join("");
+                return [...(pr?.shots ?? []), ...(cs?.galleries ?? []).flatMap((g) => g.images)].map((x) => `\n    <image:image><image:loc>${abs(x.src)}</image:loc><image:caption>${pr?.title}: ${x.label}</image:caption></image:image>`).join("");
               })()
             : "";
       return `  <url>
