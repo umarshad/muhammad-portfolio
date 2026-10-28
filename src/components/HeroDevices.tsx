@@ -9,12 +9,12 @@ import { SceneHub } from "./devices/SceneHub";
 import { SceneRelease } from "./devices/SceneRelease";
 import { SceneWebsite } from "./devices/SceneWebsite";
 
-type Scene = { key: string; shape: string; label: string; caption: string; Icon: LucideIcon; View: () => JSX.Element };
+type Scene = { key: string; shape: string; label: string; caption: string; Icon: LucideIcon; View: () => JSX.Element; dwell?: number };
 
 const scenes: Scene[] = [
   { key: "app", shape: "app", label: "Mobile app", Icon: Smartphone, View: SceneApp, caption: "Flutter apps for iOS and Android, from first screen to store release." },
   { key: "web", shape: "web", label: "Website", Icon: Globe, View: SceneWebsite, caption: "Fast, responsive websites and web apps that search engines can find." },
-  { key: "admin", shape: "web", label: "Admin panel", Icon: LayoutDashboard, View: BrowserAdmin, caption: "Role-based dashboards to run users, payments, content and analytics." },
+  { key: "admin", shape: "web", dwell: 12400, label: "Admin panel", Icon: LayoutDashboard, View: BrowserAdmin, caption: "Role-based dashboards to run users, payments, content and analytics." },
   { key: "saas", shape: "hub", label: "SaaS product", Icon: Layers, View: SceneHub, caption: "Mobile, web and admin on one shared backend, ready for subscriptions." },
   { key: "iap", shape: "app", label: "In-app purchases", Icon: CreditCard, View: PhonePaywall, caption: "App Store and Google Play subscriptions with Stripe and PayPal payments." },
   { key: "store", shape: "store", label: "Store release", Icon: Rocket, View: SceneRelease, caption: "Build, sign, upload and publish to App Store and Google Play." },
@@ -34,7 +34,7 @@ export function HeroDevices() {
   const [active, setActive] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [hover, setHover] = useState(false);
-  const [delay, setDelay] = useState(AUTOPLAY_MS);
+  const [manual, setManual] = useState(false);
   const clearPrev = useRef<ReturnType<typeof setTimeout>>();
   const tabsRef = useRef<HTMLDivElement>(null);
   const tilt = usePointerTilt<HTMLDivElement>(5);
@@ -50,17 +50,21 @@ export function HeroDevices() {
     [active],
   );
 
+  const current = scenes[active];
+  // How long this scene stays: a scene can need longer (the admin panel cycles five screens).
+  const dwell = manual ? Math.max(IDLE_RESUME_MS, current.dwell ?? 0) : current.dwell ?? AUTOPLAY_MS;
+
   // Autoplay: restarts on every change, pauses while a mouse hovers, off for reduced motion.
   // A manual pick only delays the next move; it never switches autoplay off for good.
   useEffect(() => {
     if (hover) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setTimeout(() => {
-      setDelay(AUTOPLAY_MS);
+      setManual(false);
       select((active + 1) % scenes.length);
-    }, delay);
+    }, dwell);
     return () => clearTimeout(id);
-  }, [active, delay, hover, select]);
+  }, [active, dwell, hover, select]);
 
   useEffect(() => () => clearTimeout(clearPrev.current), []);
 
@@ -72,10 +76,9 @@ export function HeroDevices() {
   }, [active]);
 
   const pick = (i: number) => {
-    setDelay(IDLE_RESUME_MS);
+    setManual(true);
     select(i);
   };
-  const current = scenes[active];
 
   return (
     <div
@@ -140,7 +143,7 @@ export function HeroDevices() {
             role="tab"
             aria-selected={i === active}
             className="htab"
-            style={{ ["--dur" as string]: `${delay}ms` }}
+            style={{ ["--dur" as string]: `${dwell}ms` }}
             onClick={() => pick(i)}
           >
             <Icon size={15} /> {label}
