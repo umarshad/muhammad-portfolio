@@ -6,11 +6,40 @@ export type Project = {
   url: string;
   playUrl?: string;
   status: string;
+  kinds: string[]; // filter groups
+  cover?: string; // screenshot of the live product
+  logo?: string;
+  shots?: { src: string; label: string }[]; // app screens for the phone gallery
 };
+
+export const projectFilters = [
+  { id: "all", label: "All" },
+  { id: "Mobile", label: "Mobile apps" },
+  { id: "Web", label: "Websites" },
+  { id: "SaaS", label: "SaaS" },
+  { id: "E-commerce", label: "E-commerce" },
+  { id: "AI", label: "AI & Automation" },
+];
 
 export const projects: Project[] = [
   {
     title: "My Invoice",
+    kinds: ["Mobile", "SaaS", "Web"],
+    logo: "/projects/my-invoice-logo.webp",
+    shots: [
+      { src: "/projects/my-invoice-dashboard.webp", label: "Dashboard with quick actions and payment schedule" },
+      { src: "/projects/my-invoice-payments.webp", label: "Payments overview with collected and pending amounts" },
+      { src: "/projects/my-invoice-client.webp", label: "Client profile with balance and due payments" },
+      { src: "/projects/my-invoice-project-details.webp", label: "Project details with progress and actions" },
+      { src: "/projects/my-invoice-ai-draft.webp", label: "AI assistant drafting an estimate" },
+      { src: "/projects/my-invoice-calendar.webp", label: "Calendar and projects" },
+      { src: "/projects/my-invoice-projects.webp", label: "Projects list with status filters" },
+      { src: "/projects/my-invoice-schedule.webp", label: "Payment schedule with installments" },
+      { src: "/projects/my-invoice-ai-clarify.webp", label: "AI clarity step asking about job scope" },
+      { src: "/projects/my-invoice-dashboard-calendar.webp", label: "Dashboard calendar and upcoming projects" },
+      { src: "/projects/my-invoice-project-overview.webp", label: "Project progress overview" },
+      { src: "/projects/my-invoice-ai-assistant.webp", label: "AI project assistant" },
+    ],
     description: "A multi-platform business product with a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend.",
     technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Google Maps", "Cloudflare Turnstile", "reCAPTCHA", "React", "TypeScript"],
     features: [
@@ -26,6 +55,8 @@ export const projects: Project[] = [
   },
   {
     title: "Hudson Tasks",
+    kinds: ["Web", "SaaS"],
+    cover: "/projects/hudsontasks.webp",
     description: "A workforce management platform where employers manage field employees, work hours, tasks and finances.",
     technologies: ["React", "Supabase", "SMTP"],
     features: [
@@ -38,6 +69,8 @@ export const projects: Project[] = [
   },
   {
     title: "Junoon Herbals",
+    kinds: ["Web", "E-commerce"],
+    cover: "/projects/junoonherbals.webp",
     description: "A complete e-commerce platform where products, orders and site content are managed through a custom admin panel. Freelance project.",
     technologies: ["Next.js", "Supabase"],
     features: [
@@ -50,6 +83,7 @@ export const projects: Project[] = [
   },
   {
     title: "Clika App",
+    kinds: ["Mobile"],
     description: "A tower management system with role-based access for super admins, companies and field employees.",
     technologies: ["Flutter", "Firebase", "GetStream Chat API"],
     features: [
@@ -61,6 +95,8 @@ export const projects: Project[] = [
   },
   {
     title: "Everpure Organics",
+    kinds: ["Web", "E-commerce"],
+    cover: "/projects/everpure.webp",
     description: "An e-commerce web app for organic products with a full admin dashboard.",
     technologies: ["React", "TypeScript", "Supabase", "REST APIs"],
     features: [
@@ -72,6 +108,8 @@ export const projects: Project[] = [
   },
   {
     title: "Realtors Lead",
+    kinds: ["Web"],
+    cover: "/projects/realtorslead.webp",
     description: "A lead generation platform for US real estate agents with payment processing and automated email delivery.",
     technologies: ["React", "TypeScript", "PayPal API"],
     features: [
@@ -83,6 +121,8 @@ export const projects: Project[] = [
   },
   {
     title: "My Madina",
+    kinds: ["Web"],
+    cover: "/projects/mymadina.webp",
     description: "A navigation platform for pilgrims with coordinate-based interactive maps and offline capability.",
     technologies: ["React", "TypeScript", "Supabase", "PWA", "AWS EC2"],
     features: [
@@ -95,6 +135,7 @@ export const projects: Project[] = [
   },
   {
     title: "Emotions Controller App",
+    kinds: ["Mobile", "AI"],
     description: "Real-time on-device emotion detection with deep cloud analysis routed to a Python backend.",
     technologies: ["Flutter", "Google ML Kit", "Python", "AWS Elastic Beanstalk"],
     features: [
@@ -106,6 +147,7 @@ export const projects: Project[] = [
   },
   {
     title: "LinkedIn Content Automation",
+    kinds: ["AI"],
     description: "An end-to-end automated pipeline that finds trending topics, generates AI posts with images and publishes them to LinkedIn.",
     technologies: ["n8n", "Groq API", "Pollinations AI", "LinkedIn API", "Google Sheets"],
     features: [

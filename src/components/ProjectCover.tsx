@@ -1,0 +1,27 @@
+import { Radio, ScanFace, Smartphone, Workflow } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import type { Project } from "@/data/projects";
+
+const icons: Record<string, LucideIcon> = {
+  "Clika App": Radio,
+  "Emotions Controller App": ScanFace,
+  "LinkedIn Content Automation": Workflow,
+};
+
+// A real screenshot when the product has a live site, otherwise a branded cover.
+export function ProjectCover({ project, eager }: { project: Project; eager?: boolean }) {
+  if (project.cover) {
+    return (
+      <span className="pcover">
+        <img src={project.cover} alt={`${project.title} website screenshot`} width={960} height={600} loading={eager ? "eager" : "lazy"} decoding="async" />
+      </span>
+    );
+  }
+  const Icon = icons[project.title] ?? Smartphone;
+  return (
+    <span className="pcover pcover--gen" aria-hidden="true">
+      <i className="pcover__grid" />
+      <span className="pcover__ico"><Icon size={34} strokeWidth={1.6} /></span>
+    </span>
+  );
+}
