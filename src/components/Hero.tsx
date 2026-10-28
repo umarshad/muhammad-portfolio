@@ -4,7 +4,6 @@ import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { HeroDevices } from "./HeroDevices";
-import { WhatsAppIcon } from "./WhatsAppIcon";
 
 const roles = [profile.title, "Full-Stack Developer", "SaaS App Builder", "iOS & Android Developer", "Admin Panel Developer"];
 
@@ -38,9 +37,6 @@ export function Hero() {
             <div className="hero__ctas" style={{ ["--d" as string]: "0.6s" }}>
               <a href="#contact" className="btn">Start a project <ArrowRight size={18} /></a>
               <a href="#projects" className="btn btn--ghost">View my work</a>
-              <a className="hero__wa" href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp" title="Message on WhatsApp">
-                <WhatsAppIcon size={22} />
-              </a>
             </div>
             <p className="hero__note" style={{ ["--d" as string]: "0.68s" }}>Send a short brief by WhatsApp or email and get a reply with the right next step.</p>
             <div className="hero__stats" style={{ ["--d" as string]: "0.75s" }}>
