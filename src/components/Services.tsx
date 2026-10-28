@@ -13,6 +13,14 @@ export function Services() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const intent = useRef<ReturnType<typeof setTimeout>>();
+
+  // Hover opens a service after a short stay, so sweeping down the list does not flicker the panel.
+  const hoverOpen = (i: number) => {
+    clearTimeout(intent.current);
+    intent.current = setTimeout(() => setActive(i), 120);
+  };
+  useEffect(() => () => clearTimeout(intent.current), []);
 
   // Moves through the services on its own until the visitor hovers or focuses the list.
   useEffect(() => {
@@ -51,9 +59,9 @@ export function Services() {
         </p>
 
         <div
-          className="svcx reveal"
+          className="svcx"
           data-paused={paused ? "" : undefined}
-          style={{ ["--d" as string]: "0.25s", ["--auto" as string]: `${AUTO_MS}ms` }}
+          style={{ ["--auto" as string]: `${AUTO_MS}ms` }}
           onPointerEnter={(e) => e.pointerType === "mouse" && setPaused(true)}
           onPointerLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
@@ -75,7 +83,12 @@ export function Services() {
                   aria-controls={`svc-panel-${i}`}
                   tabIndex={i === active ? 0 : -1}
                   className="svctab"
-                  onClick={() => setActive(i)}
+                  onClick={() => {
+                    clearTimeout(intent.current);
+                    setActive(i);
+                  }}
+                  onPointerEnter={(e) => e.pointerType === "mouse" && hoverOpen(i)}
+                  onPointerLeave={() => clearTimeout(intent.current)}
                 >
                   <span className="svctab__n">{pad(i + 1)}</span>
                   <span className="svctab__ico"><Icon size={20} aria-hidden="true" /></span>
