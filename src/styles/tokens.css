@@ -1,0 +1,38 @@
+:root {
+  --teal-950: #001a18;
+  --teal-900: #00221f;
+  --teal-850: #002b28;
+  --teal-800: #00302c;
+  --teal-700: #004543;
+  --teal-600: #0b5a55;
+  --teal-300: #7fb3ad;
+  --orange-500: #f67f00;
+  --orange-400: #ff9a2e;
+  --orange-300: #ffbf73;
+  --cream: #fafaf7;
+  --cream-200: #f1efe8;
+  --cream-300: #e4e1d6;
+  --charcoal: #171a18;
+  --gray-600: #5b625f;
+  --gray-500: #7a817e;
+  --line-dark: #fafaf71a;
+  --line-dark-strong: #fafaf72e;
+  --line-light: #171a181f;
+  --text-on-dark: #f4f3ee;
+  --muted-on-dark: #f4f3eea8;
+
+  --font-display: "Bricolage Grotesque Variable", "Inter Variable", system-ui, sans-serif;
+  --font-body: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --container: 1280px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --section-y: clamp(72px, 8.5vw, 124px);
+  --header-h: 84px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
