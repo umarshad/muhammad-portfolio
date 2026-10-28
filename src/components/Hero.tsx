@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { HeroDevices } from "./HeroDevices";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 
 export function Hero() {
   const [ready, setReady] = useState(false);
@@ -18,20 +19,30 @@ export function Hero() {
         <div className="hero__glow" aria-hidden="true" />
         <div className="hero__inner">
           <div>
-            <span className="hero__badge"><i /> Apps · Websites · SaaS</span>
+            <div className="hero__chips">
+              <span className="hero__badge hero__badge--live"><i /> Open to remote work</span>
+              <span className="hero__badge"><i /> Apps · Websites · SaaS</span>
+            </div>
             <h1 className="hero__title lines">
               <span className="line" style={{ ["--i" as string]: 0 }}><span>{profile.name}<span className="dot">.</span></span></span>
               <span className="line" style={{ ["--i" as string]: 1 }}><span className="serif">{profile.title}.</span></span>
             </h1>
-            <p className="hero__lead" style={{ ["--d" as string]: "0.45s" }}>{profile.tagline}</p>
+            <p className="hero__lead" style={{ ["--d" as string]: "0.45s" }}>
+              I create <strong>custom apps, websites and admin panels</strong>, specialised in <strong>SaaS products</strong> with
+              in-app purchases, store deployment and end-to-end delivery: design, development and release.
+            </p>
             <div className="hero__ctas" style={{ ["--d" as string]: "0.6s" }}>
               <a href="#contact" className="btn">Start a project <ArrowRight size={18} /></a>
               <a href="#projects" className="btn btn--ghost">View my work</a>
+              <a className="hero__wa" href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Message on WhatsApp" title="Message on WhatsApp">
+                <WhatsAppIcon size={22} />
+              </a>
             </div>
+            <p className="hero__note" style={{ ["--d" as string]: "0.68s" }}>Send a short brief by WhatsApp or email and get a reply with the right next step.</p>
             <div className="hero__stats" style={{ ["--d" as string]: "0.75s" }}>
               <div><b>{profile.years}+</b><span>Years</span></div>
               <div><b>{projects.length}</b><span>Projects</span></div>
-              <div><b>Remote</b><span>Open to work</span></div>
+              <div><b>3</b><span>iOS · Android · Web</span></div>
             </div>
           </div>
           <HeroDevices />

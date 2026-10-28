@@ -9,15 +9,15 @@ import { SceneHub } from "./devices/SceneHub";
 import { SceneRelease } from "./devices/SceneRelease";
 import { SceneWebsite } from "./devices/SceneWebsite";
 
-type Scene = { key: string; shape: string; label: string; caption: string; Icon: LucideIcon; View: () => JSX.Element; dwell?: number };
+type Scene = { key: string; shape: string; label: string; short: string; caption: string; Icon: LucideIcon; View: () => JSX.Element; dwell?: number };
 
 const scenes: Scene[] = [
-  { key: "app", shape: "app", label: "Mobile app", Icon: Smartphone, View: SceneApp, caption: "Flutter apps for iOS and Android, from first screen to store release." },
-  { key: "web", shape: "web", label: "Website", Icon: Globe, View: SceneWebsite, caption: "Fast, responsive websites and web apps that search engines can find." },
-  { key: "admin", shape: "web", dwell: 12400, label: "Admin panel", Icon: LayoutDashboard, View: BrowserAdmin, caption: "Role-based dashboards to run users, payments, content and analytics." },
-  { key: "saas", shape: "hub", label: "SaaS product", Icon: Layers, View: SceneHub, caption: "Mobile, web and admin on one shared backend, ready for subscriptions." },
-  { key: "iap", shape: "app", label: "In-app purchases", Icon: CreditCard, View: PhonePaywall, caption: "App Store and Google Play subscriptions with Stripe and PayPal payments." },
-  { key: "store", shape: "store", label: "Store release", Icon: Rocket, View: SceneRelease, caption: "Build, sign, upload and publish to App Store and Google Play." },
+  { key: "app", short: "Mobile", shape: "app", label: "Mobile app", Icon: Smartphone, View: SceneApp, caption: "Flutter apps for iOS and Android, from first screen to store release." },
+  { key: "web", short: "Website", shape: "web", label: "Website", Icon: Globe, View: SceneWebsite, caption: "Fast, responsive websites and web apps that search engines can find." },
+  { key: "admin", short: "Admin", shape: "web", dwell: 12400, label: "Admin panel", Icon: LayoutDashboard, View: BrowserAdmin, caption: "Role-based dashboards to run users, payments, content and analytics." },
+  { key: "saas", short: "SaaS", shape: "hub", label: "SaaS product", Icon: Layers, View: SceneHub, caption: "Mobile, web and admin on one shared backend, ready for subscriptions." },
+  { key: "iap", short: "Purchases", shape: "app", label: "In-app purchases", Icon: CreditCard, View: PhonePaywall, caption: "App Store and Google Play subscriptions with Stripe and PayPal payments." },
+  { key: "store", short: "Release", shape: "store", label: "Store release", Icon: Rocket, View: SceneRelease, caption: "Build, sign, upload and publish to App Store and Google Play." },
 ];
 
 // Small satellites on the inner ring; they hide behind the centre device when it grows.
@@ -36,7 +36,6 @@ export function HeroDevices() {
   const [hover, setHover] = useState(false);
   const [manual, setManual] = useState(false);
   const clearPrev = useRef<ReturnType<typeof setTimeout>>();
-  const tabsRef = useRef<HTMLDivElement>(null);
   const tilt = usePointerTilt<HTMLDivElement>(5);
 
   const select = useCallback(
@@ -67,13 +66,6 @@ export function HeroDevices() {
   }, [active, dwell, hover, select]);
 
   useEffect(() => () => clearTimeout(clearPrev.current), []);
-
-  // On narrow screens the tab row scrolls; keep the active tab visible without moving the page.
-  useEffect(() => {
-    const row = tabsRef.current;
-    const tab = row?.children[active] as HTMLElement | undefined;
-    if (row && tab && row.scrollWidth > row.clientWidth) row.scrollTo({ left: tab.offsetLeft - 16, behavior: "smooth" });
-  }, [active]);
 
   const pick = (i: number) => {
     setManual(true);
@@ -135,22 +127,29 @@ export function HeroDevices() {
         </div>
       </div>
 
-      <div ref={tabsRef} className={`htabs${hover ? " is-paused" : ""}`} role="tablist" aria-label="What I can build">
-        {scenes.map(({ key, label, Icon }, i) => (
+      <div className={`hdock${hover ? " is-paused" : ""}`} role="tablist" aria-label="What I can build">
+        {scenes.map(({ key, label, short, Icon }, i) => (
           <button
             key={key}
             type="button"
             role="tab"
             aria-selected={i === active}
-            className="htab"
+            aria-label={label}
+            title={label}
+            className="hdock__tab"
             style={{ ["--dur" as string]: `${dwell}ms` }}
             onClick={() => pick(i)}
           >
-            <Icon size={15} /> {label}
+            <Icon size={20} strokeWidth={1.7} />
+            <span>{short}</span>
           </button>
         ))}
       </div>
-      <p className="hcap" key={current.key} aria-live="polite">{current.caption}</p>
+      <p className="hcap" key={current.key} aria-live="polite">
+        <span className="hcap__n">{String(active + 1).padStart(2, "0")} / {String(scenes.length).padStart(2, "0")}</span>
+        <b>{current.label}</b>
+        <span className="hcap__t">{current.caption}</span>
+      </p>
     </div>
   );
 }
