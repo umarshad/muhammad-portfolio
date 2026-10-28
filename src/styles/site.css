@@ -125,13 +125,13 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 }
 .hero__badge i { width: 6px; height: 6px; border-radius: 50%; background: var(--orange-500); flex: none; }
 .hero__title { margin: 26px 0 0; font-size: clamp(2.4rem, 4.5vw, 4.2rem); font-weight: 650; line-height: 1; letter-spacing: -0.035em; }
-.hero__title .serif { font-size: 1.04em; }
+.hero__title .serif { font-family: var(--font-display); font-style: normal; font-weight: 650; font-size: 0.92em; letter-spacing: -0.03em; }
 .hero__title .dot { color: var(--orange-500); }
 .hero__title .typed { display: inline-block; min-height: 1em; white-space: nowrap; }
 .typed__caret { display: inline-block; width: 0.06em; height: 0.85em; margin-left: 0.08em; vertical-align: -0.08em; background: var(--orange-500); border-radius: 2px; animation: caretBlink 1s steps(1) infinite; }
 .typed__dot.is-typing + .typed__caret { animation: none; }
 @keyframes caretBlink { 50% { opacity: 0; } }
-@media (max-width: 520px) { .hero__title .serif { font-size: 0.86em; } }
+@media (max-width: 520px) { .hero__title .serif { font-size: 0.8em; } }
 @media (prefers-reduced-motion: reduce) { .typed__caret { display: none; } }
 .hero__lead { max-width: 540px; margin-top: 26px; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.7; color: color-mix(in srgb, var(--text-on-dark) 74%, transparent); }
 .hero__lead strong { color: var(--text-on-dark); font-weight: 600; }
