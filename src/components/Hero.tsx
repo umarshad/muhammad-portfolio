@@ -18,12 +18,12 @@ export function Hero() {
         <div className="hero__glow" aria-hidden="true" />
         <div className="hero__inner">
           <div>
-            <span className="hero__badge"><i /> Mobile &amp; web developer</span>
+            <span className="hero__badge"><i /> {profile.headline}</span>
             <h1 className="hero__title lines">
               <span className="line" style={{ ["--i" as string]: 0 }}><span>{profile.name}<span className="dot">.</span></span></span>
               <span className="line" style={{ ["--i" as string]: 1 }}><span className="serif">{profile.title}.</span></span>
             </h1>
-            <p className="hero__lead" style={{ ["--d" as string]: "0.45s" }}>{profile.summary}</p>
+            <p className="hero__lead" style={{ ["--d" as string]: "0.45s" }}>{profile.tagline}</p>
             <div className="hero__ctas" style={{ ["--d" as string]: "0.6s" }}>
               <a href="#projects" className="btn">View my work <ArrowRight size={18} /></a>
               <a href="#contact" className="btn btn--ghost">Get in touch</a>

@@ -4,42 +4,114 @@ export type Project = {
   technologies: string[];
   features: string[];
   url: string;
+  playUrl?: string;
   status: string;
 };
 
-const BASE_PROJECTS: Project[] = [
-  { title: "My Invoice", description: "Comprehensive invoice management application with PDF generation, Stripe payments, and AI-powered features for seamless financial tracking.", technologies: ["Flutter", "Firebase", "Stripe", "ChatGPT API", "Push Notifications", "Cloud Functions"], features: ["Advanced Firebase integration and real-time database management", "Stripe payment processing with secure transaction handling", "PDF generation and email automation using SMTP", "AI-powered features with ChatGPT API integration", "Push notifications for payment reminders and invoice updates", "Cloud Functions for automated backend processing and data management", "HTML/CSS email templates for professional invoice delivery", "Invoice preview functionality with responsive design"], url: "https://play.google.com/store/apps/details?id=com.my_invoice.app", status: "Live" },
-  { title: "Clika", description: "Sophisticated infrastructure management platform for tower companies and employees, featuring real-time communication and event coordination.", technologies: ["Flutter", "AWS", "Stream Chat", "REST API", "State Management"], features: ["Comprehensive database for tower companies, towers, and employee records", "Architected interlinking system connecting employees to companies and towers", "Super Admin dashboard for creating and managing tower-specific events", "Integrated real-time chat for seamless user communication", "Exclusive user discount system within the tower ecosystem", "Cloud-synced data management with secure access controls"], url: "#", status: "Featured Project" },
-  { title: "Al Tayyab Recovery", description: "Professional service platform for vehicle recovery with real-time location and request handling.", technologies: ["JavaScript", "HTML", "CSS", "PHP", "Vercel"], features: ["Modern and professional service landing page", "Fully responsive layout for mobile and desktop", "Optimized performance for fast loading times", "SEO-friendly structure for service visibility"], url: "https://altayyabrecovery.com", status: "Live" },
-  { title: "My Madina", description: "Navigation platform for pilgrims to locate prayer areas, wudu facilities, and amenities with bilingual support and interactive mapping.", technologies: ["React", "TypeScript", "PostgreSQL", "Supabase", "Express.js", "Tailwind CSS"], features: ["Bilingual support (English/Arabic) with context-based language switching", "Interactive map with coordinate-based location system", "Admin panel for comprehensive content management", "Responsive design with mobile-first approach", "Dark/Light theme support with seamless switching", "Progressive Web App capabilities for offline access"], url: "https://my-madina-project-o7gw.onrender.com/", status: "Live" },
-  { title: "Emotion Detection AI", description: "Real-time AI application built on Flutter with a Python backend deployed on AWS, analyzing facial expressions with high accuracy.", technologies: ["Flutter", "Python", "AWS", "Deep Learning", "Computer Vision"], features: ["Real-time camera feed processing for instant emotion detection", "Facial analysis using deep learning models trained for high accuracy", "AWS-deployed backend optimized for low-latency inference", "Interprets emotions from live video streams with precise results"], url: "#", status: "AI Project" },
-  { title: "My Invoice Landing Page & Admin Panel", description: "Comprehensive administration dashboard and landing page for managing all aspects of the My Invoice ecosystem.", technologies: ["React", "TypeScript", "Firebase", "State Management", "Data Analytics"], features: ["Modern landing page showcasing app features and benefits", "Centralized management for all app data and users", "Real-time reporting and financial analytics", "User permission management and security controls", "Batch processing for invoices and email automation", "Responsive design for desktop and tablet usage"], url: "https://myinvoice.us", status: "Web Platform" },
-  { title: "Everpure Organics", description: "Full-featured ecommerce platform for organic health products with advanced cart management and WhatsApp business integration.", technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Digital Ocean", "Tailwind CSS"], features: ["Advanced product catalog with filtering and dynamic management", "Smart shopping cart with multiple pricing tiers and variants", "WhatsApp Business integration for customer support", "User authentication and comprehensive admin dashboard", "Dynamic content management system with real-time updates", "Performance optimized with SEO and responsive design"], url: "https://everpureorganics.com", status: "Live" },
-  { title: "Restaurant App", description: "Comprehensive restaurant management application with real-time order tracking and intuitive order flow.", technologies: ["Flutter", "Firebase", "Payment Integration", "Real-time Database"], features: ["Real-time order tracking and management system", "Integrated payment processing for secure transactions", "Intuitive UI/UX for both staff and customers", "Digital menu management with category filtering", "Push notifications for order status updates"], url: "#", status: "Completed" },
-  { title: "Whisky App", description: "Specialized inventory and collection management system for whisky enthusiasts and collectors.", technologies: ["Flutter", "Database Management", "Inventory System", "UI/UX Design"], features: ["Comprehensive inventory tracking and management", "User-friendly interface for collection cataloging", "Detailed search and filtering by brand or region", "Integrated database management for offline access"], url: "#", status: "Completed" },
-  { title: "Chat App", description: "Real-time messaging application with end-to-end encryption and multimedia support.", technologies: ["Flutter", "Real-time Messaging", "Firebase", "Push Notifications"], features: ["Secure real-time messaging with end-to-end encryption", "Group chat and private messaging capabilities", "Multimedia file sharing (images, documents, audio)", "Real-time status updates and delivery receipts"], url: "#", status: "Completed" },
-  { title: "Realtors Lead", description: "Real estate lead generation and CRM platform delivering double-verified, exclusive leads to realtors and brokerages. Clients can subscribe and pay via PayPal; lead and contact emails are received via Namecheap SMTP.", technologies: ["Web", "SMTP", "PayPal", "Namecheap", "Lead Generation", "CRM"], features: ["Double-verified real estate leads and appointment setting for top realtors", "Namecheap SMTP integration for reliable contact and lead email delivery", "PayPal payment integration for client subscriptions and plan purchases", "Landing pages, marketing funnel, and subscription plans for agents and teams", "Exclusive territory and lead lifecycle management"], url: "https://realtorslead.com", status: "Live" },
-];
-const COMPANY_PROJECTS: Project[] = [
-  { title: "My Invoice App", description: "Built a complete invoice management system", technologies: ["Flutter", "PDF Generation", "Email Integration", "Database Management"], features: ["Built a complete invoice management system", "Implemented automated billing and payment tracking", "Created PDF generation and email functionality", "Developed client management and reporting features"], url: "#", status: "Currently Working" },
-  { title: "Mind Script", description: "Developed a mental health and mindfulness application", technologies: ["Flutter", "Audio Integration", "Progress Tracking", "Mental Health"], features: ["Developed a mental health and mindfulness application", "Implemented meditation and relaxation features", "Created user progress tracking and analytics", "Integrated audio and visual meditation guides"], url: "#", status: "Completed" },
-  { title: "Fit Max App", description: "Built a comprehensive fitness tracking application", technologies: ["Flutter", "Fitness Tracking", "Nutrition Management", "Analytics"], features: ["Built a comprehensive fitness tracking application", "Implemented workout planning and tracking features", "Created nutrition and diet management tools", "Integrated fitness analytics and progress monitoring"], url: "#", status: "Completed" },
-  { title: "Education Learning App", description: "Developed an educational platform for online learning", technologies: ["Flutter", "Video Streaming", "Course Management", "Interactive Learning"], features: ["Developed an educational platform for online learning", "Implemented course management and progress tracking", "Created interactive learning modules and quizzes", "Integrated video streaming and content delivery"], url: "#", status: "Completed" },
-  { title: "Weather App", description: "Built a comprehensive weather forecasting application", technologies: ["Flutter", "Weather API", "Location Services", "Real-time Data"], features: ["Built a comprehensive weather forecasting application", "Implemented real-time weather data integration", "Created location-based weather services", "Integrated weather alerts and notifications"], url: "#", status: "Completed" },
-];
-const FREELANCE_PROJECTS: Project[] = [
-  { title: "LAT Preparation App", description: "Final year project focused on LAT exam preparation with comprehensive study materials and practice tests.", technologies: ["Flutter", "Firebase", "Education", "Study Management"], features: ["Final year project focused on LAT exam preparation with comprehensive study materials and practice tests."], url: "#", status: "Freelance" },
-  { title: "Olizon Mobile App", description: "Complete app UI design and Firebase authentication system integration for modern mobile experience.", technologies: ["Flutter", "Firebase Auth", "UI/UX Design", "Authentication"], features: ["Complete app UI design and Firebase authentication system integration for modern mobile experience."], url: "#", status: "Freelance" },
-  { title: "E-Shop App", description: "Complete e-commerce app UI with Firebase authentication system for online shopping experience.", technologies: ["Flutter", "Firebase Auth", "E-commerce", "UI Design"], features: ["Complete e-commerce app UI with Firebase authentication system for online shopping experience."], url: "#", status: "Freelance" },
-  { title: "Gearup Pro", description: "Final year project app with Firebase authentication implementation for enhanced user security.", technologies: ["Flutter", "Firebase Auth", "Project Management", "Security"], features: ["Final year project app with Firebase authentication implementation for enhanced user security."], url: "#", status: "Freelance" },
-  { title: "Advance Case Management System", description: "Complete app UI with Firebase Authentication and Cloud Firestore for case management and tracking.", technologies: ["Flutter", "Firebase Auth", "Cloud Firestore", "Case Management"], features: ["Complete app UI with Firebase Authentication and Cloud Firestore for case management and tracking."], url: "#", status: "Freelance" },
-  { title: "MIpueblo App", description: "E-commerce app with complete UI design for online marketplace and shopping experience.", technologies: ["Flutter", "E-commerce", "UI/UX Design", "Marketplace"], features: ["E-commerce app with complete UI design for online marketplace and shopping experience."], url: "#", status: "Freelance" },
-];
-
-const baseTitles = new Set(BASE_PROJECTS.map((p) => p.title));
-
 export const projects: Project[] = [
-  ...BASE_PROJECTS,
-  ...COMPANY_PROJECTS.filter((p) => !baseTitles.has(p.title)),
-  ...FREELANCE_PROJECTS.filter((p) => !baseTitles.has(p.title)),
+  {
+    title: "My Invoice",
+    description: "A multi-platform business product with a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend.",
+    technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Google Maps", "React", "TypeScript"],
+    features: [
+      "End-to-end business workflow: create estimates, get client approval, and auto-convert them into tracked projects with progress management",
+      "Separate admin dashboard giving operators control over users, transactions, invoices and analytics, with integrated support chat",
+      "Subscriptions through App Store and Google Play in-app purchases, and client payments through Stripe",
+      "FCM push notifications for payment reminders and an in-app assistant powered by the OpenAI API",
+    ],
+    url: "https://myinvoice.us",
+    playUrl: "https://play.google.com/store/apps/details?id=com.my_invoice.app",
+    status: "In Development",
+  },
+  {
+    title: "Hudson Tasks",
+    description: "A workforce management platform where employers manage field employees, work hours, tasks and finances.",
+    technologies: ["React", "Supabase", "SMTP"],
+    features: [
+      "Role-based access and work-hour tracking for employers and field employees",
+      "Task assignment for on-field employees, plus finance management and client follow-up tracking",
+      "Automated email notifications sent through SMTP for tasks, updates and follow-ups",
+    ],
+    url: "https://hudsontasks.com",
+    status: "Live",
+  },
+  {
+    title: "Junoon Herbals",
+    description: "A complete e-commerce platform where products, orders and site content are managed through a custom admin panel. Freelance project.",
+    technologies: ["Next.js", "Supabase"],
+    features: [
+      "Custom admin panel for products, orders and site content, built with AI-assisted development to accelerate delivery",
+      "Meta Pixel configurable from the admin panel, so the client can connect and update ad tracking without code changes",
+      "Live visitor analytics dashboard showing active users, traffic source (Meta ads, search or direct), visitor city and pages visited",
+    ],
+    url: "https://junoonherbals.com",
+    status: "Live",
+  },
+  {
+    title: "Clika App",
+    description: "A tower management system with role-based access for super admins, companies and field employees.",
+    technologies: ["Flutter", "Firebase", "GetStream Chat API"],
+    features: [
+      "Role-based access for super admins, companies and field employees",
+      "Real-time chat, event management and discount management",
+    ],
+    url: "#",
+    status: "Completed",
+  },
+  {
+    title: "Everpure Organics",
+    description: "An e-commerce web app for organic products with a full admin dashboard.",
+    technologies: ["React", "TypeScript", "Supabase", "REST APIs"],
+    features: [
+      "Dynamic product filtering and a multi-tier pricing cart",
+      "User authentication and a full admin dashboard",
+    ],
+    url: "https://everpureorganics.com",
+    status: "Live",
+  },
+  {
+    title: "Realtors Lead",
+    description: "A lead generation platform for US real estate agents with payment processing and automated email delivery.",
+    technologies: ["React", "TypeScript", "PayPal API"],
+    features: [
+      "PayPal payment processing for agent subscriptions",
+      "Automated email delivery of leads and contact requests",
+    ],
+    url: "https://realtorslead.com",
+    status: "Live",
+  },
+  {
+    title: "My Madina",
+    description: "A navigation platform for pilgrims with coordinate-based interactive maps and offline capability.",
+    technologies: ["React", "TypeScript", "Supabase", "PWA", "AWS EC2"],
+    features: [
+      "Coordinate-based interactive maps for prayer areas and amenities",
+      "Bilingual English and Arabic support",
+      "Offline Progressive Web App capability",
+    ],
+    url: "https://mymadina.site",
+    status: "Live",
+  },
+  {
+    title: "Emotions Controller App",
+    description: "Real-time on-device emotion detection with deep cloud analysis routed to a Python backend.",
+    technologies: ["Flutter", "Google ML Kit", "Python", "AWS Elastic Beanstalk"],
+    features: [
+      "Real-time on-device emotion detection using Google ML Kit",
+      "Deep cloud analysis routed to a Python backend on AWS Elastic Beanstalk",
+    ],
+    url: "#",
+    status: "AI Project",
+  },
+  {
+    title: "LinkedIn Content Automation",
+    description: "An end-to-end automated pipeline that finds trending topics, generates AI posts with images and publishes them to LinkedIn.",
+    technologies: ["n8n", "Groq API", "Pollinations AI", "LinkedIn API", "Google Sheets"],
+    features: [
+      "Finds trending topics automatically",
+      "Generates AI posts with images and publishes directly to LinkedIn",
+    ],
+    url: "#",
+    status: "Automation",
+  },
 ];

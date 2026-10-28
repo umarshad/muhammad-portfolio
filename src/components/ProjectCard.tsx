@@ -2,7 +2,7 @@ import { useId, useState } from "react";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/projects";
 
-const LIVE = new Set(["Live", "Currently Working"]);
+const LIVE = new Set(["Live"]);
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [open, setOpen] = useState(false);
@@ -22,19 +22,20 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       <p>{project.description}</p>
 
       <div className="pcard__actions">
-        {project.title === "My Invoice" ? (
-          <a className="pcard__badge" href={project.url} target="_blank" rel="noopener noreferrer">
+        {project.playUrl && (
+          <a className="pcard__badge" href={project.playUrl} target="_blank" rel="noopener noreferrer">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-              alt="Get My Invoice on Google Play"
+              alt={`Get ${project.title} on Google Play`}
               loading="lazy"
             />
           </a>
-        ) : hasLink ? (
+        )}
+        {hasLink && (
           <a className="btn btn--dark btn--sm" href={project.url} target="_blank" rel="noopener noreferrer">
             View project <ExternalLink size={15} />
           </a>
-        ) : null}
+        )}
         <button
           type="button"
           className="pcard__toggle"
