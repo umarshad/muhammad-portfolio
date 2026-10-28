@@ -1,5 +1,5 @@
 import {
-  siAppstore, siCloudflare, siDart, siDigitalocean, siFirebase, siFlutter, siGit, siGooglegemini, siGooglemaps,
+  siAppstore, siCloudflare, siDart, siDigitalocean, siFirebase, siFlutter, siGit, siGooglegemini, siGooglemaps, siGooglesheets,
   siGoogleplay, siN8n, siNeon, siNextdotjs, siNodedotjs, siPaypal, siPostgresql, siReact, siStripe,
   siSupabase, siTailwindcss, siTypescript, siVercel,
 } from "simple-icons";
@@ -66,9 +66,23 @@ export const techs: Tech[] = [
   { name: "Groq", cat: "ai", note: "Fast LLM inference", Icon: Cpu, color: "#f55036" },
   { name: "Google ML Kit", cat: "ai", note: "On-device vision", Icon: ScanFace, color: "#4285f4" },
   { name: "n8n", cat: "ai", note: "Workflow automation", brand: siN8n },
+  { name: "Google Sheets", cat: "ai", note: "Data and reporting", brand: siGooglesheets },
 
   { name: "AWS", cat: "cloud", note: "EC2, Elastic Beanstalk", Icon: Cloud, color: "#ff9900" },
   { name: "Vercel", cat: "cloud", note: "Web hosting", brand: siVercel },
   { name: "DigitalOcean", cat: "cloud", note: "Cloud servers", brand: siDigitalocean },
   { name: "Git", cat: "cloud", note: "Code review and CI/CD", brand: siGit },
 ];
+
+// Best tech match for a free-text skill ("Firebase (Auth, ...)" -> Firebase): earliest mention wins,
+// then the longest name ("Firebase App Check" over "Firebase").
+export function findTech(text: string): Tech | undefined {
+  const t = text.toLowerCase();
+  let best: { tech: Tech; at: number } | undefined;
+  for (const tech of techs) {
+    const at = t.indexOf(tech.name.toLowerCase());
+    if (at < 0) continue;
+    if (!best || at < best.at || (at === best.at && tech.name.length > best.tech.name.length)) best = { tech, at };
+  }
+  return best?.tech;
+}

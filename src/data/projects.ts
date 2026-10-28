@@ -72,7 +72,7 @@ export const projects: Project[] = [
     kinds: ["Web", "E-commerce"],
     cover: "/projects/junoonherbals.webp",
     description: "A complete e-commerce platform where products, orders and site content are managed through a custom admin panel. Freelance project.",
-    technologies: ["Next.js", "Supabase"],
+    technologies: ["Next.js", "Supabase", "Meta Pixel"],
     features: [
       "Custom admin panel for products, orders and site content, built with AI-assisted development to accelerate delivery",
       "Meta Pixel configurable from the admin panel, so the client can connect and update ad tracking without code changes",

@@ -1,7 +1,27 @@
 import { useEffect, useRef, useState } from "react";
+import { skillMeta } from "@/lib/skillMeta";
 import { certifications, education, languages, skillGroups } from "@/data/skills";
+import { SkillCard } from "./SkillCard";
+import { SkillIcon } from "./SkillIcon";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+
+function SkillChip({ text }: { text: string }) {
+  const m = skillMeta(text);
+  return (
+    <span style={{ ["--c" as string]: m.color }}>
+      <SkillIcon meta={m} />
+      {text}
+    </span>
+  );
+}
+
+// Projects that list at least one of the group's tools.
+function seenIn(items: string[]) {
+  const names = new Set<string>();
+  items.forEach((t) => skillMeta(t).usedIn.forEach((n) => names.add(n)));
+  return [...names].slice(0, 6);
+}
 
 export function Skills() {
   const [active, setActive] = useState(0);
@@ -23,6 +43,7 @@ export function Skills() {
   }, []);
 
   const group = skillGroups[active];
+  const seen = seenIn(group.items);
 
   return (
     <section id="skills" className="skills" aria-labelledby="skills-title">
@@ -49,7 +70,7 @@ export function Skills() {
                 <h3>{g.title}</h3>
                 <span className="skillrow__count">{g.items.length}</span>
                 <div className="skillrow__chips tags">
-                  {g.items.map((t) => <span key={t}>{t}</span>)}
+                  {g.items.map((t) => <SkillChip key={t} text={t} />)}
                 </div>
               </li>
             ))}
@@ -60,13 +81,26 @@ export function Skills() {
             <span className="skillstage__ghost" key={`g${active}`}>{pad(active + 1)}</span>
             <p className="skillstage__eyebrow">{pad(active + 1)} / {pad(skillGroups.length)}</p>
             <h3 className="skillstage__title" key={`t${active}`}>{group.title}</h3>
-            <div className="skillstage__chips" key={`c${active}`}>
+            <p className="skillstage__lead" key={`l${active}`}>{group.summary}</p>
+            <div className="skgrid" key={`c${active}`}>
               {group.items.map((t, i) => (
-                <span key={t} style={{ ["--i" as string]: i }}>{t}</span>
+                <SkillCard key={t} text={t} index={i} />
               ))}
             </div>
+            {seen.length === 0 && "proof" in group && (
+              <div className="skseen" key={`p${active}`}>
+                <small>In practice</small>
+                <span className="skseen__text">{group.proof}</span>
+              </div>
+            )}
+            {seen.length > 0 && (
+              <div className="skseen" key={`s${active}`}>
+                <small>Seen in</small>
+                {seen.map((n) => <a key={n} href="#projects" tabIndex={-1}>{n}</a>)}
+              </div>
+            )}
             <div className="skillstage__rail">
-              <i style={{ transform: `scaleX(${(active + 1) / skillGroups.length})` }} />
+              {skillGroups.map((g, i) => <i key={g.title} className={i <= active ? "is-on" : ""} />)}
             </div>
           </aside>
         </div>
