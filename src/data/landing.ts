@@ -45,7 +45,7 @@ export const landingPages: LandingPage[] = [
       { q: "Do you work as a freelance mobile app developer?", a: "Yes. I take on remote freelance projects as a Flutter and mobile app developer for iOS and Android, from a first prototype to the App Store and Google Play release, alongside my role at DM Worx LLC." },
       { q: "Why choose Flutter instead of two native apps?", a: "Flutter lets one codebase serve iOS and Android, which shortens delivery and keeps both apps in step. It suits most business products, and native modules can be added where a platform feature needs them." },
       { q: "Which backends do you use with Flutter?", a: "Firebase (Auth, Firestore, Cloud Functions, FCM, Crashlytics), Supabase, PostgreSQL and REST APIs, chosen to fit the product and the team that will run it." },
-      { q: "Can you also publish the app to the stores?", a: "Yes. I have released multiple Flutter apps to the App Store and Google Play for clients. See the App Store and Google Play deployment page for what that covers." },
+      { q: "Can you also publish the app to the stores?", a: "Yes. I handle the build, signing, store listing and submission, and Clika is live on Google Play. See the App Store and Google Play deployment page for what that covers." },
       { q: "Do you build the admin side too?", a: "Yes. Products usually need an admin dashboard for users, payments and content, and I build that on the same backend as the app." },
     ],
     related: ["saas-app-development", "app-store-and-google-play-deployment", "in-app-purchases-and-payments"],
