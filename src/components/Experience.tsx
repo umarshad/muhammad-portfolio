@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { experience } from "@/data/experience";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { ExperienceCard } from "./ExperienceCard";
-import { ExperienceGantt } from "./ExperienceGantt";
+import { ExperiencePath } from "./ExperiencePath";
 
 export function Experience() {
   const [focus, setFocus] = useState(0);
@@ -33,10 +33,10 @@ export function Experience() {
           Where I&apos;ve <span className="serif">built</span>
         </h2>
         <p className="exp__sub reveal" style={{ ["--d" as string]: "0.2s" }}>
-          From a Flutter internship to shipping complete products, with two roles running side by side in late 2025.
+          From a Flutter internship to shipping complete products.
         </p>
 
-        <ExperienceGantt roles={experience} focus={focus} onPick={jump} />
+        <ExperiencePath roles={experience} focus={focus} onPick={jump} />
 
         <ol className="timeline" ref={timeline}>
           {experience.map((r, i) => (
