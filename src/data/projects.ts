@@ -89,11 +89,13 @@ export const projects: Project[] = [
   {
     title: "Clika App",
     kinds: ["Mobile"],
-    description: "A tower management system with role-based access for super admins, companies and field employees.",
-    technologies: ["Flutter", "Firebase", "GetStream Chat API"],
+    description: "A community app for the people and businesses inside a business tower, with role-based access for members, companies and admins, a marketplace, events, discounts and real-time chat.",
+    technologies: ["Flutter", "AWS Cognito", "GetStream Chat API", "REST APIs", "Riverpod"],
     features: [
-      "Role-based access for super admins, companies and field employees",
-      "Real-time chat, event management and discount management",
+      "Role-based access for members, companies and tower admins, with sign-in through AWS Cognito",
+      "Marketplace posts for job offers, shared travel, collaborations, second-hand equipment and real estate",
+      "Real-time chat, tower discounts, today's sale and event management",
+      "Admin tools to approve users, manage companies, events and benefits, and read usage reports",
     ],
     url: "#",
     playUrl: "https://play.google.com/store/apps/details?id=com.clikahub",
@@ -171,13 +173,15 @@ export const projects: Project[] = [
   {
     title: "Emotions Controller App",
     kinds: ["Mobile", "AI"],
-    description: "Real-time on-device emotion detection with deep cloud analysis routed to a Python backend.",
-    technologies: ["Flutter", "Google ML Kit", "Python", "AWS Elastic Beanstalk"],
+    description: "A Flutter wellbeing app that reads your mood from your face and your words: on-device face detection, a Python emotion API and a Gemini chat assistant.",
+    technologies: ["Flutter", "Google ML Kit", "Python", "Gemini API", "GetX"],
     features: [
-      "Real-time on-device emotion detection using Google ML Kit",
-      "Deep cloud analysis routed to a Python backend on AWS Elastic Beanstalk",
+      "Live camera check-in: Google ML Kit finds the face on the device, and a Python API classifies the expression into seven emotions",
+      "Chat assistant that detects the emotion in what you write, replies supportively and suggests a journaling prompt",
+      "Quotes, videos, music and exercises matched to each mood, plus notes, a journal and trusted contacts to call",
+      "Mood history with filters, statistics and streaks",
     ],
-    url: "#",
+    url: "https://github.com/umarshad/emotion-controller-backend",
     status: "AI Project",
     shots: [
       { src: "/projects/emotions-1.webp", label: "Splash screen" },
