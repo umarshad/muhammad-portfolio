@@ -121,6 +121,20 @@ export const projects: Project[] = [
     status: "Live",
   },
   {
+    title: "Al Tayyab Recovery",
+    kinds: ["Web"],
+    description: "Professional service platform for vehicle recovery with real-time location and request handling.",
+    technologies: ["JavaScript", "HTML", "CSS", "PHP", "Vercel"],
+    features: [
+      "Modern and professional service landing page",
+      "Fully responsive layout for mobile and desktop",
+      "Optimized performance for fast loading times",
+      "SEO-friendly structure for service visibility",
+    ],
+    url: "#",
+    status: "Completed",
+  },
+  {
     title: "Realtors Lead",
     kinds: ["Web"],
     cover: "/projects/realtorslead.webp",

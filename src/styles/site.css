@@ -849,6 +849,7 @@ body:has(dialog[open]) { overflow: hidden; }
 .contact__lead { margin-top: 20px; max-width: 520px; line-height: 1.65; color: var(--muted-on-dark); }
 .contact__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
 .contact__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: clamp(28px, 4vw, 44px); }
+.contact__cards .ccard:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .ccard { display: block; padding: 22px; border: 1px solid var(--line-dark); border-radius: var(--radius-md); background: #fafaf708; transition: transform 0.35s var(--ease-out), border-color 0.35s, background-color 0.35s; }
 .ccard:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--orange-500) 55%, transparent); background: #fafaf70f; }
 .ccard span { display: block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted-on-dark); }

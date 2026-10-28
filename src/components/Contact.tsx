@@ -8,6 +8,7 @@ export function Contact() {
     { label: "Phone / WhatsApp", value: profile.phone, href: profile.whatsapp },
     { label: "LinkedIn", value: "muhammad-umar", href: profile.linkedin },
     { label: "GitHub", value: "umarshad", href: profile.github },
+    { label: "Resume (PDF)", value: "Download my resume", href: profile.resume },
   ];
   return (
     <section id="contact" className="contact" aria-labelledby="contact-title">

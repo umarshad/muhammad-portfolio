@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -37,6 +37,7 @@ export function Hero() {
             <div className="hero__ctas" style={{ ["--d" as string]: "0.6s" }}>
               <a href="#contact" className="btn">Start a project <ArrowRight size={18} /></a>
               <a href="#projects" className="btn btn--ghost">View my work</a>
+              <a href={profile.resume} className="btn btn--ghost" download>Resume <Download size={16} aria-hidden="true" /></a>
             </div>
             <p className="hero__note" style={{ ["--d" as string]: "0.68s" }}>Send a short brief by WhatsApp or email and get a reply with the right next step.</p>
             <div className="hero__stats" style={{ ["--d" as string]: "0.75s" }}>

@@ -14,6 +14,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/muhammad-umar-802235286",
   github: "https://github.com/umarshad",
   site: "https://m-umar.vercel.app",
+  resume: "/Muhammad_Umar_Resume.pdf",
 };
 
 export const navLinks = [

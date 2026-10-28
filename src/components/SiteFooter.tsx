@@ -61,6 +61,7 @@ export function SiteFooter() {
             <li><a href={profile.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp {profile.phone}</a></li>
             <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href={profile.resume} download>Resume (PDF)</a></li>
           </ul>
         </div>
       </div>

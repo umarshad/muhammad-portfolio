@@ -1,9 +1,10 @@
-import { Radio, ScanFace, Smartphone, Workflow } from "lucide-react";
+import { Radio, ScanFace, Smartphone, Truck, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 const icons: Record<string, LucideIcon> = {
   "Clika App": Radio,
+  "Al Tayyab Recovery": Truck,
   "Emotions Controller App": ScanFace,
   "LinkedIn Content Automation": Workflow,
 };

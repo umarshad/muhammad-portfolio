@@ -72,6 +72,7 @@ ${landingPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.descr
 ## Links
 - LinkedIn: ${profile.linkedin}
 - GitHub: ${profile.github}
+- Resume (PDF): ${abs(profile.resume)}
 
 ## Optional
 - [Full profile for language models](${abs("/llms-full.txt")})
