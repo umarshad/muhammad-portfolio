@@ -197,4 +197,9 @@ export const caseStudy = {
     "My Invoice is a business product I am building at DM Worx LLC. It combines a Flutter mobile app, a React web portal and a separate admin dashboard on one shared Firebase backend, so people can create estimates, get client approval and turn them into tracked projects with progress and payments.",
 };
 
-export const landingBySlug = (slug: string) => landingPages.find((p) => p.slug === slug);
+import { regionPages } from "./regions";
+
+export { regionPages };
+// Every page that uses the service-page template: the five services plus the UK, USA and Europe pages.
+export const allServicePages: LandingPage[] = [...landingPages, ...regionPages];
+export const landingBySlug = (slug: string) => allServicePages.find((p) => p.slug === slug);

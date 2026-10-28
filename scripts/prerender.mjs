@@ -29,6 +29,7 @@ for (const p of ssr.routePaths) {
   html = swap(html, /<title>.*?<\/title>/s, `<title>${esc(meta.title)}</title>`, "title");
   html = swap(html, /<meta name="description" content="[^"]*" \/>/, `<meta name="description" content="${esc(meta.description)}" />`, "description");
   html = swap(html, /<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${meta.canonical}" />`, "canonical");
+  html = html.replace(/(<link rel="alternate" hreflang="[^"]*" href=")[^"]*(" \/>)/g, `$1${meta.canonical}$2`);
   html = swap(html, /<meta property="og:title" content="[^"]*" \/>/, `<meta property="og:title" content="${esc(meta.title)}" />`, "og:title");
   html = swap(html, /<meta property="og:description" content="[^"]*" \/>/, `<meta property="og:description" content="${esc(meta.description)}" />`, "og:description");
   html = swap(html, /<meta property="og:url" content="[^"]*" \/>/, `<meta property="og:url" content="${meta.canonical}" />`, "og:url");

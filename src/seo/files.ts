@@ -1,6 +1,6 @@
 import { experience } from "@/data/experience";
 import { faq } from "@/data/faq";
-import { caseStudy, landingPages } from "@/data/landing";
+import { allServicePages, caseStudy, landingPages, regionPages } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
@@ -26,12 +26,15 @@ export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
     <loc>${m.canonical}</loc>
     <lastmod>${date}</lastmod>
     <changefreq>${m.kind === "home" ? "monthly" : "yearly"}</changefreq>
-    <priority>${priority(m.kind)}</priority>${images}
+    <priority>${priority(m.kind)}</priority>
+    <xhtml:link rel="alternate" hreflang="en-GB" href="${m.canonical}"/>
+    <xhtml:link rel="alternate" hreflang="en-US" href="${m.canonical}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${m.canonical}"/>${images}
   </url>`;
     })
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries}
 </urlset>
 `;
@@ -57,6 +60,10 @@ Last updated: ${new Date().toISOString().slice(0, 10)}
 
 ## Services
 ${landingPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.description}`).join("\n")}
+
+## Clients in the UK, Europe and the USA
+${regionPages.map((p) => `- [${p.serviceName}](${abs(`/${p.slug}`)}): ${p.description}`).join("\n")}
+- Working pattern: remote from Lahore (UTC+5), English-language projects, calls booked in the overlap of the client's morning and the developer's afternoon or evening.
 
 ## Work
 - [My Invoice case study](${abs(`/${caseStudy.slug}`)}): ${caseStudy.description}
@@ -98,7 +105,7 @@ Website: ${home}
 ${services.map((x) => `- ${x.title}: ${x.text}`).join("\n")}
 
 ## Service pages
-${landingPages
+${allServicePages
   .map(
     (p) =>
       `### ${p.serviceName} (${abs(`/${p.slug}`)})\n${p.lead}\n${p.includes.map((i) => `- ${i.title}: ${i.text}`).join("\n")}\n${p.faq.map((f) => `Q: ${f.q}\nA: ${f.a}`).join("\n")}`,

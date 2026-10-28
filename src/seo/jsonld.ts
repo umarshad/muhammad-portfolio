@@ -1,4 +1,4 @@
-import { caseStudy, landingBySlug, landingPages } from "@/data/landing";
+import { caseStudy, landingBySlug, landingPages, regionPages } from "@/data/landing";
 import { education, skillGroups } from "@/data/skills";
 import { faq } from "@/data/faq";
 import { profile } from "@/data/profile";
@@ -9,6 +9,27 @@ const site = profile.site;
 const home = `${site}/`;
 const ref = (frag: string) => ({ "@id": `${home}#${frag}` });
 const abs = (path: string) => `${site}${path}`;
+
+const country = (name: string) => ({ "@type": "Country", name });
+// Markets the work is aimed at; the developer is based in Pakistan and works remotely.
+const markets = [
+  country("United Kingdom"), country("United States"), country("Ireland"), country("Germany"), country("France"),
+  country("Netherlands"), country("Spain"), country("Italy"), country("Sweden"),
+  { "@type": "AdministrativeArea", name: "Europe" },
+];
+const regionAreas: Record<string, object[]> = {
+  uk: [country("United Kingdom")],
+  usa: [country("United States")],
+  eu: [country("Germany"), country("France"), country("Netherlands"), country("Spain"), country("Italy"), country("Sweden"), country("Ireland"), { "@type": "AdministrativeArea", name: "Europe" }],
+};
+const contactPoint = () => ({
+  "@type": "ContactPoint",
+  contactType: "sales",
+  email: profile.email,
+  telephone: profile.phone,
+  availableLanguage: ["English", "Urdu"],
+  areaServed: ["GB", "US", "DE", "FR", "NL", "IE", "ES", "IT", "SE"],
+});
 
 const person = () => ({
   "@type": "Person",
@@ -24,6 +45,7 @@ const person = () => ({
   sameAs: [profile.linkedin, profile.github],
   knowsAbout: skillGroups.flatMap((g) => g.items.filter((i) => !i.includes("("))),
   knowsLanguage: ["English", "Urdu"],
+  contactPoint: contactPoint(),
   alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
   worksFor: { "@type": "Organization", name: "DM Worx LLC" },
 });
@@ -46,7 +68,9 @@ const professionalService = () => ({
   image: abs("/og-image.jpg"),
   provider: ref("person"),
   founder: ref("person"),
-  areaServed: [{ "@type": "Place", name: "Remote, worldwide" }, { "@type": "Country", name: "Pakistan" }],
+  areaServed: [...markets, { "@type": "Place", name: "Remote, worldwide" }, country("Pakistan")],
+  availableLanguage: ["English", "Urdu"],
+  contactPoint: contactPoint(),
   address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
   email: `mailto:${profile.email}`,
   telephone: profile.phone,
@@ -163,6 +187,7 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
       name: page.title,
       description: page.description,
       dateModified: modified,
+      inLanguage: "en",
       isPartOf: ref("website"),
       about: { "@id": `${pageUrl}#service` },
       breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
@@ -176,7 +201,7 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
       url: pageUrl,
       serviceType: page.serviceName,
       provider: ref("person"),
-      areaServed: { "@type": "Place", name: "Remote, worldwide" },
+      areaServed: regionPages.find((r) => r.slug === page.slug) ? regionAreas[regionPages.find((r) => r.slug === page.slug)!.region] : [...markets, { "@type": "Place", name: "Remote, worldwide" }],
     },
     faqNode(`${pageUrl}#faq`, page.faq),
   );

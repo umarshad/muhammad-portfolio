@@ -1,10 +1,16 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ExternalLink, Maximize2 } from "lucide-react";
 import { caseStudy, landingPages } from "@/data/landing";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { techs } from "@/data/tech";
+import { Lightbox } from "../Lightbox";
+import { ProjectCover } from "../ProjectCover";
+import { RegionStrip } from "../RegionStrip";
 import { TechIcon, techColor } from "../TechIcon";
-import { Breadcrumbs } from "./Breadcrumbs";
+import { CtaBand } from "./CtaBand";
+import { IncludeCards } from "./IncludeCards";
+import { PageHero } from "./PageHero";
 import { PageShell } from "./PageShell";
 
 const platforms = [
@@ -15,43 +21,37 @@ const platforms = [
 
 export function CaseStudyPage() {
   const p = projects.find((x) => x.title === "My Invoice")!;
+  const [view, setView] = useState<number | null>(null);
+  const shots = p.shots ?? [];
   const used = p.technologies.map((n) => techs.find((t) => t.name === n)).filter((t): t is NonNullable<typeof t> => !!t);
 
   return (
     <PageShell>
-      <section className="lp-hero">
-        <div className="lp-hero__frame">
-          <div className="hero__grid" aria-hidden="true" />
-          <div className="lp-hero__inner">
-            <Breadcrumbs trail={[{ name: "Home", href: "/" }, { name: "Projects", href: "/#projects" }, { name: "My Invoice" }]} />
-            <p className="eyebrow eyebrow--dark">Case study · {p.status}</p>
-            <h1>{caseStudy.h1}</h1>
-            <p className="lp-lead">{caseStudy.lead}</p>
-            <div className="lp-ctas">
-              {p.playUrl && (
-                <a className="pcard__badge" href={p.playUrl} target="_blank" rel="noopener noreferrer">
-                  <img src="/badges/google-play-badge.svg" alt="Get My Invoice on Google Play" height={52} />
-                </a>
-              )}
-              <a className="btn" href={p.url} target="_blank" rel="noopener noreferrer">Visit myinvoice.us <ExternalLink size={16} /></a>
-            </div>
-            <p className="lp-byline">Designed and built by <a href="/">{profile.name}</a> at DM Worx LLC</p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        trail={[{ name: "Home", href: "/" }, { name: "Projects", href: "/#projects" }, { name: "My Invoice" }]}
+        eyebrow={`Case study · ${p.status}`}
+        title={caseStudy.h1}
+        lead={caseStudy.lead}
+        topic="a product like My Invoice"
+        visual={<div className="lp-fan"><ProjectCover project={p} eager /></div>}
+        actions={
+          <>
+            {p.playUrl && (
+              <a className="pcard__badge" href={p.playUrl} target="_blank" rel="noopener noreferrer">
+                <img src="/badges/google-play-badge.svg" alt="Get My Invoice on Google Play" height={52} />
+              </a>
+            )}
+            <a className="btn" href={p.url} target="_blank" rel="noopener noreferrer">Visit myinvoice.us <ExternalLink size={16} /></a>
+          </>
+        }
+        byline={<>Designed and built by <a href="/">{profile.name}</a> at DM Worx LLC</>}
+      />
 
       <section className="lp-sec" aria-labelledby="plat">
         <div className="container">
           <p className="eyebrow reveal">Architecture</p>
           <h2 id="plat" className="work__title reveal">Three platforms, <span className="serif">one backend</span></h2>
-          <div className="about__cards lp-cards">
-            {platforms.map((c, i) => (
-              <article key={c.title} className="acard reveal" style={{ ["--d" as string]: `${i * 0.08}s` }}>
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
-              </article>
-            ))}
-          </div>
+          <IncludeCards items={platforms} />
         </div>
       </section>
 
@@ -74,7 +74,10 @@ export function CaseStudyPage() {
           <div className="lp-shots">
             {(p.shots ?? []).map((s, i) => (
               <figure key={s.src} className="lp-shot reveal" style={{ ["--d" as string]: `${(i % 4) * 0.06}s` }}>
-                <img src={s.src} alt={`My Invoice: ${s.label}`} width={480} height={1067} loading="lazy" decoding="async" />
+                <button type="button" className="lp-shot__btn" onClick={() => setView(i)} aria-label={`Enlarge: ${s.label}`}>
+                  <img src={s.src} alt={`My Invoice: ${s.label}`} width={480} height={1067} loading="lazy" decoding="async" />
+                  <span className="lp-shot__zoom"><Maximize2 size={16} aria-hidden="true" /></span>
+                </button>
                 <figcaption>{s.label}</figcaption>
               </figure>
             ))}
@@ -113,16 +116,9 @@ export function CaseStudyPage() {
         </div>
       </section>
 
-      <section className="lp-cta">
-        <div className="lp-cta__frame">
-          <h2>Have a product <span className="serif">in mind?</span></h2>
-          <p>Tell me what you want to build and I will reply with the right approach and next step.</p>
-          <div className="lp-ctas">
-            <a className="btn" href="/#contact">Start a project <ArrowRight size={18} /></a>
-            <a className="btn btn--ghost" href={`mailto:${profile.email}`}>{profile.email}</a>
-          </div>
-        </div>
-      </section>
+      <RegionStrip light />
+      <CtaBand topic="next product" />
+      {view !== null && <Lightbox images={shots} index={view} onIndex={setView} onClose={() => setView(null)} />}
     </PageShell>
   );
 }

@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Process } from "@/components/Process";
 import { Projects } from "@/components/Projects";
+import { RegionStrip } from "@/components/RegionStrip";
 import { Services } from "@/components/Services";
 import { Skills } from "@/components/Skills";
 import { TechStack } from "@/components/TechStack";
@@ -27,6 +28,7 @@ function App() {
         <Experience />
         <Skills />
         <Faq />
+        <RegionStrip light />
       </main>
       <Contact />
       <WhatsAppFab />

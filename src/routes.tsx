@@ -2,12 +2,12 @@ import type { ComponentType } from "react";
 import App from "./App";
 import { CaseStudyPage } from "@/components/page/CaseStudyPage";
 import { ServicePage } from "@/components/page/ServicePage";
-import { caseStudy, landingPages } from "@/data/landing";
+import { allServicePages, caseStudy } from "@/data/landing";
 
 const table: Record<string, ComponentType> = {
   "/": App,
   [`/${caseStudy.slug}`]: CaseStudyPage,
-  ...Object.fromEntries(landingPages.map((p) => [`/${p.slug}`, () => <ServicePage page={p} />])),
+  ...Object.fromEntries(allServicePages.map((p) => [`/${p.slug}`, () => <ServicePage page={p} />])),
 };
 
 export const routePaths = Object.keys(table);
