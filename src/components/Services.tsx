@@ -51,7 +51,8 @@ export function Services() {
         </p>
 
         <div
-          className={`svcx reveal${paused ? " is-paused" : ""}`}
+          className="svcx reveal"
+          data-paused={paused ? "" : undefined}
           style={{ ["--d" as string]: "0.25s", ["--auto" as string]: `${AUTO_MS}ms` }}
           onPointerEnter={(e) => e.pointerType === "mouse" && setPaused(true)}
           onPointerLeave={() => setPaused(false)}

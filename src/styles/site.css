@@ -505,7 +505,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 .svctab[aria-selected="true"] .svctab__ico { color: var(--orange-400); border-color: color-mix(in srgb, var(--orange-500) 55%, transparent); background: #f67f0022; }
 .svctab[aria-selected="true"] .svctab__go { color: var(--orange-400); opacity: 1; }
 .svctab[aria-selected="true"] .svctab__bar { animation: svcBar var(--auto, 7s) linear forwards; }
-.svcx.is-paused .svctab[aria-selected="true"] .svctab__bar { animation: none; width: 100%; opacity: 0.55; }
+.svcx[data-paused] .svctab[aria-selected="true"] .svctab__bar { animation: none; width: 100%; opacity: 0.55; }
 @keyframes svcBar { to { width: 100%; } }
 .svctab:focus-visible { outline: 2px solid var(--orange-400); outline-offset: 2px; }
 
