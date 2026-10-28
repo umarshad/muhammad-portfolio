@@ -1,4 +1,5 @@
 import { profile } from "@/data/profile";
+import { quickFacts } from "@/data/services";
 
 export function About() {
   return (
@@ -16,6 +17,14 @@ export function About() {
             </div>
             <p className="intro__text reveal" style={{ ["--d" as string]: "0.25s" }}>{profile.summary}</p>
           </div>
+          <dl className="facts">
+            {quickFacts.map((f, i) => (
+              <div key={f.label} className="facts__item reveal" style={{ ["--d" as string]: `${i * 0.08}s` }}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import { experience } from "@/data/experience";
 import { faq } from "@/data/faq";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { services } from "@/data/services";
 import { skillGroups } from "@/data/skills";
 
 const home = `${profile.site}/`;
@@ -28,6 +29,7 @@ Canonical site: ${home}
 
 ## Pages
 - [About](${home}#about): summary and years of experience
+- [Services](${home}#services): ${services.map((x) => x.title).join(", ")}
 - [Experience](${home}#experience): roles at DM Worx LLC, Cygnus Ventures, Solution Soul and Orbilon Technology
 - [Projects](${home}#projects): ${projects.map((p) => p.title).join(", ")}
 - [Skills](${home}#skills): mobile, web, backend, payments, AI, automation and cloud
@@ -56,6 +58,9 @@ Phone / WhatsApp: ${profile.phone}
 LinkedIn: ${profile.linkedin}
 GitHub: ${profile.github}
 Website: ${home}
+
+## Services
+${services.map((x) => `- ${x.title}: ${x.text}`).join("\n")}
 
 ## Experience
 ${experience

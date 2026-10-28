@@ -1,5 +1,21 @@
 export const faq = [
   {
+    q: "What services does Muhammad Umar offer?",
+    a: "He creates custom mobile apps, websites and admin panels, specialising in SaaS products with in-app purchases, App Store and Google Play deployment, and end-to-end product creation: design, development and deployment.",
+  },
+  {
+    q: "Can he take a product from idea to App Store and Google Play release?",
+    a: "Yes. He handles UI/UX design, database design, development, payments and subscriptions, store submission and hosting, so one developer owns the product from first sketch to live release.",
+  },
+  {
+    q: "Does he build SaaS products with subscriptions and admin panels?",
+    a: "Yes. His main product, My Invoice, is a multi-platform SaaS made of a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend, with App Store and Google Play subscriptions and Stripe payments.",
+  },
+  {
+    q: "How do we start a project?",
+    a: "Use the project brief form in the contact section: pick what you need, add a few lines, and send it by WhatsApp or email. He replies with the right approach and next step.",
+  },
+  {
     q: "Who is Muhammad Umar?",
     a: "Muhammad Umar is a Flutter and full-stack developer based in Lahore, Pakistan, with 3+ years of experience building cross-platform mobile apps and web platforms, from database design to App Store and Google Play release.",
   },
@@ -13,7 +29,7 @@ export const faq = [
   },
   {
     q: "Is Muhammad Umar available for remote work?",
-    a: "Yes. He is based in Lahore, Pakistan and is open to remote work. He currently works at DM Worx LLC and takes on freelance full-stack projects for clients.",
+    a: "Yes. He is based in Lahore, Pakistan (PKT, UTC+5) and is open to remote work. He currently works at DM Worx LLC and takes on freelance full-stack projects for clients.",
   },
   {
     q: "Does he use AI in his development work?",

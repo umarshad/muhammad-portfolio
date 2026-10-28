@@ -2,6 +2,7 @@ import { education, skillGroups } from "@/data/skills";
 import { faq } from "@/data/faq";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
+import { services } from "@/data/services";
 
 const url = `${profile.site}/`;
 const id = (frag: string) => ({ "@id": `${url}#${frag}` });
@@ -24,6 +25,10 @@ export function buildJsonLd(modified = new Date().toISOString().slice(0, 10)) {
         knowsAbout: skillGroups.flatMap((g) => g.items.filter((i) => !i.includes("("))),
         alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
         worksFor: { "@type": "Organization", name: "DM Worx LLC" },
+        makesOffer: services.map((sv) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: sv.title, description: sv.text, provider: id("person") },
+        })),
       },
       {
         "@type": "WebSite",

@@ -4,7 +4,7 @@ export const profile = {
   headline: "Mobile & Full-Stack Engineer",
   years: 3,
   tagline:
-    "Flutter and full-stack developer building cross-platform mobile apps and web platforms, from database design to App Store and Google Play release.",
+    "I create custom apps, websites and admin panels, specialised in SaaS products with in-app purchases, store deployment and end-to-end delivery: design, development and release.",
   summary:
     "Flutter and full-stack developer with 3+ years of experience building cross-platform mobile apps and web platforms, from database design to App Store and Google Play release. I build complete products with Flutter, React, Next.js and TypeScript on Firebase and Supabase backends, including in-app purchases, Stripe payments, AI features and real-time data. I use generative AI tools and AI-assisted workflows to design, build and ship faster without compromising code quality. Currently building a multi-platform business app and a workforce management platform at DM Worx LLC, alongside freelance full-stack projects for clients.",
   email: "umarshad.dev@gmail.com",
@@ -18,10 +18,10 @@ export const profile = {
 
 export const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
-  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -29,13 +29,4 @@ export const techStack = [
   "Flutter", "Dart", "Firebase", "Cloud Functions", "React", "Next.js", "TypeScript",
   "Supabase", "PostgreSQL", "Node.js", "Stripe", "PayPal", "OpenAI API", "Gemini",
   "AWS", "Vercel", "n8n", "GetStream Chat", "Google ML Kit", "Riverpod", "Provider", "REST APIs",
-];
-
-export const heroSkills = [
-  { label: "Flutter & Dart", note: "IOS · ANDROID · STORE RELEASE" },
-  { label: "Firebase & Supabase", note: "AUTH · FIRESTORE · POSTGRES" },
-  { label: "React & Next.js", note: "WEB · PORTALS · TYPESCRIPT" },
-  { label: "Stripe & In-App Purchases", note: "PAYMENTS · SUBSCRIPTIONS" },
-  { label: "Generative AI", note: "OPENAI · GEMINI · GROQ" },
-  { label: "Automation", note: "N8N · SMTP · GOOGLE SHEETS" },
 ];
