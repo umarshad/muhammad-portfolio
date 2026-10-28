@@ -1,18 +1,44 @@
-import type { PointerEvent } from "react";
-import { ArrowUpRight, Code2, CreditCard, Globe, LayoutDashboard, Layers, Rocket, Smartphone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
+import { ArrowRight, ArrowUpRight, Code2, CreditCard, Globe, LayoutDashboard, Layers, Rocket, Smartphone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { services } from "@/data/services";
+import { ServicePanel } from "./ServicePanel";
 
 const icons: LucideIcon[] = [Smartphone, Globe, LayoutDashboard, Layers, CreditCard, Rocket, Code2];
-
-// Spotlight follows the pointer across each card.
-function spotlight(e: PointerEvent<HTMLElement>) {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-}
+const AUTO_MS = 7000;
+const pad = (n: number) => String(n).padStart(2, "0");
 
 export function Services() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Moves through the services on its own until the visitor hovers or focuses the list.
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setTimeout(() => setActive((a) => (a + 1) % services.length), AUTO_MS);
+    return () => clearTimeout(id);
+  }, [active, paused]);
+
+  // When the list scrolls sideways (phones), keep the active service in view without moving the page.
+  useEffect(() => {
+    const el = tabs.current[active];
+    const strip = el?.parentElement;
+    if (!el || !strip || strip.scrollWidth <= strip.clientWidth) return;
+    strip.scrollTo({ left: el.offsetLeft - 16, behavior: "smooth" });
+  }, [active]);
+
+  // Arrow keys move between services, like a standard tab list.
+  const onKey = (e: KeyboardEvent) => {
+    const next = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
+    if (!next) return;
+    e.preventDefault();
+    const i = (active + next + services.length) % services.length;
+    setActive(i);
+    tabs.current[i]?.focus();
+  };
+
   return (
     <section id="services" className="svc" aria-labelledby="services-title">
       <div className="svc__frame">
@@ -23,25 +49,51 @@ export function Services() {
         <p className="svc__lead reveal" style={{ ["--d" as string]: "0.2s" }}>
           Custom apps, websites and admin panels, specialised in SaaS products with in-app purchases, store deployment and end-to-end product creation.
         </p>
-        <div className="svc__grid">
-          {services.map((s, i) => {
-            const Icon = icons[i];
-            return (
-              <article
-                key={s.title}
-                className={`svccard reveal${s.wide ? " svccard--wide" : ""}`}
-                style={{ ["--d" as string]: `${(i % 3) * 0.08}s` }}
-                onPointerMove={spotlight}
-              >
-                <span className="svccard__num">{String(i + 1).padStart(2, "0")}</span>
-                <span className="svccard__ico"><Icon size={22} /></span>
-                <h3><a href={s.href} className="svccard__link">{s.title}</a></h3>
-                <p>{s.text}</p>
-                <div className="svccard__tags">{s.tags.map((t) => <span key={t}>{t}</span>)}</div>
-                <ArrowUpRight className="svccard__arrow" size={20} aria-hidden="true" />
-              </article>
-            );
-          })}
+
+        <div
+          className={`svcx reveal${paused ? " is-paused" : ""}`}
+          style={{ ["--d" as string]: "0.25s", ["--auto" as string]: `${AUTO_MS}ms` }}
+          onPointerEnter={(e) => e.pointerType === "mouse" && setPaused(true)}
+          onPointerLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
+          <div className="svcx__tabs" role="tablist" aria-label="Services" aria-orientation="vertical" onKeyDown={onKey}>
+            {services.map((s, i) => {
+              const Icon = icons[i];
+              return (
+                <button
+                  key={s.title}
+                  ref={(el) => {
+                    tabs.current[i] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`svc-tab-${i}`}
+                  aria-selected={i === active}
+                  aria-controls={`svc-panel-${i}`}
+                  tabIndex={i === active ? 0 : -1}
+                  className="svctab"
+                  onClick={() => setActive(i)}
+                >
+                  <span className="svctab__n">{pad(i + 1)}</span>
+                  <span className="svctab__ico"><Icon size={20} aria-hidden="true" /></span>
+                  <span className="svctab__txt">
+                    <span className="svctab__t">{s.title}</span>
+                    <span className="svctab__kw">{s.kw}</span>
+                  </span>
+                  {i === active ? <ArrowRight className="svctab__go" size={18} aria-hidden="true" /> : <ArrowUpRight className="svctab__go" size={18} aria-hidden="true" />}
+                  <i className="svctab__bar" aria-hidden="true" />
+                </button>
+              );
+            })}
+          </div>
+          <div className="svcx__stage">
+            <div className="svcx__grid" aria-hidden="true" />
+            {services.map((s, i) => (
+              <ServicePanel key={s.title} service={s} index={i} Icon={icons[i]} id={`svc-panel-${i}`} tabId={`svc-tab-${i}`} active={i === active} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
