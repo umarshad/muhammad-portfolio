@@ -1352,18 +1352,12 @@ body:has(dialog[open]) { overflow: hidden; }
 .tb__tag, .tb__diff { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--orange-400); }
 .tb__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .tb__city { display: grid; gap: 12px; padding: 16px 18px; border: 1px solid var(--line-dark); border-radius: 18px; background: #fafaf706; }
-.tb__row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-.tb__track { position: relative; height: 12px; border-radius: 8px; background: #fafaf71a; overflow: hidden; }
-.tb__seg { position: absolute; top: 0; bottom: 0; }
-.tb__seg--home { background: #5eead466; }
-.tb__seg--city { background: #f67f00aa; }
-.tb__now { position: absolute; top: -2px; bottom: -2px; width: 2px; background: #fff; box-shadow: 0 0 8px #fff; }
-.tb__call { font-size: 13px; line-height: 1.5; color: var(--muted-on-dark); }
-.tb__call b { display: inline; margin: 0; font: inherit; font-weight: 600; letter-spacing: 0; color: var(--text-on-dark); }
-.tb__key { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 12px; color: var(--muted-on-dark); }
-.tb__k { display: inline-block; width: 18px; height: 8px; border-radius: 4px; }
-.tb__k--home { background: #5eead499; }
-.tb__k--city { margin-left: 8px; background: #f67f00cc; }
+.tb__row { display: flex; align-items: center; gap: 14px; }
+.tb__who { min-width: 0; flex: 1; }
+.tb__who small { display: inline-flex; align-items: center; gap: 6px; }
+.tb__who small svg { color: var(--orange-400); }
+.tb__who .tb__diff { display: block; margin: 4px 0 0; font-size: 10.5px; letter-spacing: 0.08em; text-transform: none; white-space: nowrap; }
+.tb__who small { white-space: nowrap; }
 .lp-glass .tb__list { grid-template-columns: minmax(0, 1fr); }
 .sfoot__h2--gap { margin-top: 30px; }
 
@@ -1469,3 +1463,28 @@ body:has(dialog[open]) { overflow: hidden; }
 .pdlg__body h3 { display: flex; align-items: center; gap: 12px; }
 .pdlg__logo { flex: none; width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 0 0 1px #0b2b2724; object-fit: cover; }
 .tb__list > .tb__city:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* analog clocks */
+.aclock { flex: none; display: block; }
+.aclock__face { fill: #fafaf714; stroke: var(--line-dark-strong); stroke-width: 1.6; transition: fill 0.6s; }
+.aclock--night .aclock__face { fill: #00000052; }
+.aclock__tick { stroke: #fafaf766; stroke-width: 2; stroke-linecap: round; }
+.aclock__tick--major { stroke: var(--text-on-dark); stroke-width: 3; }
+.aclock__hour { stroke: var(--text-on-dark); stroke-width: 4.2; stroke-linecap: round; }
+.aclock__min { stroke: var(--text-on-dark); stroke-width: 2.8; stroke-linecap: round; }
+.aclock__sec line { stroke: var(--orange-500); stroke-width: 1.6; stroke-linecap: round; }
+.aclock__pin { fill: var(--orange-500); stroke: var(--teal-950); stroke-width: 1.4; }
+.tb__home .aclock { width: 64px; height: 64px; }
+@media (max-width: 420px) { .tb__row { gap: 10px; } .aclock { width: 52px; height: 52px; } }
+@media (prefers-reduced-motion: reduce) { .aclock__sec { display: none; } }
+
+/* shared working hours */
+.tb__over { display: grid; gap: 10px; }
+.tb__line { display: grid; gap: 3px; font-size: 13px; line-height: 1.5; color: var(--muted-on-dark); }
+.tb__line b { display: inline-flex; align-items: center; justify-self: start; padding: 3px 10px; border-radius: 99px; background: #f67f0026; font-size: 12.5px; font-weight: 650; color: var(--orange-300); }
+.tb__hours { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 4px; }
+.tb__hr { height: 16px; border-radius: 5px; background: #fafaf71a; }
+.tb__hr.is-on { background: var(--orange-500); box-shadow: 0 0 12px -2px #f67f0088; }
+.tb__hr.is-now { outline: 2px solid #fff; outline-offset: 1px; }
+.tb__labs { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: #fafaf78c; }
+.tb__key { font-size: 12.5px; line-height: 1.5; color: var(--muted-on-dark); }
