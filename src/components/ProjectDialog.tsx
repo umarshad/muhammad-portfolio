@@ -31,6 +31,19 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
           <ul>{project.features.map((f) => <li key={f}>{f}</li>)}</ul>
           <h4>Technologies</h4>
           <div className="tags">{project.technologies.map((t) => <span key={t}>{t}</span>)}</div>
+          {project.shots && (
+            <>
+              <h4>App screens</h4>
+              <div className="pdlg__shots">
+                {project.shots.map((s) => <img key={s.src} src={s.src} alt={s.label} width={200} height={433} loading="lazy" decoding="async" />)}
+              </div>
+            </>
+          )}
+          {project.playUrl && (
+            <a className="pcard__badge" href={project.playUrl} target="_blank" rel="noopener noreferrer">
+              <img src="/badges/google-play-badge.svg" alt={`Get ${project.title} on Google Play`} loading="lazy" />
+            </a>
+          )}
           {hasLink && (
             <a className="btn btn--dark btn--sm" href={project.url} target="_blank" rel="noopener noreferrer">
               Visit project <ExternalLink size={15} />

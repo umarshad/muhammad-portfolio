@@ -17,6 +17,17 @@ export function ProjectCover({ project, eager }: { project: Project; eager?: boo
       </span>
     );
   }
+  const shots = project.shots;
+  if (shots && shots.length >= 3) {
+    return (
+      <span className="pcover pcover--phones">
+        <i className="pcover__grid" aria-hidden="true" />
+        {[shots[1], shots[0], shots[2]].map((s, n) => (
+          <img key={s.src} className={`pphone pphone--${n}`} src={s.src} alt={n === 1 ? `${project.title} app screens` : ""} width={320} height={692} loading={eager ? "eager" : "lazy"} decoding="async" />
+        ))}
+      </span>
+    );
+  }
   const Icon = icons[project.title] ?? Smartphone;
   return (
     <span className="pcover pcover--gen" aria-hidden="true">

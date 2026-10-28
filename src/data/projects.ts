@@ -91,7 +91,16 @@ export const projects: Project[] = [
       "Real-time chat, event management and discount management",
     ],
     url: "#",
+    playUrl: "https://play.google.com/store/apps/details?id=com.clikahub",
     status: "Completed",
+    logo: "/projects/clika-logo.webp",
+    shots: [
+      { src: "/projects/clika-1.webp", label: "Home with the tower services grid" },
+      { src: "/projects/clika-2.webp", label: "Community hub with announcements and chat" },
+      { src: "/projects/clika-3.webp", label: "Office dashboard" },
+      { src: "/projects/clika-4.webp", label: "Building listings and events" },
+      { src: "/projects/clika-5.webp", label: "People and companies in the tower" },
+    ],
   },
   {
     title: "Everpure Organics",
