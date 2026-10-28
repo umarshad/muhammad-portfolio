@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, PointerEvent, TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from "lucide-react";
 import type { ProjectImage } from "@/lib/projectImages";
+import { PhoneFrame } from "./PhoneFrame";
 
-type Props = { images: ProjectImage[]; index: number; onIndex: (i: number) => void; onClose: () => void };
+type Props = { images: ProjectImage[]; index: number; onIndex: (i: number) => void; onClose: () => void; device?: boolean };
 
 // Full-screen viewer: arrows or swipe to move, click to zoom and move the pointer to pan, Esc to close.
-export function Lightbox({ images, index, onIndex, onClose }: Props) {
+export function Lightbox({ images, index, onIndex, onClose, device }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const opener = useRef<Element | null>(null);
   const [zoom, setZoom] = useState(false);
@@ -66,17 +67,32 @@ export function Lightbox({ images, index, onIndex, onClose }: Props) {
         onTouchEnd={onTouchEnd}
         onClick={(e) => e.target === e.currentTarget && onClose()}
       >
-        <img
-          key={cur.src}
-          src={cur.src}
-          alt={cur.label}
-          style={{ transformOrigin: origin }}
-          onClick={(e) => {
-            const r = e.currentTarget.getBoundingClientRect();
-            setOrigin(`${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`);
-            setZoom((z) => !z);
-          }}
-        />
+        {device ? (
+          <PhoneFrame
+            key={cur.src}
+            src={cur.src}
+            alt={cur.label}
+            eager
+            style={{ transformOrigin: origin }}
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              setOrigin(`${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`);
+              setZoom((z) => !z);
+            }}
+          />
+        ) : (
+          <img
+            key={cur.src}
+            src={cur.src}
+            alt={cur.label}
+            style={{ transformOrigin: origin }}
+            onClick={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              setOrigin(`${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`);
+              setZoom((z) => !z);
+            }}
+          />
+        )}
         <figcaption>{cur.label}</figcaption>
       </figure>
 

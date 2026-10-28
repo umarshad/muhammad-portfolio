@@ -30,7 +30,7 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
         <button type="button" className="pdlg__x" onClick={() => ref.current?.close()} aria-label="Close"><X size={20} /></button>
         <div className="pdlg__media">
           {images.length ? (
-            <ProjectViewer images={images} active={active} onActive={setActive} onExpand={() => setExpanded(true)} />
+            <ProjectViewer images={images} active={active} onActive={setActive} onExpand={() => setExpanded(true)} device={!!project.shots?.length} />
           ) : (
             <ProjectCover project={project} eager />
           )}
@@ -55,7 +55,7 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
           )}
         </div>
       </div>
-      {expanded && <Lightbox images={images} index={active} onIndex={setActive} onClose={() => setExpanded(false)} />}
+      {expanded && <Lightbox images={images} index={active} onIndex={setActive} onClose={() => setExpanded(false)} device={!!project.shots?.length} />}
     </dialog>
   );
 }
