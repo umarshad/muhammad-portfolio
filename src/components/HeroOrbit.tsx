@@ -48,10 +48,10 @@ export function HeroOrbit() {
           <Ring nodes={inner} className="orbit-ring--1" />
           <div className="phone">
             <img
-              src="/MyInvoice/Screenshot_20250923_001107_com.my_invoice.app.jpg"
+              src="/hero-my-invoice.webp"
               alt="My Invoice mobile app screen, built with Flutter"
-              width={1080}
-              height={2340}
+              width={360}
+              height={780}
               decoding="async"
             />
           </div>

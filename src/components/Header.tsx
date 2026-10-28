@@ -10,7 +10,7 @@ export function Header() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="site-header__bar">
-        <a href="#top" className="brand" aria-label={`${profile.name}, home`}>
+        <a href="#top" className="brand">
           <span className="brand__mark">MU</span>
           <span>
             <span className="brand__name">{profile.name}</span>
