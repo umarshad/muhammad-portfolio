@@ -5,6 +5,7 @@ export const skillGroups = [
   { title: "Payments & Integrations", items: ["Stripe", "PayPal", "Google Maps", "Meta Pixel", "GetStream Chat", "Google ML Kit"] },
   { title: "Generative AI", items: ["AI-assisted development", "Prompt engineering", "LLM API integration (OpenAI, Gemini, Groq)", "AI image generation"] },
   { title: "Automation", items: ["n8n workflow automation", "Google Sheets integration", "SMTP email automation"] },
+  { title: "Security & Anti-abuse", items: ["Cloudflare Turnstile", "reCAPTCHA v3 and Enterprise", "Firebase App Check", "Server-side token verification", "Bot and abuse protection"] },
   { title: "Cloud & Tools", items: ["AWS (EC2, Elastic Beanstalk)", "DigitalOcean", "Vercel", "Git", "GitHub", "CI/CD"] },
   { title: "Practices", items: ["Feature-first modular architecture", "Role-based access control", "Code review", "Cross-device testing"] },
 ];

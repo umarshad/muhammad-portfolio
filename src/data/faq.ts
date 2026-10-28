@@ -12,6 +12,10 @@ export const faq = [
     a: "Yes. His main product, My Invoice, is a multi-platform SaaS made of a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend, with App Store and Google Play subscriptions and Stripe payments.",
   },
   {
+    q: "Does he build secure apps with bot protection?",
+    a: "Yes. In My Invoice he added Cloudflare Turnstile bot checks verified server-side in Cloud Functions, reCAPTCHA-backed Firebase App Check, and role-based access control, so sign-ups, logins and payments are protected from abuse.",
+  },
+  {
     q: "How do we start a project?",
     a: "Use the project brief form in the contact section: pick what you need, add a few lines, and send it by WhatsApp or email. He replies with the right approach and next step.",
   },

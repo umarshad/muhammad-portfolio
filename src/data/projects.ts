@@ -12,12 +12,13 @@ export const projects: Project[] = [
   {
     title: "My Invoice",
     description: "A multi-platform business product with a Flutter mobile app, a React web portal and a separate admin dashboard on a shared Firebase backend.",
-    technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Google Maps", "React", "TypeScript"],
+    technologies: ["Flutter", "Firebase", "Cloud Functions", "FCM", "In-App Purchases", "Stripe", "OpenAI API", "Google Maps", "Cloudflare Turnstile", "reCAPTCHA", "React", "TypeScript"],
     features: [
       "End-to-end business workflow: create estimates, get client approval, and auto-convert them into tracked projects with progress management",
       "Separate admin dashboard giving operators control over users, transactions, invoices and analytics, with integrated support chat",
       "Subscriptions through App Store and Google Play in-app purchases, and client payments through Stripe",
       "FCM push notifications for payment reminders and an in-app assistant powered by the OpenAI API",
+      "Bot and abuse protection: Cloudflare Turnstile verified server-side, plus reCAPTCHA-backed Firebase App Check",
     ],
     url: "https://myinvoice.us",
     playUrl: "https://play.google.com/store/apps/details?id=com.my_invoice.app",

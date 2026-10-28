@@ -1,11 +1,11 @@
 import {
-  siAppstore, siDart, siDigitalocean, siFirebase, siFlutter, siGit, siGooglegemini, siGooglemaps,
+  siAppstore, siCloudflare, siDart, siDigitalocean, siFirebase, siFlutter, siGit, siGooglegemini, siGooglemaps,
   siGoogleplay, siN8n, siNeon, siNextdotjs, siNodedotjs, siPaypal, siPostgresql, siReact, siStripe,
   siSupabase, siTailwindcss, siTypescript, siVercel,
 } from "simple-icons";
 import type { SimpleIcon } from "simple-icons";
 import {
-  Boxes, Cloud, Cpu, Mail, MessageCircle, Network, ScanFace, ShoppingBag, Sparkles, Webhook, Zap,
+  Boxes, Cloud, Cpu, Mail, MessageCircle, Network, ScanFace, ShieldCheck, ShoppingBag, Sparkles, Webhook, Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -24,6 +24,7 @@ export const techCategories = [
   { id: "web", label: "Web", blurb: "Fast, responsive websites, portals and admin panels." },
   { id: "backend", label: "Backend & Data", blurb: "Auth, databases and server logic that power real-time products." },
   { id: "pay", label: "Payments & APIs", blurb: "Subscriptions, payments and the integrations around them." },
+  { id: "security", label: "Security", blurb: "Bot protection and abuse prevention that keep sign-ups, logins and payments clean." },
   { id: "ai", label: "AI & Automation", blurb: "LLM features and workflows that save hours of manual work." },
   { id: "cloud", label: "Cloud & Tools", blurb: "Hosting, deployment and the workflow that keeps releases safe." },
 ];
@@ -55,6 +56,10 @@ export const techs: Tech[] = [
   { name: "GetStream Chat", cat: "pay", note: "Real-time chat", Icon: MessageCircle, color: "#005fff" },
   { name: "REST APIs", cat: "pay", note: "Integrations", Icon: Webhook, color: "#0b5a55" },
   { name: "SMTP", cat: "pay", note: "Email delivery", Icon: Mail, color: "#0b5a55" },
+
+  { name: "Cloudflare Turnstile", cat: "security", note: "Bot protection, verified server-side", brand: siCloudflare },
+  { name: "reCAPTCHA", cat: "security", note: "v3 and Enterprise", Icon: ShieldCheck, color: "#4285f4" },
+  { name: "Firebase App Check", cat: "security", note: "Blocks abusive clients", brand: siFirebase },
 
   { name: "OpenAI API", cat: "ai", note: "In-app assistants", Icon: Sparkles, color: "#10a37f" },
   { name: "Gemini", cat: "ai", note: "Generative AI", brand: siGooglegemini },

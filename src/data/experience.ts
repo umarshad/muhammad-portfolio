@@ -16,6 +16,7 @@ export const experience: Role[] = [
     points: [
       "Building My Invoice, a multi-platform business product made of a Flutter mobile app, a React web portal and a separate admin dashboard, all on a shared Firebase backend.",
       "Implemented subscriptions through App Store and Google Play in-app purchases, and client payments through Stripe, with FCM push notifications for payment reminders.",
+      "Added bot and abuse protection to My Invoice with Cloudflare Turnstile verified server-side, reCAPTCHA and Firebase App Check.",
       "Integrated the OpenAI (ChatGPT) API to power an in-app assistant for user support and workflow suggestions.",
       "Built Hudson Tasks (hudsontasks.com), a React and Supabase workforce management platform used by employers to manage field employees, work hours, tasks and finances.",
       "Introduced feature-first modular architecture and Git-based code review to improve release consistency and reduce regressions across features.",
