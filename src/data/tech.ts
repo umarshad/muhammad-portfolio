@@ -1,6 +1,6 @@
 import {
   siAppstore, siCloudflare, siDart, siDigitalocean, siFirebase, siFlutter, siGit, siGooglegemini, siGooglemaps, siGooglesheets,
-  siGoogleplay, siN8n, siNeon, siNextdotjs, siNodedotjs, siPaypal, siPostgresql, siReact, siStripe,
+  siGoogleplay, siN8n, siNextdotjs, siNodedotjs, siPaypal, siPostgresql, siReact, siStripe,
   siSupabase, siTailwindcss, siTypescript, siVercel,
 } from "simple-icons";
 import type { SimpleIcon } from "simple-icons";
@@ -47,7 +47,6 @@ export const techs: Tech[] = [
   { name: "Cloud Functions", cat: "backend", note: "Server-side logic", Icon: Zap, color: "#f67f00" },
   { name: "Supabase", cat: "backend", note: "Postgres backend", brand: siSupabase },
   { name: "PostgreSQL", cat: "backend", note: "Relational data", brand: siPostgresql },
-  { name: "Neon", cat: "backend", note: "Serverless Postgres", brand: siNeon },
 
   { name: "Stripe", cat: "pay", note: "Payments and billing", brand: siStripe },
   { name: "PayPal", cat: "pay", note: "Checkout and subscriptions", brand: siPaypal },

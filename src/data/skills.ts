@@ -1,7 +1,7 @@
 export const skillGroups = [
   { title: "Mobile", summary: "Cross-platform apps built once and released to the App Store and Google Play.", items: ["Flutter", "Dart", "iOS", "Android", "Provider", "Riverpod", "In-App Purchases", "App Store and Google Play deployment"] },
   { title: "Web", summary: "Fast, responsive platforms, portals and admin panels in React and Next.js.", items: ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "Progressive Web Apps", "Responsive UI"] },
-  { title: "Backend & Databases", summary: "Auth, real-time data and server logic on Firebase and Supabase.", items: ["Firebase (Auth, Firestore, Cloud Functions, FCM, Crashlytics)", "Supabase", "PostgreSQL", "Neon", "REST APIs", "SMTP"] },
+  { title: "Backend & Databases", summary: "Auth, real-time data and server logic on Firebase and Supabase.", items: ["Firebase (Auth, Firestore, Cloud Functions, FCM, Crashlytics)", "Supabase", "PostgreSQL", "REST APIs", "SMTP"] },
   { title: "Payments & Integrations", summary: "Payments, maps and chat wired into products people pay for.", items: ["Stripe", "PayPal", "Google Maps", "Meta Pixel", "GetStream Chat", "Google ML Kit"] },
   { title: "Generative AI", summary: "LLM features and AI-assisted workflows, from prototype to product.", items: ["AI-assisted development", "Prompt engineering", "LLM API integration (OpenAI, Gemini, Groq)", "AI image generation"] },
   { title: "Automation", summary: "Pipelines that turn manual, repeated work into scheduled jobs.", items: ["n8n workflow automation", "Google Sheets integration", "SMTP email automation"] },

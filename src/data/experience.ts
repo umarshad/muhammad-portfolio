@@ -47,11 +47,11 @@ export const experience: Role[] = [
     from: "2025-10",
     to: "2025-12",
     wins: ["All deliverables on schedule", "Admin panels and reporting"],
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Supabase", "Neon"],
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Supabase"],
     note: "Concurrent with DM Worx LLC",
     points: [
       "Delivered full-stack features with React, TypeScript, Node.js and PostgreSQL in a production codebase, completing all deliverables on schedule.",
-      "Designed and managed relational database schemas on Supabase and Neon to support scalable backend operations.",
+      "Designed and managed relational database schemas on Supabase to support scalable backend operations.",
       "Built admin panels and reporting interfaces that consolidated internal workflows and reduced manual oversight for operators.",
     ],
   },

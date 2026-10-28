@@ -28,12 +28,13 @@ const inner = [
 ];
 
 const AUTOPLAY_MS = 5200;
+const IDLE_RESUME_MS = 12000; // after a manual pick, give the visitor time before moving on
 
 export function HeroDevices() {
   const [active, setActive] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [hover, setHover] = useState(false);
-  const [auto, setAuto] = useState(true);
+  const [delay, setDelay] = useState(AUTOPLAY_MS);
   const clearPrev = useRef<ReturnType<typeof setTimeout>>();
   const tabsRef = useRef<HTMLDivElement>(null);
   const tilt = usePointerTilt<HTMLDivElement>(5);
@@ -49,13 +50,17 @@ export function HeroDevices() {
     [active],
   );
 
-  // Autoplay: restarts on every change, pauses on hover, off for reduced motion.
+  // Autoplay: restarts on every change, pauses while a mouse hovers, off for reduced motion.
+  // A manual pick only delays the next move; it never switches autoplay off for good.
   useEffect(() => {
-    if (!auto || hover) return;
+    if (hover) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setTimeout(() => select((active + 1) % scenes.length), AUTOPLAY_MS);
+    const id = setTimeout(() => {
+      setDelay(AUTOPLAY_MS);
+      select((active + 1) % scenes.length);
+    }, delay);
     return () => clearTimeout(id);
-  }, [active, auto, hover, select]);
+  }, [active, delay, hover, select]);
 
   useEffect(() => () => clearTimeout(clearPrev.current), []);
 
@@ -67,7 +72,7 @@ export function HeroDevices() {
   }, [active]);
 
   const pick = (i: number) => {
-    setAuto(false); // the visitor is in control now
+    setDelay(IDLE_RESUME_MS);
     select(i);
   };
   const current = scenes[active];
@@ -76,8 +81,8 @@ export function HeroDevices() {
     <div
       className="horbit hero__visual"
       style={{ ["--d" as string]: "0.35s" }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onPointerEnter={(e) => e.pointerType === "mouse" && setHover(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setHover(false)}
     >
       <div className="horbit__tilt" ref={tilt}>
         <div className="hstage">
@@ -127,7 +132,7 @@ export function HeroDevices() {
         </div>
       </div>
 
-      <div ref={tabsRef} className={`htabs${hover ? " is-paused" : ""}${auto ? "" : " is-manual"}`} role="tablist" aria-label="What I can build">
+      <div ref={tabsRef} className={`htabs${hover ? " is-paused" : ""}`} role="tablist" aria-label="What I can build">
         {scenes.map(({ key, label, Icon }, i) => (
           <button
             key={key}
@@ -135,7 +140,7 @@ export function HeroDevices() {
             role="tab"
             aria-selected={i === active}
             className="htab"
-            style={{ ["--dur" as string]: `${AUTOPLAY_MS}ms` }}
+            style={{ ["--dur" as string]: `${delay}ms` }}
             onClick={() => pick(i)}
           >
             <Icon size={15} /> {label}
