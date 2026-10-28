@@ -14,10 +14,11 @@ type Props = {
   visual: ReactNode;
   actions?: ReactNode; // replaces the default buttons
   byline?: ReactNode;
+  logo?: { src: string; alt: string }; // project mark shown above the title
 };
 
 // Shared hero for every inner page: staged entrance, live-status chips, call to action, and a visual on the right.
-export function PageHero({ trail, eyebrow, title, lead, topic, visual, actions, byline }: Props) {
+export function PageHero({ trail, eyebrow, title, lead, topic, visual, actions, byline, logo }: Props) {
   return (
     <section className="lp-hero">
       <div className="lp-hero__frame">
@@ -25,6 +26,7 @@ export function PageHero({ trail, eyebrow, title, lead, topic, visual, actions, 
         <div className="lp-hero__inner">
           <div className="lp-hero__text">
             <Breadcrumbs trail={trail} />
+            {logo && <img className="lp-logo lp-in" src={logo.src} alt={logo.alt} width={64} height={64} style={{ ["--d" as string]: "0s" }} />}
             <div className="hero__chips lp-in" style={{ ["--d" as string]: "0.05s" }}>
               <span className="hero__badge hero__badge--live"><i /> Open to remote work</span>
               <span className="hero__badge"><i /> {eyebrow}</span>

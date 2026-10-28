@@ -36,6 +36,7 @@ export function CaseStudyPage({ study }: { study: CaseStudy }) {
         title={study.h1}
         lead={study.lead}
         topic={`a product like ${p.title}`}
+        logo={p.logo ? { src: p.logo, alt: `${p.title} logo` } : undefined}
         visual={<div className="lp-fan"><ProjectCover project={p} eager /></div>}
         actions={
           <>

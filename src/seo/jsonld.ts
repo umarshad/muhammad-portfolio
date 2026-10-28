@@ -164,6 +164,7 @@ export function buildJsonLd(path = "/", modified = new Date().toISOString().slic
         "@id": `${pageUrl}#app`,
         name: pr.title,
         description: pr.description,
+        ...(pr.logo ? { image: abs(pr.logo), logo: abs(pr.logo) } : {}),
         applicationCategory: study.category,
         operatingSystem: study.os,
         ...(pr.url.startsWith("http") && !pr.url.includes("github.com") ? { url: pr.url } : {}),

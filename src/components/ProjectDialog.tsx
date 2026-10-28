@@ -39,7 +39,10 @@ export function ProjectDialog({ project, onClose }: { project: Project; onClose:
         </div>
         <div className="pdlg__body">
           <p className="pcard__kinds">{project.kinds.join(" · ")} · {project.status}</p>
-          <h3 id="pdlg-title">{project.title}</h3>
+          <h3 id="pdlg-title">
+            {project.logo && <img className="pdlg__logo" src={project.logo} alt="" width={44} height={44} />}
+            {project.title}
+          </h3>
           <p className="pdlg__desc">{project.description}</p>
           <h4>Key features</h4>
           <ul>{project.features.map((f) => <li key={f}>{f}</li>)}</ul>
