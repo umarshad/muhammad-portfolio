@@ -16,9 +16,9 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
   {
     region: "uk",
     slug: "flutter-developer-for-hire-uk",
-    title: "Hire a Flutter Developer for UK Projects | Muhammad Umar",
+    title: "Flutter Developer for Hire, UK (Remote) | Muhammad Umar",
     description:
-      "Remote Flutter and full-stack developer for UK startups and businesses: iOS and Android apps, SaaS, admin panels and App Store release, in English.",
+      "Hire a remote Flutter developer for UK startups and businesses: iOS and Android apps, SaaS, admin panels and App Store release, in UK-friendly hours.",
     eyebrow: "Flutter developer for UK clients",
     h1: "Flutter developer for UK startups and businesses",
     serviceName: "Flutter development for UK clients",
@@ -54,9 +54,9 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
   {
     region: "usa",
     slug: "flutter-developer-for-hire-usa",
-    title: "Hire a Flutter Developer for US Projects | Muhammad Umar",
+    title: "Flutter Developer for Hire, USA (Remote) | Muhammad Umar",
     description:
-      "Remote Flutter and full-stack developer for US startups and businesses: iOS and Android apps, SaaS, Stripe payments, admin panels and store release.",
+      "Hire a remote Flutter developer for US startups and small businesses: iOS and Android apps, SaaS, Stripe payments, admin panels and store release.",
     eyebrow: "Flutter developer for US clients",
     h1: "Flutter developer for US startups and businesses",
     serviceName: "Flutter development for US clients",
@@ -92,9 +92,9 @@ export const regionPages: (LandingPage & { region: RegionKey })[] = [
   {
     region: "eu",
     slug: "flutter-developer-for-hire-europe",
-    title: "Hire a Flutter Developer for European Teams | Muhammad Umar",
+    title: "Flutter Developer for Hire, Europe (Remote) | Muhammad Umar",
     description:
-      "Remote Flutter and full-stack developer for European startups and agencies: iOS and Android apps, SaaS, admin panels and store release, working in English.",
+      "Hire a remote Flutter developer for European startups and agencies: iOS and Android apps, e-commerce, SaaS and admin panels, with Spain-based client work.",
     eyebrow: "Flutter developer for European clients",
     h1: "Flutter developer for European startups and agencies",
     serviceName: "Flutter development for European clients",

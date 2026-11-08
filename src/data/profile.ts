@@ -14,6 +14,8 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/muhammad-umar-802235286",
   github: "https://github.com/umarshad",
   site: "https://m-umar.vercel.app",
+  alsoKnownAs: ["Umar Arshad"],
+  updated: "2026-11-08", // bump when page content changes; used for sitemap lastmod and schema dateModified
   resume: "/Muhammad_Umar_Resume.pdf",
 };
 

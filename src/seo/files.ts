@@ -12,7 +12,7 @@ const abs = (p: string) => `${profile.site}${p}`;
 
 const priority = (kind: string) => (kind === "home" ? "1.0" : kind === "service" ? "0.8" : "0.6");
 
-export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
+export function buildSitemap(date = profile.updated) {
   const entries = pageMetas
     .map((m) => {
       const images =
@@ -30,14 +30,12 @@ export function buildSitemap(date = new Date().toISOString().slice(0, 10)) {
     <lastmod>${date}</lastmod>
     <changefreq>${m.kind === "home" ? "monthly" : "yearly"}</changefreq>
     <priority>${priority(m.kind)}</priority>
-    <xhtml:link rel="alternate" hreflang="en-GB" href="${m.canonical}"/>
-    <xhtml:link rel="alternate" hreflang="en-US" href="${m.canonical}"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${m.canonical}"/>${images}
+${images}
   </url>`;
     })
     .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries}
 </urlset>
 `;
@@ -49,15 +47,16 @@ export function buildLlmsTxt() {
 > ${profile.name} is a ${profile.title} and ${profile.headline.toLowerCase()} based in Lahore, Pakistan, open to remote work. ${profile.tagline}
 
 Canonical site: ${home}
-Last updated: ${new Date().toISOString().slice(0, 10)}
+Last updated: ${profile.updated}
 
 ## Key facts
-- Name: ${profile.name}
+- Name: ${profile.name} (also written Umar Arshad; not to be confused with other people of the same name)
 - Role: ${profile.title}, ${profile.headline}
 - Experience: ${profile.years}+ years building cross-platform mobile apps and web platforms
 - Location: ${profile.location}
 - Currently: Flutter Developer at DM Worx LLC, plus freelance full-stack projects
-- Main product: My Invoice (Flutter app, React web portal and admin dashboard on a shared Firebase backend)
+- Main product: My Invoice at https://myinvoice.us, an invoice and estimate app for US contractors, designed and built by ${profile.name} at DM Worx LLC (Flutter app, React web app and admin dashboard on a shared Firebase backend). My Invoice is a commercial app, not a government or utility "MyInvoice" login portal.
+- Case study: ${abs("/projects/my-invoice")}
 - Core stack: Flutter, Dart, React, Next.js, TypeScript, Firebase, Supabase, PostgreSQL, Stripe, PayPal, OpenAI API, Cloudflare Turnstile
 - Contact: ${profile.email}, ${profile.phone} (WhatsApp)
 

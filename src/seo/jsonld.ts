@@ -36,6 +36,8 @@ const person = () => ({
   "@type": "Person",
   "@id": `${home}#person`,
   name: profile.name,
+  alternateName: profile.alsoKnownAs,
+  disambiguatingDescription: "Flutter and full-stack developer in Lahore, Pakistan, who designed and built the My Invoice app (myinvoice.us) at DM Worx LLC.",
   jobTitle: profile.title,
   description: profile.tagline,
   url: home,
@@ -48,7 +50,7 @@ const person = () => ({
   knowsLanguage: ["English", "Urdu"],
   contactPoint: contactPoint(),
   alumniOf: { "@type": "CollegeOrUniversity", name: education.school },
-  worksFor: { "@type": "Organization", name: "DM Worx LLC" },
+  worksFor: { "@type": "Organization", name: "DM Worx LLC", url: "https://www.dmworxllc.com" },
 });
 
 const website = () => ({
@@ -97,7 +99,7 @@ const breadcrumb = (id: string, trail: { name: string; url: string }[]) => ({
   itemListElement: trail.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, item: t.url })),
 });
 
-export function buildJsonLd(path = "/", modified = new Date().toISOString().slice(0, 10)) {
+export function buildJsonLd(path = "/", modified = profile.updated) {
   const m = metaFor(path);
   const graph: object[] = [];
 

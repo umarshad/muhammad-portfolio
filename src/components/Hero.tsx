@@ -28,7 +28,7 @@ export function Hero() {
             </div>
             <h1 className="hero__title lines">
               <span className="line" style={{ ["--i" as string]: 0 }}><span>{profile.name}<span className="dot">.</span></span></span>
-              <span className="line" style={{ ["--i" as string]: 1 }}><span className="serif"><span className="sr-only">{profile.title}, full-stack and SaaS developer.</span><span aria-hidden="true" className="typed">{text}<span className={`typed__dot${typing ? " is-typing" : ""}`}>.</span><i className="typed__caret" /></span></span></span>
+              <span className="line" style={{ ["--i" as string]: 1 }}><span className="serif"><span className="sr-only">Flutter developer and full-stack engineer in Lahore, remote for UK, EU and US clients.</span><span aria-hidden="true" className="typed">{text}<span className={`typed__dot${typing ? " is-typing" : ""}`}>.</span><i className="typed__caret" /></span></span></span>
             </h1>
             <p className="hero__lead" style={{ ["--d" as string]: "0.45s" }}>
               I create <strong>custom apps, websites and admin panels</strong>, specialised in <strong>SaaS products</strong> with

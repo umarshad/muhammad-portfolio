@@ -1,9 +1,9 @@
 import { allServicePages, caseStudies } from "@/data/landing";
 import { profile } from "@/data/profile";
 
-export const HOME_TITLE = "Flutter Developer for Hire (UK, EU, USA) | Muhammad Umar";
+export const HOME_TITLE = "Muhammad Umar | Flutter Developer for Hire (UK, EU, USA)";
 export const HOME_DESCRIPTION =
-  "Remote Flutter and full-stack developer for UK, EU and US clients: custom mobile apps, websites, admin panels and SaaS with in-app purchases and store release.";
+  "Muhammad Umar, remote Flutter and full-stack developer in Lahore. Flutter, React, Firebase and Stripe apps for UK, EU and US clients. Built My Invoice.";
 
 export type PageMeta = { path: string; title: string; description: string; canonical: string; kind: "home" | "service" | "case" };
 

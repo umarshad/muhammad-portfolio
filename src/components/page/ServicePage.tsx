@@ -37,7 +37,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
       <section className="lp-sec" aria-labelledby="inc">
         <div className="container">
           <p className="eyebrow reveal">What you get</p>
-          <h2 id="inc" className="work__title reveal">What&apos;s <span className="serif">included</span></h2>
+          <h2 id="inc" className="work__title reveal">What&apos;s <span className="serif">included</span> in {page.serviceName}</h2>
           <IncludeCards items={page.includes} />
         </div>
       </section>
@@ -45,7 +45,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
       <section className="lp-sec lp-sec--alt" aria-labelledby="how">
         <div className="container">
           <p className="eyebrow reveal">Process</p>
-          <h2 id="how" className="work__title reveal">How it <span className="serif">works</span></h2>
+          <h2 id="how" className="work__title reveal">How {page.serviceName} <span className="serif">works</span></h2>
           <StepsTimeline steps={page.steps} />
         </div>
       </section>
@@ -53,7 +53,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
       <section className="lp-sec" aria-labelledby="tech">
         <div className="container">
           <p className="eyebrow reveal">Technology</p>
-          <h2 id="tech" className="work__title reveal">Tools used for <span className="serif">this</span></h2>
+          <h2 id="tech" className="work__title reveal">Tools used for <span className="serif">{page.serviceName}</span></h2>
           <div className="tech__grid lp-tech">
             {used.map((t, i) => (
               <div key={t.name} className="tcard" style={{ ["--i" as string]: i, ["--c" as string]: techColor(t) }}>
@@ -68,7 +68,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
       <section className="lp-sec lp-sec--alt" aria-labelledby="proof">
         <div className="container">
           <p className="eyebrow reveal">Proof</p>
-          <h2 id="proof" className="work__title reveal">Related <span className="serif">work</span></h2>
+          <h2 id="proof" className="work__title reveal">Related <span className="serif">work</span> and case studies</h2>
           <div className="lp-proj">
             {proof.map((p, i) => {
               const study = caseStudyForProject(p.title);
@@ -97,7 +97,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
         <div className="container lp-faq">
           <div>
             <p className="eyebrow reveal">Questions</p>
-            <h2 id="qa" className="work__title reveal">Common <span className="serif">questions</span></h2>
+            <h2 id="qa" className="work__title reveal"><span className="serif">{page.serviceName}</span> questions</h2>
           </div>
           <FaqAccordion items={page.faq} />
         </div>
@@ -106,7 +106,7 @@ export function ServicePage({ page }: { page: LandingPage }) {
       <section className="lp-sec lp-sec--alt" aria-labelledby="more">
         <div className="container">
           <p className="eyebrow reveal">Related services</p>
-          <h2 id="more" className="work__title reveal">Often <span className="serif">combined</span></h2>
+          <h2 id="more" className="work__title reveal">Services <span className="serif">often combined</span> with this</h2>
           <div className="lp-related">
             {related.map((r, i) => (
               <a key={r.slug} className="svccard-lite reveal" href={`/${r.slug}`} style={{ ["--d" as string]: `${i * 0.08}s` }}>

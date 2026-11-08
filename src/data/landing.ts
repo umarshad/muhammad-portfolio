@@ -17,9 +17,9 @@ export type LandingPage = {
 export const landingPages: LandingPage[] = [
   {
     slug: "flutter-app-development",
-    title: "Flutter App Development Services | Muhammad Umar",
+    title: "Flutter App Developer for Hire | Muhammad Umar",
     description:
-      "Hire a Flutter developer for iOS and Android apps on Firebase, with in-app purchases, push notifications and App Store and Google Play release.",
+      "Flutter app development services for iOS and Android: Firebase backend, in-app purchases, push notifications and App Store and Google Play release.",
     eyebrow: "Flutter app development",
     h1: "Flutter app development for iOS and Android",
     serviceName: "Flutter app development",
@@ -48,13 +48,13 @@ export const landingPages: LandingPage[] = [
       { q: "Can you also publish the app to the stores?", a: "Yes. I handle the build, signing, store listing and submission, and Clika is live on Google Play. See the App Store and Google Play deployment page for what that covers." },
       { q: "Do you build the admin side too?", a: "Yes. Products usually need an admin dashboard for users, payments and content, and I build that on the same backend as the app." },
     ],
-    related: ["saas-app-development", "app-store-and-google-play-deployment", "in-app-purchases-and-payments"],
+    related: ["saas-app-development", "firebase-developer-for-hire", "ai-app-development"],
   },
   {
     slug: "saas-app-development",
-    title: "SaaS App Development: Mobile, Web, Admin | Muhammad Umar",
+    title: "SaaS App Developer: Mobile, Web, Admin | Muhammad Umar",
     description:
-      "SaaS development by one developer: Flutter mobile app, React web portal and admin dashboard on a shared backend, with subscriptions and payments.",
+      "Hire a SaaS developer for the whole product: Flutter mobile app, React web portal and admin dashboard on one Firebase backend, with subscriptions.",
     eyebrow: "SaaS app development",
     h1: "SaaS app development: mobile app, web portal and admin dashboard",
     serviceName: "SaaS app development",
@@ -83,13 +83,13 @@ export const landingPages: LandingPage[] = [
       { q: "How do you protect a SaaS from bots and abuse?", a: "With Cloudflare Turnstile checked on the server, reCAPTCHA-backed Firebase App Check and role-based access control, as used in My Invoice." },
       { q: "Do you support the product after launch?", a: "Yes. Monitoring, fixes and new features are part of how I work, and the admin tooling is built so day-to-day operations do not depend on a developer." },
     ],
-    related: ["flutter-app-development", "in-app-purchases-and-payments", "web-app-and-admin-panel-development"],
+    related: ["flutter-app-development", "firebase-developer-for-hire", "in-app-purchases-and-payments"],
   },
   {
     slug: "in-app-purchases-and-payments",
-    title: "In-App Purchases and Stripe Payments | Muhammad Umar",
+    title: "In-App Purchase and Stripe Developer | Muhammad Umar",
     description:
-      "Subscriptions and payments done right: App Store and Google Play in-app purchases, Stripe and PayPal for Flutter and web apps, built and tested first.",
+      "In-app purchase, subscription and Stripe payment integration for Flutter and web apps: App Store, Google Play and PayPal, tested before going live.",
     eyebrow: "In-app purchases and payments",
     h1: "In-app purchase and payment integration for Flutter and web apps",
     serviceName: "In-app purchase and payment integration",
@@ -121,9 +121,9 @@ export const landingPages: LandingPage[] = [
   },
   {
     slug: "web-app-and-admin-panel-development",
-    title: "Web App and Admin Panel Development | Muhammad Umar",
+    title: "React and Next.js Developer for Hire | Muhammad Umar",
     description:
-      "React and Next.js developer for websites, web apps and admin dashboards with role-based access, e-commerce and live analytics on Supabase or Firebase.",
+      "Hire a React and Next.js developer for websites, web apps, admin panels and e-commerce, with role-based access and live analytics on Supabase or Firebase.",
     eyebrow: "Web apps and admin panels",
     h1: "React and Next.js web apps, websites and admin panels",
     serviceName: "Web app and admin panel development",
@@ -152,13 +152,13 @@ export const landingPages: LandingPage[] = [
       { q: "Which stack do you use for the web?", a: "React, Next.js and TypeScript on the front end, with Supabase, Firebase, PostgreSQL or Node.js behind it, depending on the project." },
       { q: "Will the site be set up for search engines?", a: "Yes. That means semantic pages, fast loading, correct metadata and structured data, which this portfolio itself is built to show." },
     ],
-    related: ["saas-app-development", "flutter-app-development", "in-app-purchases-and-payments"],
+    related: ["ecommerce-website-development", "saas-app-development", "flutter-app-development"],
   },
   {
     slug: "app-store-and-google-play-deployment",
     title: "App Store and Google Play Deployment | Muhammad Umar",
     description:
-      "Publish your Flutter app: build signing, store listings, submission, testing tracks and updates for the App Store and Google Play, by a developer who ships.",
+      "Publish your Flutter app to the App Store and Google Play: build signing, store listings, submission, testing tracks, review follow-up and updates.",
     eyebrow: "Store deployment",
     h1: "App Store and Google Play deployment for Flutter apps",
     serviceName: "App Store and Google Play deployment",
@@ -187,6 +187,108 @@ export const landingPages: LandingPage[] = [
       { q: "Do you handle updates after launch?", a: "Yes. Versioning and repeatable builds make later updates straightforward." },
     ],
     related: ["flutter-app-development", "in-app-purchases-and-payments", "saas-app-development"],
+  },
+  {
+    slug: "firebase-developer-for-hire",
+    title: "Firebase Developer for Hire: Auth, Cloud Functions",
+    description:
+      "Hire a Firebase developer for Flutter and web apps: Authentication, Firestore, Cloud Functions, push notifications, App Check and security rules.",
+    eyebrow: "Firebase development",
+    h1: "Firebase developer for Flutter and web apps",
+    serviceName: "Firebase backend development",
+    lead:
+      "I design and build Firebase backends for Flutter and React products: sign-in, Firestore data, Cloud Functions for the rules that must run on a server, push notifications and abuse protection. My Invoice runs its mobile app, web app and admin dashboard on one Firebase project, so this is the stack I know best from real use.",
+    includes: [
+      { title: "Authentication", text: "Email and password sign-in, recovery flows and role-based access, with the checks that matter run on the server and not in the app." },
+      { title: "Firestore data design", text: "Collections, indexes and security rules planned around how the app reads data, so screens load quickly and users only see their own records." },
+      { title: "Cloud Functions", text: "Server code for payments, reminders, emails, signed PDF generation, subscriptions and AI requests, so business rules cannot be bypassed from a client." },
+      { title: "Push notifications", text: "Firebase Cloud Messaging for payment reminders and follow-ups, paired with email through SMTP where a message must reach people outside the app." },
+      { title: "Abuse protection", text: "Cloudflare Turnstile verified inside Cloud Functions and reCAPTCHA-backed Firebase App Check on sign-in and recovery, as used in My Invoice." },
+      { title: "One backend for every platform", text: "The Flutter app, the React web app and the admin dashboard read the same data, so web and mobile always agree." },
+    ],
+    steps: [
+      { title: "Model", text: "Data, roles and rules drawn up before any screen is built." },
+      { title: "Build", text: "Authentication, Firestore and Cloud Functions built together with the app." },
+      { title: "Secure", text: "Security rules, App Check and server-side verification added and tested." },
+      { title: "Operate", text: "Monitoring, reminders and an admin view so the team can run it day to day." },
+    ],
+    tech: ["Firebase", "Cloud Functions", "Firebase App Check", "Cloudflare Turnstile", "reCAPTCHA", "Flutter", "React", "TypeScript", "Stripe", "SMTP"],
+    projects: ["My Invoice", "Olizon"],
+    faq: [
+      { q: "Can you build the whole Firebase backend for my app?", a: "Yes. I design the data model, security rules and Cloud Functions together with the Flutter or React front end, so the backend fits the product instead of being added later." },
+      { q: "Do you use Firebase or Supabase?", a: "Both. Firebase suits real-time mobile products and My Invoice uses it for Authentication, Firestore, Storage, Cloud Messaging and Cloud Functions. Supabase and PostgreSQL suit data that is more relational, as on Hudson Tasks and Junoon Herbals." },
+      { q: "How do you keep a Firebase app secure?", a: "With Firestore security rules, role-based access, Cloudflare Turnstile checked on the server and reCAPTCHA-backed Firebase App Check, so sign-ups, logins and payments are protected from abuse." },
+      { q: "Can you add Firebase to an existing Flutter app?", a: "Yes, once I have looked at how the app is structured. I can add sign-in, a database, push notifications or server functions without rewriting the screens." },
+    ],
+    related: ["flutter-app-development", "saas-app-development", "ai-app-development"],
+  },
+  {
+    slug: "ai-app-development",
+    title: "AI App Developer: OpenAI and Gemini | Muhammad Umar",
+    description:
+      "Add AI to your Flutter or web app: OpenAI and Gemini assistants, receipt scanning, on-device face detection and AI content automation, built and checked.",
+    eyebrow: "AI features and automation",
+    h1: "AI app development with OpenAI and Gemini for Flutter and web apps",
+    serviceName: "AI app development",
+    lead:
+      "I add AI where it solves a real problem for users: an assistant that drafts an estimate from a plain-language job description, receipt scanning, mood detection from a face and a chat, and an automated pipeline that writes and publishes posts. These are features I have built and shipped in My Invoice, Emotions Controller and LinkedIn Content Automation.",
+    includes: [
+      { title: "In-app assistants", text: "OpenAI and Google Gemini assistants that ask about the scope and draft the result for the user to edit before saving, as in My Invoice." },
+      { title: "Receipt and document scanning", text: "AI-assisted receipt scanning that fills in the details, with a preview step so the user stays in control of what is saved." },
+      { title: "On-device vision", text: "Face detection on the phone with Google ML Kit, as in Emotions Controller, so images do not have to leave the device for the first step." },
+      { title: "Server-side checks", text: "AI requests go through Cloud Functions with validation and moderation, so keys stay off the device and output is checked before use." },
+      { title: "Automation pipelines", text: "End-to-end workflows that find topics, generate text and images and publish them, as in LinkedIn Content Automation." },
+      { title: "Honest scope", text: "AI is added where it helps and is clear to the user. It is not a replacement for review on anything that carries legal or financial weight." },
+    ],
+    steps: [
+      { title: "Find the use", text: "Pick the one job where AI saves your users real time." },
+      { title: "Prototype", text: "A working version on real examples, to see where it fails." },
+      { title: "Build in", text: "Add it to the app with server-side checks and an edit step." },
+      { title: "Measure", text: "Watch real usage and tune prompts, limits and costs." },
+    ],
+    tech: ["OpenAI API", "Gemini", "Google ML Kit", "Groq", "Flutter", "Firebase", "Cloud Functions", "n8n"],
+    projects: ["My Invoice", "Emotions Controller App", "LinkedIn Content Automation"],
+    faq: [
+      { q: "Can you add an AI assistant to my Flutter app?", a: "Yes. I connect OpenAI or Gemini through server-side functions, design the conversation around one useful task and add a preview so users can correct the result before it is saved." },
+      { q: "Which AI providers do you work with?", a: "The OpenAI API and Google Gemini, plus Groq in automation work, and Google ML Kit for on-device vision." },
+      { q: "Is the AI running on the phone or on a server?", a: "Both, depending on the job. Face detection in Emotions Controller runs on the device. Language features run through a server so keys are protected and output can be checked." },
+      { q: "Can you automate content or reporting with AI?", a: "Yes. LinkedIn Content Automation is an end-to-end pipeline that finds trending topics, generates posts with images and publishes them. I can build similar workflows for your own process." },
+    ],
+    related: ["flutter-app-development", "firebase-developer-for-hire", "saas-app-development"],
+  },
+  {
+    slug: "ecommerce-website-development",
+    title: "E-commerce Website Developer for Hire | Muhammad Umar",
+    description:
+      "Hire an e-commerce developer for custom online stores and shopping apps: product catalogue, checkout, orders and a full admin panel, in React or Flutter.",
+    eyebrow: "E-commerce development",
+    h1: "E-commerce website and shopping app development",
+    serviceName: "E-commerce website development",
+    lead:
+      "I build custom online stores and shopping apps where the owner can manage products, orders and content without a developer. Junoon Herbals and Everpure Organics are web stores with their own admin panels, and Olizon is a Flutter shopping app for an olive oil seller in Spain. Each is built to be fast, clear for the shopper and simple for the shop owner to run.",
+    includes: [
+      { title: "Product catalogue and cart", text: "Product pages, carts with multiple pricing tiers and clear checkout steps, as on Junoon Herbals and Everpure Organics." },
+      { title: "A full admin panel", text: "Products, orders, customers and site content managed through a custom role-based admin, so day-to-day changes need no code." },
+      { title: "Live visitor analytics", text: "A dashboard showing active visitors, traffic source, city and pages visited, built for Junoon Herbals." },
+      { title: "Tracking and payments", text: "Meta Pixel set from the admin panel, SMTP order emails and PayPal payments where the project needs them." },
+      { title: "Shopping apps", text: "Flutter apps for iOS and Android with sign-in, product browsing, cart, checkout and order tracking, as in Olizon." },
+      { title: "Fast and findable", text: "Responsive layouts, quick loading and the page structure search engines need, so the store can be found." },
+    ],
+    steps: [
+      { title: "Plan", text: "Products, pricing, delivery and what the owner needs to control." },
+      { title: "Design", text: "Shop and admin layouts for desktop and mobile agreed before build." },
+      { title: "Build", text: "Storefront, admin and database built together." },
+      { title: "Launch", text: "Deployment, tracking set up and a simple way to update the shop." },
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Supabase", "PayPal", "SMTP", "Flutter", "Firebase", "Vercel"],
+    projects: ["Junoon Herbals", "Everpure Organics", "Olizon"],
+    faq: [
+      { q: "Can you build a custom online store instead of using a template?", a: "Yes. I build the storefront and the admin together in React or Next.js, so the shop fits the products and the owner manages everything from one panel." },
+      { q: "Do you build shopping apps as well as websites?", a: "Yes. Olizon is a Flutter e-commerce app for iOS and Android with sign-in, product browsing, cart, checkout and orders, built for a client in Spain." },
+      { q: "Can I update products and orders myself?", a: "Yes. The admin panel is built around the products, orders and content you need to change, so updates do not need a developer." },
+      { q: "Which payments and tracking do you set up?", a: "PayPal checkout, SMTP order emails and Meta Pixel configured from the admin panel, depending on what the project needs." },
+    ],
+    related: ["web-app-and-admin-panel-development", "flutter-app-development", "in-app-purchases-and-payments"],
   },
 ];
 

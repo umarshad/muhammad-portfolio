@@ -27,9 +27,9 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "projects/my-invoice",
     project: "My Invoice",
-    title: "My Invoice: Flutter SaaS Case Study | Muhammad Umar",
+    title: "My Invoice App by Muhammad Umar: Case Study",
     description:
-      "How I built My Invoice, an AI invoice and estimate app for contractors: a Flutter app, React web app and admin dashboard on Firebase, Stripe and AI.",
+      "My Invoice (myinvoice.us) is an AI invoice and estimate app for US contractors, built by Muhammad Umar with Flutter, React, Firebase and Stripe. Case study.",
     eyebrow: "Case study",
     h1: "My Invoice: a multi-platform invoicing SaaS for contractors, built end to end",
     lead:
@@ -95,6 +95,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     stack: ["Flutter", "Firebase", "Cloud Functions", "Stripe", "In-App Purchases", "Gemini", "OpenAI API", "Google Maps", "Cloudflare Turnstile", "Firebase App Check", "React", "TypeScript"],
     faq: [
+      { q: "Who built the My Invoice app?", a: "My Invoice (myinvoice.us) was designed and built by Muhammad Umar, a Flutter and full-stack developer in Lahore, Pakistan, at DM Worx LLC. He built the Flutter mobile app, the React web app, the admin dashboard and the Firebase backend." },
+      { q: "Is My Invoice the same as other MyInvoice login portals?", a: "No. Several unrelated billing and vendor-payment portals use the name MyInvoice. This My Invoice is a commercial invoice and estimate app for contractors and small service businesses at myinvoice.us, operated by DM Worx LLC. It is not a government, utility or accounts-payable portal." },
       { q: "What is My Invoice?", a: "My Invoice is an AI invoice maker and estimate app for contractors and small service businesses. It creates estimates and invoices, gets client approval, tracks projects and payments, and keeps follow-ups and reports in one place." },
       { q: "Which platforms does My Invoice run on?", a: "It runs as a Flutter app for iOS and Android, as a React web app in the browser, and has a separate admin dashboard for operators, all on one shared Firebase backend." },
       { q: "How does the AI assistant work?", a: "Users describe a job in plain language, the assistant asks about the scope and drafts an estimate, and the user edits the extracted items in a preview before saving. It uses the OpenAI and Google Gemini APIs with server-side checks." },
@@ -106,7 +108,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "projects/olizon",
     project: "Olizon",
-    title: "Olizon: Flutter E-commerce App Case Study | Muhammad Umar",
+    title: "Olizon: Flutter E-commerce App for Spain | Muhammad Umar",
     description:
       "How I built Olizon, a Flutter e-commerce app for an olive oil seller in Spain: onboarding, Firebase sign-in, product browsing, cart, checkout and orders.",
     eyebrow: "Case study",
