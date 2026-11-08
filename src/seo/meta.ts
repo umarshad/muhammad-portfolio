@@ -3,7 +3,7 @@ import { profile } from "@/data/profile";
 
 export const HOME_TITLE = "Muhammad Umar | Flutter Developer for Hire (UK, EU, USA)";
 export const HOME_DESCRIPTION =
-  "Muhammad Umar, remote Flutter and full-stack developer in Lahore. Flutter, React, Firebase and Stripe apps for UK, EU and US clients. Built My Invoice.";
+  "Muhammad Umar, remote Flutter developer in Lahore: Flutter, React, Firebase and Stripe apps for UK, EU and US clients. Built the My Invoice app.";
 
 export type PageMeta = { path: string; title: string; description: string; canonical: string; kind: "home" | "service" | "case" };
 

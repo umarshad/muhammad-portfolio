@@ -226,7 +226,7 @@ export const landingPages: LandingPage[] = [
     slug: "ai-app-development",
     title: "AI App Developer: OpenAI and Gemini | Muhammad Umar",
     description:
-      "Add AI to your Flutter or web app: OpenAI and Gemini assistants, receipt scanning, on-device face detection and AI content automation, built and checked.",
+      "AI app development for Flutter and web apps: OpenAI and Gemini assistants, receipt scanning, on-device face detection and AI automation.",
     eyebrow: "AI features and automation",
     h1: "AI app development with OpenAI and Gemini for Flutter and web apps",
     serviceName: "AI app development",

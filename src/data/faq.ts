@@ -35,7 +35,7 @@ export const faq = [
   {
     q: "Who is Muhammad Umar?",
     cat: "about",
-    a: "Muhammad Umar is a Flutter and full-stack developer based in Lahore, Pakistan, with 3+ years of experience building cross-platform mobile apps and web platforms, from database design to App Store and Google Play release.",
+    a: "Muhammad Umar (also written Umar Arshad) is a Flutter and full-stack developer based in Lahore, Pakistan, with 3+ years of experience building cross-platform mobile apps and web platforms, from database design to App Store and Google Play release.",
   },
   {
     q: "What does Muhammad Umar build?",
