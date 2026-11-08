@@ -83,7 +83,7 @@ export const landingPages: LandingPage[] = [
       { q: "How do you protect a SaaS from bots and abuse?", a: "With Cloudflare Turnstile checked on the server, reCAPTCHA-backed Firebase App Check and role-based access control, as used in My Invoice." },
       { q: "Do you support the product after launch?", a: "Yes. Monitoring, fixes and new features are part of how I work, and the admin tooling is built so day-to-day operations do not depend on a developer." },
     ],
-    related: ["flutter-app-development", "firebase-developer-for-hire", "in-app-purchases-and-payments"],
+    related: ["mvp-app-development-for-startups", "firebase-developer-for-hire", "in-app-purchases-and-payments"],
   },
   {
     slug: "in-app-purchases-and-payments",
@@ -290,6 +290,40 @@ export const landingPages: LandingPage[] = [
     ],
     related: ["web-app-and-admin-panel-development", "flutter-app-development", "in-app-purchases-and-payments"],
   },
+  {
+    slug: "mvp-app-development-for-startups",
+    title: "MVP App Developer for Startups | Muhammad Umar",
+    description:
+      "Build your startup MVP with one developer: Flutter app, web app and admin panel on Firebase, with payments and App Store and Google Play release.",
+    eyebrow: "MVP and startup apps",
+    h1: "MVP app development for startups and founders",
+    serviceName: "MVP app development",
+    lead:
+      "If you have an idea and no technical team, I can build the first working version of your product on my own: mobile app, web app, admin panel, payments and store release. My Invoice was built this way, one developer on the app, the web app and the admin dashboard over one backend, so I know which parts to build first and which to leave for later.",
+    includes: [
+      { title: "The smallest useful version", text: "We pick the one workflow your users would pay for and build that end to end, instead of a long feature list that delays launch." },
+      { title: "One developer, whole product", text: "Mobile app, web app, admin panel and backend come from one person, so there are no hand-offs and no gaps between parts." },
+      { title: "A backend that is easy to change", text: "Firebase or Supabase give sign-in, data and server functions quickly, and can grow with the product." },
+      { title: "Payments from the start", text: "Stripe, PayPal or App Store and Google Play subscriptions, tested in sandbox mode, so you can charge from your first users." },
+      { title: "An admin panel to run it", text: "A role-based dashboard for users, payments and content, so you can operate the product without a developer for daily tasks." },
+      { title: "Store release", text: "Signing, listings and submission for the App Store and Google Play, published from your own developer accounts." },
+    ],
+    steps: [
+      { title: "Brief", text: "A short call or written brief on your users, the problem and what version one must do." },
+      { title: "Scope", text: "A written list of what is in version one and what waits, with a price and timeline." },
+      { title: "Build", text: "Weekly working builds and a short written update, so you see progress as it happens." },
+      { title: "Launch and learn", text: "Release, then changes based on what real users do." },
+    ],
+    tech: ["Flutter", "React", "TypeScript", "Firebase", "Supabase", "Stripe", "In-App Purchases", "App Store", "Google Play"],
+    projects: ["My Invoice", "Clika App", "Hudson Tasks"],
+    faq: [
+      { q: "What is an MVP app?", a: "An MVP, or minimum viable product, is the first version of your product with only the features needed to test the idea with real users. It is built to learn quickly, not to be complete." },
+      { q: "How much does it cost to build an MVP app?", a: "It depends on the number of screens, the backend, payments and whether you need a web app and an admin panel. A focused MVP costs far less than a full product. Send a short brief and I will reply with the scope, a price and a timeline." },
+      { q: "I am not technical. Can you still build my app?", a: "Yes. I turn your idea into a written scope in plain language, explain the choices that matter and keep you updated every week, so you stay in control without needing to read code." },
+      { q: "Who owns the code and the app?", a: "You do. The code lives in Git and the app is published from your own App Store and Google Play developer accounts." },
+    ],
+    related: ["saas-app-development", "flutter-app-development", "firebase-developer-for-hire"],
+  },
 ];
 
 import { caseStudies } from "./caseStudies";
@@ -299,8 +333,11 @@ export { caseStudies };
 export const caseStudy = caseStudies[0];
 
 import { regionPages } from "./regions";
+import { searchFaq } from "./searchFaq";
 
 export { regionPages };
 // Every page that uses the service-page template: the five services plus the UK, USA and Europe pages.
 export const allServicePages: LandingPage[] = [...landingPages, ...regionPages];
+// Search-style questions are appended to each page's FAQ.
+for (const page of allServicePages) page.faq.push(...(searchFaq[page.slug] ?? []));
 export const landingBySlug = (slug: string) => allServicePages.find((p) => p.slug === slug);

@@ -14,6 +14,7 @@ const scenes: Record<string, Scene> = {
   "saas-app-development": { shape: "hub", View: SceneHub, icons: [Smartphone, Globe, CreditCard, Rocket] },
   "in-app-purchases-and-payments": { shape: "app", View: PhonePaywall, icons: [Smartphone, LayoutDashboard, Layers, Rocket] },
   "web-app-and-admin-panel-development": { shape: "web", View: BrowserAdmin, icons: [Smartphone, CreditCard, Layers, Rocket] },
+  "mvp-app-development-for-startups": { shape: "hub", View: SceneHub, icons: [Smartphone, Globe, LayoutDashboard, Rocket] },
   "firebase-developer-for-hire": { shape: "hub", View: SceneHub, icons: [Smartphone, Globe, LayoutDashboard, Rocket] },
   "ai-app-development": { shape: "app", View: SceneApp, icons: [Layers, Globe, CreditCard, Rocket] },
   "ecommerce-website-development": { shape: "web", View: BrowserAdmin, icons: [Smartphone, CreditCard, Globe, Rocket] },

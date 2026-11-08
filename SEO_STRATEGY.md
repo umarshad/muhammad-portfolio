@@ -49,12 +49,28 @@ Priority is by intent and fit. "Primary" is what the title and H1 aim at; "secon
 | `/flutter-developer-for-hire-usa` | flutter developer for hire usa | remote flutter developer us, stripe, us startups |
 | `/flutter-developer-for-hire-europe` | flutter developer for hire europe | remote flutter developer europe, spain e-commerce app |
 | `/web-developer-for-hire-dubai` | website and e-commerce developer dubai | bilingual english arabic website, custom website uae |
+| `/mvp-app-development-for-startups` (new) | mvp app developer for startups | build an app for my startup, hire developer to build my app, startup app developer, non-technical founder app |
 | `/projects/my-invoice` | my invoice app; who built my invoice | myinvoice.us developer, invoice estimate app for contractors, flutter saas case study |
 | `/projects/olizon` | olizon flutter e-commerce app spain | flutter shopping app, olive oil app |
 | `/projects/clika` | clika app | flutter community app case study |
 | `/projects/emotion-controller` | emotion controller flutter app | flutter ai mood app, google ml kit face detection |
 
 Rules followed on every page: one H1, titles at 60 characters or fewer, descriptions at 160 or fewer, the page's keyword in title, H1 and first paragraph, FAQ answers written as complete sentences (they feed AI answers), links to two or three related pages, Service or SoftwareApplication plus FAQPage and BreadcrumbList schema.
+
+### 3.1 Realistic search phrases and where each is answered
+
+No keyword tool is connected, so these come from how buyers phrase the question, not from measured volume. Each is answered in a plain FAQ on the page named (FAQ answers also feed FAQPage schema and AI answers). No prices or turnaround promises are stated because both depend on scope.
+
+| Search intent | Example phrases | Answered on |
+|---|---|---|
+| Cost | how much does it cost to build a flutter app; saas app cost; custom website cost; add ai chatbot to app cost | flutter-app-development, saas-app-development, web-app-and-admin-panel-development, ai-app-development, mvp page |
+| Time | how long does it take to build a flutter app | flutter-app-development, mvp page |
+| Comparison | flutter vs react native; shopify or custom store; firebase vs supabase | flutter-app-development, ecommerce-website-development, firebase-developer-for-hire |
+| Trust | is it safe to hire a developer from pakistan; freelance flutter developer uk | UK, USA and Europe pages |
+| Rescue | fix existing flutter app; take over app; admin panel for existing app; add ai to existing app | flutter-app-development, web-app-and-admin-panel-development, ai-app-development |
+| Problems | app rejected app store; google play rejection; in-app purchase not showing; firebase costs | app-store-and-google-play-deployment, in-app-purchases-and-payments, firebase-developer-for-hire |
+| How-to | how to add subscriptions to a flutter app; how to publish a flutter app | in-app-purchases-and-payments, app-store-and-google-play-deployment |
+| Founders | what is an mvp app; i am not technical; who owns the code | mvp page |
 
 ## 4. My Invoice: how the two sites support each other
 
